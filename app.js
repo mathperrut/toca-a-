@@ -61,7 +61,7 @@ function toast(msg) {
    roda publicado no Claude, também na sua conta. */
 const LS_KEY = 'tocaai:v1';
 function novoEstado() {
-  return { v: 1, updatedAt: 0, xp: 0, licoes: {}, favs: [], musicas: [], log: {}, recordes: {}, cfg: { bpm: 80, guia: true, sens: 5, latencia: null, entrada: 'tela', vel: 'medio', somReal: true }, amostras: [], recordesMusica: {}, gravacoes: {} };
+  return { v: 1, updatedAt: 0, xp: 0, licoes: {}, favs: [], musicas: [], log: {}, recordes: {}, cfg: { bpm: 80, guia: false, sens: 5, latencia: null, entrada: 'livre', vel: 'lento', ritmo: 'tempos', facil: true, somReal: true }, amostras: [], recordesMusica: {}, gravacoes: {} };
 }
 let S = novoEstado();
 
@@ -122,11 +122,12 @@ const Store = {
 const xpDoNivel = n => 50 * n * (n - 1);
 function nivelAtual(xp = S.xp) { let n = 1; while (xp >= xpDoNivel(n + 1)) n++; return n; }
 
-function ganharXP(qtd, motivo) {
+function ganharXP(qtd, motivo, silencioso = false) {
   const antes = nivelAtual();
   S.xp += qtd;
   const depois = nivelAtual();
-  toast(depois > antes ? `Nível ${depois}! Agora você é ${tituloNivel(depois)}.` : `+${qtd} XP · ${motivo}`);
+  if (depois > antes) toast(`Nível ${depois}! Agora você é ${tituloNivel(depois)}.`);
+  else if (!silencioso) toast(`+${qtd} XP`);
   Store.salvar();
   renderHeader();
   animarXP(qtd, depois > antes);
@@ -403,6 +404,7 @@ function ouvirBatida(p, compassos = 2, acordes = p.demo) {
 }
 
 /* ===== 7. Telas ===== */
+let missaoRecente = null;
 const CADEADO = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
 const VIEWS = ['hoje', 'trilha', 'jogos', 'acordes', 'musicas', 'ferramentas'];
 let viewAtual = 'hoje';
@@ -421,63 +423,9 @@ function irPara(v) {
 }
 
 function renderHeader() {
-  const n = nivelAtual(), ini = xpDoNivel(n), fim = xpDoNivel(n + 1);
-  $('#nivel').textContent = n;
-  $('#titulo-nivel').textContent = tituloNivel(n);
-  $('#xp-txt').textContent = `${S.xp - ini} / ${fim - ini} XP`;
-  $('#xp-barra').style.width = ((S.xp - ini) / (fim - ini) * 100) + '%';
-  $('#seq').textContent = sequencia();
+  const el = $('#seq'); if (el) el.textContent = sequencia();
 }
 
-function proximaLicao() { return LESSONS.find(l => !S.licoes[l.id]); }
-function licaoLiberada(l) { const i = LESSONS.indexOf(l); return i === 0 || S.licoes[LESSONS[i - 1].id]; }
-
-function renderHoje() {
-  const d = hoje(), prox = proximaLicao();
-  const missoes = missoesDoDia();
-  const feitas = missoes.filter(m => d.missoes[m.id]).length;
-  const semTreino = totalSemana() === 0 && !Object.values(S.log).some(x => x.seg > 0);
-  $('#view-hoje').innerHTML = `
-    ${prox ? `<button class="continuar" data-licao="${prox.id}">
-        <span class="eyebrow">Próxima lição · ${esc(MODULES.find(m => m.id === prox.mod).nome)}</span>
-        <span class="c-titulo">${esc(prox.titulo)}</span>
-        <span class="c-rodape"><span class="c-xp">+${prox.xp} XP</span><span class="c-seta" aria-hidden="true">Começar →</span></span>
-      </button>` : `<button class="continuar" data-ir="musicas"><span class="eyebrow">Trilha completa</span><span class="c-titulo">Escolha uma música para tocar</span><span class="c-rodape"><span class="c-seta">Ir para Músicas →</span></span></button>`}
-
-    <section class="bloco">
-      <div class="bloco-topo"><h2>Missões de hoje</h2><span class="pill ${feitas === 3 ? 'pill-ok' : ''}">${feitas}/3</span></div>
-      <ul class="missoes">${missoes.map(m => {
-        const v = Math.min(valorMetrica(d, m.metrica), m.alvo), ok = d.missoes[m.id];
-        const un = m.metrica === 'batida' ? '%' : '';
-        return `<li class="${ok ? 'ok' : ''} ${ok && m.id === missaoRecente ? 'recem' : ''}">
-          <span class="m-check" aria-hidden="true">${ok ? '✓' : ''}</span>
-          <div class="m-corpo">
-            <div class="m-txt"><span>${esc(m.texto)}</span><span class="m-num">${ok ? 'Feito' : `${v}${un}/${m.alvo}${un}`}</span></div>
-            <div class="trilho"><i style="width:${v / m.alvo * 100}%"></i></div>
-          </div>
-          <span class="m-xp">+${m.xp}</span></li>`;
-      }).join('')}</ul>
-    </section>
-
-    <section class="bloco">
-      <div class="bloco-topo"><h2>Seu treino</h2><span class="sub">${totalSemana()} min nesta semana</span></div>
-      ${semTreino ? `<p class="vazio-grafico">Seu gráfico aparece aqui depois do primeiro treino. Cada minuto em lições, jogos e músicas conta.</p>` : graficoDias()}
-      <div class="treino-livre">
-        <div><b>Tocando fora do app?</b><span class="sub">Ligue o cronômetro e o tempo conta igual.</span></div>
-        <button class="btn ${ativos.has('livre') ? 'perigo' : ''}" id="btn-livre">${ativos.has('livre') ? `■ <span id="cron-hoje">${fmtMin(d.seg)}</span>` : '▶ Cronômetro'}</button>
-      </div>
-    </section>`;
-  missaoRecente = null;
-  $('[data-licao]', $('#view-hoje'))?.addEventListener('click', e => abrirLicao(e.currentTarget.dataset.licao));
-  $('[data-ir]', $('#view-hoje'))?.addEventListener('click', e => irPara(e.currentTarget.dataset.ir));
-  $('#btn-livre').addEventListener('click', () => {
-    if (ativos.has('livre')) { ativos.delete('livre'); Store.salvar(); }
-    else ativos.add('livre');
-    renderHoje();
-  });
-  renderHeader();
-}
-let missaoRecente = null;
 function fmtMin(seg) { const m = Math.floor(seg / 60), s = seg % 60; return `${m}:${String(s).padStart(2, '0')} min`; }
 function atualizarCronometro() { const el = $('#cron-hoje'); if (el) el.textContent = fmtMin(hoje().seg); }
 function totalSemana() { let t = 0; for (let i = 0; i < 7; i++) t += (S.log[dayKey(addDays(new Date(), -i))]?.seg || 0); return Math.round(t / 60); }
@@ -500,29 +448,6 @@ function graficoDias() {
   return s + '</svg></div>';
 }
 
-function renderTrilha() {
-  $('#view-trilha').innerHTML = `<section class="jogos-rapidos"><div class="bloco-topo"><h2>Treinos rápidos</h2><span class="sub">2 a 5 minutos</span></div><div id="jogos-lista"></div></section>` + MODULES.map(mod => {
-    const ls = LESSONS.filter(l => l.mod === mod.id);
-    const feitas = ls.filter(l => S.licoes[l.id]).length;
-    return `<section class="modulo">
-      <div class="bloco-topo"><h2>${esc(mod.nome)}</h2><span class="pill">${feitas}/${ls.length}</span></div>
-      <ol class="trilha">${ls.map(l => {
-        const feito = S.licoes[l.id], livre = licaoLiberada(l);
-        const estado = feito ? 'feito' : livre ? 'livre' : 'travado';
-        return `<li class="no ${estado}"><button data-licao="${l.id}" ${livre ? '' : 'aria-disabled="true"'}>
-          <span class="no-icone">${feito ? '✓' : livre ? LESSONS.indexOf(l) + 1 : CADEADO}</span>
-          <span class="no-txt"><b>${esc(l.titulo)}</b><small>${feito ? 'Concluída' : livre ? `+${l.xp} XP` : 'Conclua a anterior'}</small></span>
-        </button></li>`;
-      }).join('')}</ol></section>`;
-  }).join('');
-  renderJogos($('#jogos-lista'));
-  $$('#view-trilha [data-licao]').forEach(b => b.addEventListener('click', () => {
-    const l = lessonById(b.dataset.licao);
-    if (!licaoLiberada(l)) return toast('Conclua a lição anterior primeiro.');
-    abrirLicao(l.id);
-  }));
-}
-
 function renderJogos(alvo = $('#view-jogos')) {
   const rec = Object.entries(S.recordes).sort((a, b) => b[1] - a[1]).slice(0, 3);
   const icone = d => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
@@ -533,44 +458,6 @@ function renderJogos(alvo = $('#view-jogos')) {
       <button class="jogo" data-jogo="quiz">${icone('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/>')}<b>Quiz</b><span>Reconheça acordes</span><small>${hoje().quiz ? `Acertos hoje: <b>${hoje().quiz}</b>` : '10 perguntas'}</small></button>
     </div>`;
   $$('[data-jogo]', alvo).forEach(b => b.addEventListener('click', () => JOGOS[b.dataset.jogo]()));
-}
-
-let filtroAcorde = 'todos';
-function renderAcordes() {
-  const v = $('#view-acordes');
-  if (!$('#busca-acorde', v)) {
-    v.innerHTML = `
-      <div class="filtros">
-        <input id="busca-acorde" type="search" placeholder="Buscar acorde (ex.: Am, G7, Sol)" autocomplete="off">
-        <div class="chips">${[['todos', 'Todos'], ['maior', 'Maiores'], ['menor', 'Menores'], ['setima', 'Com 7'], ['pestana', 'Pestana'], ['favs', 'Favoritos']].map(([k, t]) => `<button class="chip" data-f="${k}">${t}</button>`).join('')}</div>
-      </div>
-      <div class="grade-acordes" id="grade-acordes"></div>`;
-    $('#busca-acorde').addEventListener('input', desenharGradeAcordes);
-    $$('.chip', v).forEach(c => c.addEventListener('click', () => { filtroAcorde = c.dataset.f; desenharGradeAcordes(); }));
-  }
-  desenharGradeAcordes();
-}
-function desenharGradeAcordes() {
-  const q = $('#busca-acorde').value.trim().toLowerCase();
-  $$('#view-acordes .chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.f === filtroAcorde));
-  const lista = CHORDS.filter(c => {
-    const suf = c.id.replace(/^[A-G](#|b)?/, '');
-    const ok = { todos: true, maior: suf === '', menor: suf.startsWith('m'), setima: suf.includes('7'), pestana: !!c.barre, favs: S.favs.includes(c.id) }[filtroAcorde];
-    return ok && (!q || c.id.toLowerCase().startsWith(q) || nomeAcorde(c.id).toLowerCase().includes(q));
-  });
-  $('#grade-acordes').innerHTML = lista.length ? lista.map(c => `
-    <article class="card-acorde">
-      <header><b>${esc(c.id)}</b><button class="fav" data-fav="${c.id}" aria-pressed="${S.favs.includes(c.id)}" aria-label="Favoritar ${c.id}">★</button></header>
-      ${acordeSVG(c.id)}
-      <small>${nomeAcorde(c.id)}</small>
-      <button class="btn mini" data-ouvir="${c.id}">Ouvir</button>
-    </article>`).join('') : `<p class="vazio">${filtroAcorde === 'favs' ? 'Toque na estrela de um acorde para salvar aqui.' : 'Nenhum acorde encontrado.'}</p>`;
-  $$('#grade-acordes [data-ouvir]').forEach(b => b.addEventListener('click', () => { Som.init(); Som.golpe(b.dataset.ouvir, Som.agora + 0.02, 'D', 0.35); }));
-  $$('#grade-acordes [data-fav]').forEach(b => b.addEventListener('click', () => {
-    const id = b.dataset.fav;
-    S.favs = S.favs.includes(id) ? S.favs.filter(x => x !== id) : [...S.favs, id];
-    Store.salvar(); desenharGradeAcordes();
-  }));
 }
 
 /* ----- Músicas: busca, catálogo e repertório ----- */
@@ -718,8 +605,7 @@ async function pesquisarIA(termo) {
 
 /* ----- Ferramentas: metrônomo e afinador ----- */
 let metro = null;
-function renderFerramentas() {
-  const v = $('#view-ferramentas');
+function renderFerramentas(v = $('#view-ferramentas'), modo = 'afinador') {
   v.innerHTML = `
     <section class="bloco ferramenta">
       <div class="bloco-topo"><h2>Som do violão</h2><button class="btn mini" id="som-teste">▶ Ouvir um Dó</button></div>
@@ -870,12 +756,16 @@ function renderFerramentas() {
   $('#mc-calibrar').addEventListener('click', async () => { if (Detector.ligado || await ligarMic()) calibrarAtraso(); });
   configurarIA();
   organizarFerramentas(v);
-  $('#api-salvar').addEventListener('click', () => {
+  // Afinador (aba) = afinador + metrônomo. Ajustes (engrenagem) = som, IA, microfone.
+  const titulo = t => [...v.querySelectorAll('section')].find(s => (s.querySelector('h2')?.textContent || '').startsWith(t));
+  if (modo === 'afinador') { titulo('Som do violão')?.remove(); v.querySelector('.avancado')?.remove(); }
+  else { titulo('Afinador')?.remove(); titulo('Metrônomo')?.remove(); const av = v.querySelector('.avancado'); if (av) av.open = true; }
+  $('#api-salvar')?.addEventListener('click', () => {
     const k = $('#api-chave').value.trim();
     if (!/^sk-ant-/.test(k)) { $('#api-status').textContent = 'Essa não parece uma chave da API do Claude (começa com sk-ant-).'; return; }
     Busca.salvarChave(k); $('#api-chave').value = ''; $('#api-status').textContent = 'Chave salva neste aparelho.';
   });
-  $('#api-apagar').addEventListener('click', () => { Busca.salvarChave(''); $('#api-status').textContent = 'Chave apagada.'; });
+  $('#api-apagar')?.addEventListener('click', () => { Busca.salvarChave(''); $('#api-status').textContent = 'Chave apagada.'; });
 }
 
 /* ===== IA na tela Ferramentas ===== */
@@ -986,6 +876,18 @@ function organizarFerramentas(v) {
   ['Microfone', 'Qual acorde', 'Busca', 'Ensinar'].forEach(t => { const s = por(t); if (s) av.appendChild(s); });
   ['Afinador', 'Metrônomo', 'Som do violão'].forEach(t => { const s = por(t); if (s) v.appendChild(s); });
   v.appendChild(av);
+}
+
+// Engrenagem do topo: ajustes do app numa folha
+function abrirAjustes() {
+  if (viewAtual === 'ferramentas') { afinador.parar(); pararMetronomo(); $('#view-ferramentas').innerHTML = ''; }
+  abrirJanela('Ajustes', '<div class="view" id="ajustes-corpo"></div>', () => { if (viewAtual === 'ferramentas') renderFerramentas(); });
+  renderFerramentas($('#ajustes-corpo'), 'ajustes');
+  const sobre = document.createElement('section');
+  sobre.className = 'bloco';
+  sobre.innerHTML = `<h2>Seu progresso</h2><p class="sub">Nível ${nivelAtual()} · ${S.xp} XP · ${Object.keys(S.licoes).length} lições concluídas · ${sequencia()} dias seguidos</p><button class="btn" id="aj-boasvindas">Refazer as boas-vindas</button>`;
+  $('#ajustes-corpo').appendChild(sobre);
+  sobre.querySelector('#aj-boasvindas').addEventListener('click', () => { S.onb = false; fecharJanela(); verificarBoasVindas(); });
 }
 
 /* Afinador: lê a altura ~14 vezes por segundo e usa a mediana
@@ -1118,6 +1020,7 @@ let limparJanela = null;
 function abrirJanela(titulo, html, aoFechar) {
   fecharJanela();
   $('#janela-titulo').textContent = titulo;
+  $('#janela').classList.remove('cheia');
   $('#janela-corpo').innerHTML = html;
   $('#janela').hidden = false;
   document.body.classList.add('travado');
@@ -1130,42 +1033,6 @@ function fecharJanela() {
   Som.pararTudo();
   $('#janela').hidden = true;
   document.body.classList.remove('travado');
-}
-
-function abrirLicao(id) {
-  const l = lessonById(id), p = l.padrao ? patternById(l.padrao) : null, feito = S.licoes[id];
-  const botaoPratica = {
-    trocas: `Treinar trocas ${l.pratica.a} ⇄ ${l.pratica.b}`, batida: 'Jogar a Batida', quiz: 'Fazer o quiz de acordes',
-    afinador: 'Abrir o afinador', metronomo: 'Abrir o metrônomo', musicas: 'Ir para Músicas'
-  }[l.pratica.tipo];
-  abrirJanela(l.titulo, `
-    <article class="licao">
-      <span class="eyebrow">${esc(MODULES.find(m => m.id === l.mod).nome)} · lição ${LESSONS.indexOf(l) + 1}</span>
-      ${l.corpo}
-      ${l.acordes ? `<div class="mini-acordes">${l.acordes.map(a => `<figure>${acordeSVG(a, 'sm')}<figcaption><b>${a}</b><button class="btn mini" data-ouvir="${a}">Ouvir</button></figcaption></figure>`).join('')}</div>` : ''}
-      ${p ? `<div class="box"><b>Batida: ${esc(p.nome)}</b>${batidaHTML(p)}<p>${esc(p.dica)}</p><button class="btn mini" id="ouvir-batida">Ouvir a batida</button></div>` : ''}
-      <div class="acoes-licao">
-        <button class="btn" id="praticar">${botaoPratica}</button>
-        <button class="btn primario" id="concluir" ${feito ? 'disabled' : ''}>${feito ? 'Lição concluída' : `Concluir lição · +${l.xp} XP`}</button>
-      </div>
-    </article>`);
-  $$('#janela [data-ouvir]').forEach(b => b.addEventListener('click', () => { Som.init(); Som.golpe(b.dataset.ouvir, Som.agora + 0.02, 'D', 0.35); }));
-  $('#ouvir-batida')?.addEventListener('click', () => ouvirBatida(p, 2, l.acordes?.length ? l.acordes : p.demo));
-  $('#praticar').addEventListener('click', () => {
-    const pr = l.pratica;
-    if (pr.tipo === 'trocas') JOGOS.trocas(pr.a, pr.b);
-    else if (pr.tipo === 'batida') JOGOS.batida(pr.padrao);
-    else if (pr.tipo === 'quiz') JOGOS.quiz();
-    else { fecharJanela(); irPara(pr.tipo === 'musicas' ? 'musicas' : 'ferramentas'); }
-  });
-  $('#concluir').addEventListener('click', () => {
-    if (S.licoes[id]) return;
-    S.licoes[id] = true;
-    registrar('licoes', 1);
-    ganharXP(l.xp, 'lição concluída');
-    fecharJanela();
-    RENDER[viewAtual]();
-  });
 }
 
 const JOGOS = {
@@ -1212,112 +1079,18 @@ const JOGOS = {
     });
   },
 
-  /* ----- Trocas de 1 minuto -----
-     No modo microfone, depois de cada batida o app escuta ~0,35 s,
-     faz uma "votação" entre os dois acordes e conta a troca sozinho. */
-  trocas(a = 'Em', b = 'Am') {
-    const opts = sel => CHORDS.map(c => `<option ${c.id === sel ? 'selected' : ''}>${c.id}</option>`).join('');
-    abrirJanela('Trocas de 1 minuto', `
-      <div class="jogo-cfg">
-        <label>Acorde 1 <select id="t-a">${opts(a)}</select></label>
-        <label>Acorde 2 <select id="t-b">${opts(b)}</select></label>
-        <label>Contagem <select id="t-entrada"><option value="tela">Eu toco no botão</option><option value="mic" ${S.cfg.entrada === 'mic' ? 'selected' : ''}>O app ouve o acorde (microfone)</option></select></label>
-      </div>
-      <div id="t-aviso" class="box pegadinha" hidden></div>
-      <div class="dupla" id="t-dupla"></div>
-      <div class="ouvindo" id="t-ouvindo" hidden><span class="sub">Ouvi:</span> <b id="t-ouvi" class="mono">—</b><span class="medidor mini"><i id="t-conf"></i></span></div>
-      <div class="palco center">
-        <div class="relogio-grande mono" id="t-tempo">60</div>
-        <div class="sub" id="t-recorde"></div>
-        <button class="btn primario largo grande" id="t-btn">Começar</button>
-        <p class="sub" id="t-instrucao"></p>
-        <div id="t-res"></div>
-      </div>`, () => { clearInterval(st.id); clearInterval(st.escuta); ativos.delete('trocas'); document.removeEventListener('keydown', tecla); st.cancelaMic?.(); });
-    const st = { rodando: false, n: 0, id: null, modo: 'tela', ultimoAc: null, votacao: null, escuta: null, cancelaMic: null };
-    const par = () => `${$('#t-a').value}>${$('#t-b').value}`;
-    const desenha = (ouvido = null) => {
-      $('#t-dupla').innerHTML = [$('#t-a').value, $('#t-b').value].map((c, i) => {
-        const vez = st.modo === 'mic' ? ouvido === c : st.rodando && st.n % 2 === i;
-        return `<figure class="${vez ? 'vez' : ''}"><figcaption>${c}</figcaption><div class="braco-box">${bracoSVG(c)}</div><ul class="dedos-lista compacta">${dedosHTML(c)}</ul></figure>`;
-      }).join('<span class="seta" aria-hidden="true">⇅</span>');
-      $('#t-recorde').textContent = S.recordes[par()] ? `Seu recorde neste par: ${S.recordes[par()]}` : 'Primeira vez com este par';
-    };
-    $('#t-a').addEventListener('change', () => desenha()); $('#t-b').addEventListener('change', () => desenha()); desenha();
-
-    // Ao detectar uma batida, abre uma "votação" de 0,35 s
-    const aoAtaque = () => { if (st.rodando || st.modo === 'mic') st.votacao = { ate: Som.agora + 0.35, votos: {}, leituras: 0 }; };
-    const escutar = () => {
-      if (!st.votacao) return;
-      const r = Detector.reconhecer([$('#t-a').value, $('#t-b').value]);
-      st.votacao.leituras++;
-      if (r.acorde && r.sim > 0.5 && r.margem > 0.05) st.votacao.votos[r.acorde] = (st.votacao.votos[r.acorde] || 0) + 1;
-      $('#t-conf').style.width = Math.max(0, Math.round((r.sim || 0) * 100)) + '%';
-      if (Som.agora < st.votacao.ate) return;
-      const [venc, votos] = Object.entries(st.votacao.votos).sort((x, y) => y[1] - x[1])[0] || [null, 0];
-      st.votacao = null;
-      if (!venc || votos < 2) { $('#t-ouvi').textContent = 'não reconheci'; $('#t-ouvi').className = 'mono ruim'; return; }
-      $('#t-ouvi').textContent = venc; $('#t-ouvi').className = 'mono bom';
-      if (st.rodando && st.ultimoAc && venc !== st.ultimoAc) {
-        st.n++; $('#t-btn').textContent = `Trocas: ${st.n}`;
-      }
-      st.ultimoAc = venc;
-      desenha(venc);
-    };
-    const definirModo = async m => {
-      const aviso = $('#t-aviso');
-      st.cancelaMic?.(); clearInterval(st.escuta);
-      if (m === 'mic') {
-        try { await Detector.ligar(); }
-        catch (e) { aviso.hidden = false; aviso.textContent = msgSemMicrofone(e); $('#t-entrada').value = 'tela'; return definirModo('tela'); }
-        st.modo = 'mic';
-        aviso.hidden = false;
-        aviso.innerHTML = (IA.modelo ? '<b>Reconhecimento por IA.</b>' : '<b>Experimental.</b>') + ' Bata o acorde inteiro e deixe soar. Se o app não reconhecer, confira se alguma corda está abafada: isso também é um treino! Ambientes barulhentos atrapalham.';
-        $('#t-ouvindo').hidden = false;
-        $('#t-instrucao').textContent = 'Toque um acorde, depois o outro. O app conta cada troca que ele ouvir com o acorde limpo.';
-        st.cancelaMic = Detector.aoAtacar(aoAtaque);
-        st.escuta = setInterval(escutar, 50);
-      } else {
-        st.modo = 'tela';
-        aviso.hidden = true; $('#t-ouvindo').hidden = true;
-        $('#t-instrucao').innerHTML = 'Cada vez que o acorde soar limpo depois de trocar, toque no botão (ou <span class="mono">espaço</span>).';
-      }
-      S.cfg.entrada = st.modo; Store.salvar();
-      desenha();
-    };
-    $('#t-entrada').addEventListener('change', e => definirModo(e.target.value));
-    definirModo(S.cfg.entrada === 'mic' ? 'mic' : 'tela');
-
-    const acao = () => {
-      if (!st.rodando) {
-        Som.init(); st.rodando = true; st.n = 0; st.ultimoAc = null; st.fim = Date.now() + 60000; ativos.add('trocas');
-        $('#t-btn').textContent = st.modo === 'mic' ? 'Trocas: 0' : 'Troquei! (0)'; $('#t-res').innerHTML = '';
-        st.id = setInterval(() => {
-          const r = Math.max(0, Math.ceil((st.fim - Date.now()) / 1000));
-          $('#t-tempo').textContent = r;
-          if (r === 0) fim();
-        }, 200);
-        desenha();
-        return;
-      }
-      if (st.modo === 'mic') return; // no microfone quem conta é o app
-      st.n++; Som.click(Som.agora + 0.01, false, 0.3);
-      $('#t-btn').textContent = `Troquei! (${st.n})`;
-      desenha();
-    };
-    const fim = () => {
-      clearInterval(st.id); st.rodando = false; ativos.delete('trocas');
-      const p = par(), antigo = S.recordes[p] || 0;
-      if (st.n > antigo) S.recordes[p] = st.n;
-      registrar('trocas', st.n);
-      if (st.n) ganharXP(Math.max(3, Math.round(st.n / 2)) + (st.modo === 'mic' ? 5 : 0), 'trocas de acorde');
-      $('#t-btn').textContent = 'De novo';
-      $('#t-res').innerHTML = `<div class="resultado"><div><span class="mono grande-num">${st.n}</span><small>trocas${st.modo === 'mic' ? ' ouvidas' : ''}</small></div>
-        <p>${st.n > antigo && antigo ? 'Novo recorde!' : ''} ${st.n >= 30 ? 'Troca fluida. Hora de usar numa música.' : st.n >= 15 ? 'Está evoluindo. Repita amanhã.' : 'Normal no começo. Mire em 15, depois 30.'}</p></div>`;
-      desenha();
-    };
-    const tecla = e => { if (e.code === 'Space' && !$('#janela').hidden && document.activeElement?.tagName !== 'SELECT') { e.preventDefault(); acao(); } };
-    document.addEventListener('keydown', tecla);
-    $('#t-btn').addEventListener('click', acao);
+  /* ----- 1 minuto de trocas (escolha os dois acordes) ----- */
+  trocas(a = null, b = null) {
+    const sei = [...acordesAprendidos()];
+    a = a || sei[0] || 'Am7'; b = b || sei.find(x => x !== a) || 'Em7';
+    const opts = sel => [...new Set([...sei, ...CHORDS.map(c => c.id)])].map(id => `<option ${id === sel ? 'selected' : ''}>${esc(id)}</option>`).join('');
+    abrirJanela('1 minuto de trocas', `
+      <div class="linha-ctrl tr-escolha"><label>Acorde 1 <select id="tr-a">${opts(a)}</select></label><label>Acorde 2 <select id="tr-b">${opts(b)}</select></label></div>
+      <div id="tr-area"></div>`, () => limpar?.());
+    let limpar = null;
+    const montar = () => { limpar?.(); limpar = trocaUmMinuto($('#tr-area'), $('#tr-a').value, $('#tr-b').value); };
+    $('#tr-a').addEventListener('change', montar); $('#tr-b').addEventListener('change', montar);
+    montar();
   },
 
   /* ----- Quiz de acordes ----- */
@@ -1342,7 +1115,7 @@ const JOGOS = {
       $('#q').innerHTML = `<div class="quiz">
         <span class="eyebrow">Pergunta ${i + 1} de 10 · ${acertos} acertos</span>
         <h3>Que acorde é este?</h3>
-        <div class="braco-box quiz-braco">${bracoSVG(certo)}</div>
+        <div class="quiz-diag">${diagramaAcorde(certo, { tam: 'xl' })}</div>
         <div class="opcoes">${opcoes.map(o => `<button class="btn opcao" data-o="${o}">${o}</button>`).join('')}</div>
         <p id="q-exp" class="sub"></p></div>`;
       $$('#q [data-o]').forEach(b => b.addEventListener('click', () => {
@@ -1352,7 +1125,7 @@ const JOGOS = {
         $$('#q [data-o]').forEach(x => { x.disabled = true; if (x.dataset.o === certo) x.classList.add('certa'); else if (x === b) x.classList.add('errada'); });
         Som.init(); Som.golpe(certo, Som.agora + 0.02, 'D', 0.3);
         $('#q-exp').innerHTML = `${ok ? '<b>Isso!</b>' : '<b>Quase.</b>'} Este é o <b>${certo}</b> (${nomeAcorde(certo)}).`;
-        setTimeout(() => { i++; mostrar(); }, ok ? 1100 : 2000);
+        setTimeout(() => { if (!$('#q')) return; i++; mostrar(); }, ok ? 1100 : 2000); // janela fechada: para
       }));
     };
     mostrar();
@@ -1361,14 +1134,16 @@ const JOGOS = {
 
 /* ----- Tela da música: estudo + jogo nas cordas ----- */
 function configJogoHTML() {
-  const vel = S.cfg.vel || 'medio';
+  const vel = S.cfg.vel || 'medio', ritmo = S.cfg.ritmo || 'tempos', ent = S.cfg.entrada || 'livre';
   return `<div class="config-jogo">
-    <div class="segmentado" role="radiogroup" aria-label="Velocidade">${VELOCIDADES.map(([k, f, n]) => `<button type="button" role="radio" aria-checked="${k === vel}" data-vel="${k}"><b>${n}</b><small>${Math.round(f * 100)}%</small></button>`).join('')}</div>
-    <div class="linha-ctrl">
-      <label>Você responde <select id="cj-entrada"><option value="tela">Tocando na tela</option><option value="mic" ${S.cfg.entrada === 'mic' ? 'selected' : ''}>Tocando o violão (microfone)</option></select></label>
-      <label class="check"><input type="checkbox" id="cj-guia" ${S.cfg.guia ? 'checked' : ''}> Violão guia</label>
-    </div>
-    <p class="sub" id="cj-aviso"></p>
+    <div class="cj-linha"><span class="cj-rot">Velocidade</span><div class="segmentado" role="radiogroup" aria-label="Velocidade">${VELOCIDADES.map(([k, f, n]) => `<button type="button" role="radio" aria-checked="${k === vel}" data-vel="${k}"><b>${n}</b></button>`).join('')}</div></div>
+    <div class="cj-linha"><span class="cj-rot">Mão direita</span><div class="segmentado" role="radiogroup" aria-label="Ritmo">${[['acorde', 'Só na troca'], ['tempos', '1 por tempo'], ['batida', 'Ritmo da música']].map(([k, n]) => `<button type="button" role="radio" aria-checked="${k === ritmo}" data-ritmo="${k}"><b>${n}</b></button>`).join('')}</div></div>
+    <label class="check"><input type="checkbox" id="cj-facil" ${S.cfg.facil !== false ? 'checked' : ''}> Acordes fáceis <span class="sub">(troca cada acorde pela versão mais fácil)</span></label>
+    <details class="cj-mais"><summary>Mais opções</summary>
+      <label>Pontuação <select id="cj-entrada"><option value="livre">Sem pontos: só tocar junto</option><option value="tela" ${ent === 'tela' ? 'selected' : ''}>Tocar na tela a cada batida</option><option value="mic" ${ent === 'mic' ? 'selected' : ''}>Ouvir meu violão (microfone)</option></select></label>
+      <label class="check"><input type="checkbox" id="cj-guia" ${S.cfg.guia ? 'checked' : ''}> Violão guia (o app toca junto)</label>
+      <p class="sub" id="cj-aviso"></p>
+    </details>
   </div>`;
 }
 function ligarConfigJogo(raiz) {
@@ -1376,30 +1151,37 @@ function ligarConfigJogo(raiz) {
     S.cfg.vel = b.dataset.vel; Store.salvar();
     $$('[data-vel]', raiz).forEach(x => x.setAttribute('aria-checked', x === b));
   }));
-  const aviso = () => { $('#cj-aviso', raiz).innerHTML = $('#cj-entrada', raiz).value === 'mic' ? '<b>Use fone de ouvido</b>: sem ele, o microfone escuta o clique. A IA também confere se o acorde está certo.' : 'Toque na tela (ou espaço) no momento de cada golpe. Dá para tocar o violão junto.'; };
+  $$('[data-ritmo]', raiz).forEach(b => b.addEventListener('click', () => {
+    S.cfg.ritmo = b.dataset.ritmo; Store.salvar();
+    $$('[data-ritmo]', raiz).forEach(x => x.setAttribute('aria-checked', x === b));
+  }));
+  $('#cj-facil', raiz)?.addEventListener('change', e => { S.cfg.facil = e.target.checked; Store.salvar(); raiz.dispatchEvent(new Event('facil')); });
+  const aviso = () => { const v = $('#cj-entrada', raiz).value; $('#cj-aviso', raiz).innerHTML = v === 'mic' ? '<b>Use fone de ouvido</b>: sem ele, o microfone escuta o clique. A IA também confere se o acorde está certo.' : v === 'tela' ? 'Toque na pista (ou espaço) no momento de cada batida.' : 'Só toque o violão junto. Sem pontos, sem pressão.'; };
   $('#cj-entrada', raiz).addEventListener('change', e => { S.cfg.entrada = e.target.value; Store.salvar(); aviso(); });
   $('#cj-guia', raiz).addEventListener('change', e => { S.cfg.guia = e.target.checked; Store.salvar(); });
   aviso();
 }
 const fatorVelocidade = () => (VELOCIDADES.find(v => v[0] === (S.cfg.vel || 'medio')) || VELOCIDADES[1])[1];
 
-// Inicia a Estrada dentro de "area". Devolve uma função que para o jogo.
-async function iniciarEstrada(area, { trechos, padrao, bpm, capo = 0, candidatos = [], aoFim, gravacao = null }) {
-  let modo = S.cfg.entrada === 'mic' ? 'mic' : 'tela';
+// Inicia o modo de tocar dentro de "area". Devolve uma função que para.
+async function iniciarEstrada(area, { trechos, padrao, bpm, capo = 0, candidatos = [], aoFim, gravacao = null, modo = null, ritmo = null, facil = null }) {
+  modo = modo || S.cfg.entrada || 'livre';
   if (modo === 'mic') {
-    try { await Detector.ligar(); } catch (e) { toast('Microfone indisponível: usando a tela'); modo = 'tela'; }
+    try { await Detector.ligar(); } catch (e) { toast('Microfone indisponível: sem pontuação'); modo = 'livre'; }
   }
-  const jogo = new Estrada(area, { trechos, padrao, bpm, capo, modo, guia: modo === 'mic' || gravacao ? false : S.cfg.guia, candidatos: candidatos.map(nomeNoModelo).filter(Boolean), aoFim, gravacao });
+  const jogo = new Estrada(area, { trechos, padrao, bpm, capo, modo, ritmo: ritmo || S.cfg.ritmo || 'tempos', facil: facil ?? S.cfg.facil !== false,
+    guia: modo === 'mic' || gravacao ? false : S.cfg.guia, candidatos: candidatos.map(nomeNoModelo).filter(Boolean), aoFim, gravacao });
   const tocar = () => jogo.julgar(Som.agora);
   const tecla = e => { if (e.code === 'Space' && !$('#janela').hidden && !['SELECT', 'INPUT', 'TEXTAREA', 'BUTTON'].includes(document.activeElement?.tagName)) { e.preventDefault(); if (modo === 'tela') tocar(); } };
   document.addEventListener('keydown', tecla);
-  if (modo === 'tela') $('.estrada-palco', area).addEventListener('pointerdown', e => { e.preventDefault(); tocar(); });
-  else $('.estrada-palco', area).classList.add('mic');
+  if (modo === 'tela') $('.tc-pista', area).addEventListener('pointerdown', e => { e.preventDefault(); tocar(); });
+  else $('.tc-pista', area).classList.add('sem-toque');
   jogo.iniciar();
   ativos.add('estrada');
   return () => { jogo.parar(); ativos.delete('estrada'); document.removeEventListener('keydown', tecla); Som.pararTudo(); };
 }
 function resultadoHTML(r, extra = '') {
+  if (r.pct === null) return `<div class="ps-fim grande"><span class="fim-check">${IC.check}</span><h3>Você tocou até o fim!</h3><p class="sub">Quando estiver confortável, suba a velocidade ou troque a mão direita para "Ritmo da música".</p></div>`;
   const tend = r.media === null ? '' : Math.abs(r.media) <= 20 ? `Tempo médio certinho (${r.media > 0 ? '+' : ''}${r.media} ms).` : r.media < 0 ? `Você tende a <b>adiantar</b> ${-r.media} ms.` : `Você tende a <b>atrasar</b> ${r.media} ms.`;
   return `<div class="resultado">
     <div><span class="mono grande-num">${r.pct}%</span><small>precisão</small></div>
@@ -1417,14 +1199,12 @@ function abrirMusica(id) {
   abrirJanela(m.titulo, `
     <div class="musica-tela">
       <header class="mt-cabeca">${capaHTML(m, true)}<div><h3>${esc(m.titulo)}</h3><p class="sub">${esc(m.artista)} · ${esc(patternById(m.padrao).genero)} · ~${m.bpm} BPM${m.tom ? ` · Tom ${esc(m.tom)}` : ''}</p></div></header>
-      ${m.capo ? `<div class="box pegadinha"><b>Capotraste na ${m.capo}ª casa.</b> Os desenhos e as casas do jogo contam a partir do capo.</div>` : ''}
-      ${m.original ? `<p>${esc(m.original)}</p>` : ''}
-      ${m.nota ? `<p class="sub">${esc(m.nota)}</p>` : ''}
+      ${m.capo ? `<p class="mt-capo">Capotraste na <b>${m.capo}ª casa</b> para soar igual à gravação (opcional).</p>` : ''}
+      <section class="mt-precisa"><h3>Acordes desta música</h3><div class="mt-acs" id="mt-acs"></div></section>
       <div class="yt-box" id="mt-yt"></div>
       <div id="mt-estudo">
         <div class="mt-secoes">${m.secoes.map(s => `<div class="mt-secao"><span class="eyebrow">${esc(s.nome)}${s.repetir > 1 ? ` · ${s.repetir}x` : ''}</span><div class="mc-acordes">${lerSequencia(s.seq).map(x => `<span class="chip-acorde mono">${esc(x.acorde)}<small>${x.tempos}</small></span>`).join('')}</div></div>`).join('')}</div>
-        <details class="mt-acordes"><summary>Como fazer os ${acs.length} acordes</summary><div class="mini-acordes">${acs.map(a => `<figure>${acordeSVG(a, 'sm')}<figcaption><b>${esc(a)}</b><button class="btn mini" data-ouvir="${esc(a)}">Ouvir</button></figcaption></figure>`).join('')}</div></details>
-        <div class="grav-box" id="mt-grav"></div>
+        <details class="mt-arquivo"><summary>Usar um arquivo de áudio meu</summary><div class="grav-box" id="mt-grav"></div></details>
         <label>Trecho <select id="mt-trecho"><option value="">Música inteira (${Math.round(duracaoMusica(m, m.bpm * fatorVelocidade()))} s)</option>${m.secoes.map((s, i) => `<option value="${i}">${esc(s.nome)}</option>`).join('')}</select></label>
         ${configJogoHTML()}
         <div class="acoes-licao">
@@ -1437,6 +1217,14 @@ function abrirMusica(id) {
       <div id="mt-jogo" hidden></div>
     </div>`, () => { pararJogo?.(); Previa.parar(); $('#mt-grav')?._limpar?.(); $('#gv-sinc-area')?._limpar?.(); $('#yt-sinc-area')?._limpar?.(); clearInterval(painelYT.timerAcorde); painelYT.tocador?.destruir(); painelYT.tocador = null; });
   let pararJogo = null;
+  // "Acordes desta música": mostra a versão fácil e se você já sabe cada um (toque para aprender)
+  const desenharPrecisa = () => {
+    const lista = [...new Set(acs.map(a => (S.cfg.facil !== false ? simplificar(a) : a)))];
+    $('#mt-acs').innerHTML = lista.map(a => `<button class="mt-ac ${seiAcorde(a) ? 'sei' : ''}" data-acorde="${esc(a)}">${diagramaAcorde(a, { tam: 'sm', rotulos: false })}<b>${esc(a)}</b><small>${seiAcorde(a) ? 'Você sabe' : 'Aprender'}</small></button>`).join('');
+    $$('#mt-acs [data-acorde]').forEach(b => b.addEventListener('click', () => abrirAcordeSobre(b.dataset.acorde)));
+  };
+  desenharPrecisa();
+  $('#janela-corpo').addEventListener('facil', desenharPrecisa);
   montarBarraMusica();
   painelGravacao($('#mt-grav'), m);
   painelYouTube($('#mt-yt'), m);
@@ -1500,6 +1288,18 @@ function abrirMusica(id) {
       }
     });
   });
+}
+
+// Mostra o professor de acordes numa camada por cima (a tela da música continua aberta)
+function abrirAcordeSobre(nome) {
+  const cam = document.createElement('div');
+  cam.className = 'camada';
+  cam.innerHTML = `<div class="camada-caixa" role="dialog" aria-label="${esc(nome)}"><div class="janela-topo"><h2>${esc(nome)}</h2><button class="btn redondo" aria-label="Fechar">${IC.fechar}</button></div><div class="janela-corpo" id="cam-corpo"></div></div>`;
+  document.body.appendChild(cam);
+  ensinarAcorde(cam.querySelector('#cam-corpo'), nome);
+  const fechar = () => cam.remove();
+  cam.querySelector('.redondo').addEventListener('click', fechar);
+  cam.addEventListener('click', e => { if (e.target === cam) fechar(); });
 }
 
 // Reorganiza a tela da música: a ação principal fica sempre visível no rodapé
@@ -1619,6 +1419,8 @@ function iniciarApp() {
   const inicial = (location.hash || '').slice(1);
   irPara(VIEWS.includes(inicial) ? inicial : 'hoje');
   Store.conectarNuvem();
+  $('#btn-ajustes')?.addEventListener('click', abrirAjustes);
+  verificarBoasVindas();
   IA.carregar().then(m => { if (m && viewAtual === 'ferramentas') renderFerramentas(); }); // atualiza o texto da IA quando o modelo chegar
   configurarPWA();
   // salva ao sair da página

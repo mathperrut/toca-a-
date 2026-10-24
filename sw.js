@@ -6,9 +6,9 @@
    - Quando há internet, busca a versão nova em segundo plano.
    Ao mudar qualquer arquivo do app, aumente o número da VERSAO.
    ========================================================= */
-const VERSAO = 'toca-ai-v7';
+const VERSAO = 'toca-ai-v8';
 const ARQUIVOS = [
-  './', './index.html', './style.css', './data.js', './audio-detect.js', './ia.js', './estrada.js', './busca.js', './gravacao.js', './youtube.js', './app.js',
+  './', './index.html', './style.css', './minimal.css', './data.js', './audio-detect.js', './ia.js', './estrada.js', './busca.js', './gravacao.js', './youtube.js', './aprender.js', './app.js',
   './modelo-acordes.json', './modelo-acordes.js', './manifest.webmanifest',
   // 45 notas de violão gravadas (sons/violao-nylon/40.mp3 ... 84.mp3)
   ...Array.from({ length: 45 }, (_, i) => `./sons/violao-nylon/${40 + i}.mp3`),

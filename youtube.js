@@ -231,8 +231,9 @@ function painelYouTube(caixa, m) {
     const i = trechos.findLastIndex(t => t.inicio <= tempos);
     if (i < 0 || tempos > trechos.at(-1).inicio + trechos.at(-1).tempos) { box.hidden = true; return; }
     box.hidden = false;
-    q('#yt-ac-agora').textContent = trechos[i].acorde;
-    q('#yt-ac-prox').textContent = trechos[i + 1] ? '→ ' + trechos[i + 1].acorde : '';
+    const nome = a => (S.cfg.facil !== false ? simplificar(a) : a);   // mesma versão que o jogo mostra
+    q('#yt-ac-agora').textContent = nome(trechos[i].acorde);
+    q('#yt-ac-prox').textContent = trechos[i + 1] ? '→ ' + nome(trechos[i + 1].acorde) : '';
   }, 100);
   q('#yt-usar').addEventListener('change', e => { meta.usar = e.target.checked; Store.salvar(); });
   q('#yt-trocar').addEventListener('click', () => {

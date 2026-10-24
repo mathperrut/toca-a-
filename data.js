@@ -58,6 +58,20 @@ const CHORDS = [
 */
 const PATTERNS = [
   {
+    id: 'quatro', nome: '4 para baixo', genero: 'Iniciante',
+    beats: 4, sub: 1, bpm: 66,
+    passos: ['D', 'D', 'D', 'D'],
+    demo: ['Am7', 'Em7'],
+    dica: 'Uma batida para baixo em cada tempo. Conte 1, 2, 3, 4.'
+  },
+  {
+    id: 'baixocima', nome: 'Baixo e cima', genero: 'Iniciante',
+    beats: 4, sub: 2, bpm: 60,
+    passos: ['D', 'U', 'D', 'U', 'D', 'U', 'D', 'U'],
+    demo: ['C', 'Dm7'],
+    dica: 'No número, para baixo; no "e", para cima. A mão nunca para.'
+  },
+  {
     id: 'pop', nome: 'Batida básica', genero: 'Pop / balada',
     beats: 4, sub: 2, bpm: 80,
     passos: ['D', '-', 'D', 'U', '-', 'U', 'D', 'U'],
@@ -108,153 +122,153 @@ const PATTERNS = [
   },
 ];
 
-/* ---------- TRILHA DE LIÇÕES ----------
-   pratica.tipo: 'trocas' | 'batida' | 'quiz' | 'afinador' | 'metronomo' | 'musicas'
-*/
-const MODULES = [
-  { id: 'm1', nome: 'Primeiros passos' },
-  { id: 'm2', nome: 'Acordes abertos' },
-  { id: 'm3', nome: 'Ritmos brasileiros' },
-  { id: 'm4', nome: 'Subindo de nível' },
-];
+/* ---------- CURSO ----------
+   Inspirado em como os apps de violão para iniciantes ensinam
+   (JustinGuitar, Simply Guitar, Yousician):
+   - poucos acordes por vez, começando pelos de 1 e 2 dedos;
+   - cada acorde ensinado DEDO A DEDO;
+   - treino de troca de acordes ("um minuto de trocas");
+   - batida simples primeiro (só para baixo), depois para cima;
+   - toda unidade termina com uma MÚSICA DE VERDADE que usa só o que você aprendeu.
 
-const LESSONS = [
+   Cada lição é uma lista de PASSOS (uma ideia por tela). Tipos de passo:
+   texto  { titulo, texto, visual: 'violao' | 'diagrama' | 'maos' }
+   acorde { acorde }                 → ensina o acorde dedo a dedo
+   quiz   { pergunta, opcoes, certa, explica }
+   troca  { a, b }                   → 1 minuto trocando entre dois acordes
+   tocar  { titulo, seq, padrao, bpm, ritmo } ou { musica, secao, ritmo }
+          ritmo: 'acorde' (1 batida por acorde) | 'tempos' (↓ em cada tempo) | 'batida' (ritmo completo)
+   afinar {}                         → afinador embutido
+*/
+const CURSO = [
   {
-    id: 'l1', mod: 'm1', titulo: 'Conhecendo o violão', xp: 20,
-    corpo: `
-      <p>O violão tem <b>6 cordas</b>. A numeração começa pela mais <b>fina</b> (1ª) e termina na mais <b>grossa</b> (6ª).</p>
-      <p>Afinação padrão, da 6ª para a 1ª: <span class="mono">E A D G B E</span> (Mi, Lá, Ré, Sol, Si, Mi).</p>
-      <p><b>Cifra</b> é o "apelido" das notas: A = Lá, B = Si, C = Dó, D = Ré, E = Mi, F = Fá, G = Sol. Um <span class="mono">m</span> depois da letra quer dizer <b>menor</b> (Am = Lá menor).</p>
-      <p>Dedos da mão esquerda: 1 indicador, 2 médio, 3 anelar, 4 mindinho. Na direita: p polegar, i indicador, m médio, a anelar.</p>
-      <div class="box analogia"><b>Analogia:</b> as casas do braço são como os andares de um prédio. Quanto mais perto do corpo do violão, mais aguda a nota.</div>
-      <div class="box pegadinha"><b>Pegadinha:</b> a 1ª corda fica embaixo quando você segura o violão, mesmo sendo a "primeira".</div>`,
-    pratica: { tipo: 'quiz' }
+    id: 'u1', titulo: 'Comece aqui', resumo: 'Conheça o violão, afine e aprenda a ler um acorde.',
+    licoes: [
+      { id: 'u1l1', titulo: 'Seu violão', min: 2, passos: [
+        { t: 'texto', titulo: 'As 6 cordas', visual: 'violao',
+          texto: 'Segure o violão e olhe para baixo. A corda <b>mais grossa</b> é a <b>6ª</b>, a mais fina é a <b>1ª</b>. Da mais grossa para a mais fina, os nomes são <b>Mi, Lá, Ré, Sol, Si, Mi</b> (em inglês: E A D G B E).' },
+        { t: 'texto', titulo: 'Casas e trastes', visual: 'casas',
+          texto: 'O braço é dividido por ferrinhos chamados <b>trastes</b>. O espaço entre eles é a <b>casa</b>. A casa 1 é a mais perto da cabeça do violão (onde ficam as tarraxas).' },
+        { t: 'texto', titulo: 'Os dedos têm número', visual: 'maos',
+          texto: 'Na mão que aperta as cordas: <b>1</b> indicador, <b>2</b> médio, <b>3</b> anelar, <b>4</b> mindinho. O polegar fica atrás do braço, como se fosse segurar um copo.' },
+        { t: 'quiz', pergunta: 'Qual é a corda mais grossa?', opcoes: ['1ª corda', '6ª corda', '3ª corda'], certa: 1,
+          explica: 'A mais grossa é a 6ª (Mi grave). A contagem começa pela mais fina.' },
+      ] },
+      { id: 'u1l2', titulo: 'Afinar o violão', min: 3, passos: [
+        { t: 'texto', titulo: 'Por que afinar?', visual: null,
+          texto: 'Violão desafinado deixa até o acorde certo com som errado. Afine <b>sempre</b> antes de tocar: leva 1 minuto.' },
+        { t: 'afinar' },
+      ] },
+      { id: 'u1l3', titulo: 'Como ler um acorde', min: 2, passos: [
+        { t: 'texto', titulo: 'O desenho do acorde', visual: 'diagrama',
+          texto: 'É como olhar o violão <b>de pé na sua frente</b>. As linhas em pé são as cordas: a da <b>esquerda é a 6ª</b> (mais grossa). As linhas deitadas são os trastes.' },
+        { t: 'texto', titulo: 'Bolinhas, O e X', visual: 'diagrama',
+          texto: 'A <b>bolinha</b> mostra onde apertar; o <b>número</b> é o dedo. <b>O</b> em cima = corda solta (toca sem apertar). <b>X</b> = não toca essa corda.' },
+        { t: 'quiz', pergunta: 'No desenho, um X em cima da corda significa…', opcoes: ['Apertar com o dedo 1', 'Não tocar essa corda', 'Tocar mais forte'], certa: 1,
+          explica: 'X = essa corda fica de fora da batida.' },
+      ] },
+    ]
   },
   {
-    id: 'l2', mod: 'm1', titulo: 'Afinando o violão', xp: 20,
-    corpo: `
-      <p>Violão desafinado faz até o acorde certo soar errado. Afine <b>toda vez</b> antes de treinar.</p>
-      <p>No afinador do app, toque o som de referência de cada corda e gire a tarraxa até as duas notas soarem iguais. Se o som "ondular" (uaa-uaa), ainda está diferente.</p>
-      <div class="box analogia"><b>Analogia:</b> afinar é como sintonizar rádio antigo. Quando chega na estação, o chiado some.</div>
-      <div class="box pegadinha"><b>Pegadinha:</b> corda nova de náilon estica por alguns dias e desafina rápido. Isso é normal.</div>`,
-    pratica: { tipo: 'afinador' }
+    id: 'u2', titulo: 'Seus primeiros acordes', resumo: 'Em7, Am7 e Bm7, e você já toca Taj Mahal.', musica: 'taj-mahal',
+    licoes: [
+      { id: 'u2l1', titulo: 'Em7: 1 dedo só', min: 3, passos: [
+        { t: 'texto', titulo: 'O acorde mais fácil', visual: null,
+          texto: 'O <b>Em7</b> (Mi menor com sétima) usa <b>um dedo só</b>. Ele aparece em muita música brasileira. Aperte com a <b>ponta</b> do dedo, logo atrás do traste.' },
+        { t: 'acorde', acorde: 'Em7' },
+        { t: 'tocar', titulo: 'Toque junto: Em7', seq: 'Em7:16', padrao: 'quatro', bpm: 60, ritmo: 'tempos' },
+      ] },
+      { id: 'u2l2', titulo: 'Am7: 2 dedos', min: 3, passos: [
+        { t: 'acorde', acorde: 'Am7' },
+        { t: 'texto', titulo: 'Cuidado com a 6ª corda', visual: null,
+          texto: 'No Am7 a 6ª corda tem um <b>X</b>: comece a batida pela <b>5ª corda</b>. Se bater na 6ª sem querer, tudo bem no começo: com o tempo a mão aprende.' },
+        { t: 'tocar', titulo: 'Toque junto: Am7', seq: 'Am7:16', padrao: 'quatro', bpm: 60, ritmo: 'tempos' },
+      ] },
+      { id: 'u2l3', titulo: 'Trocar Am7 ↔ Em7', min: 3, passos: [
+        { t: 'texto', titulo: 'O segredo da troca', visual: null,
+          texto: 'Trocar de acorde no tempo é o que faz soar como música. Truque: <b>levante todos os dedos juntos</b> e pouse todos juntos no acorde novo, em vez de um por um.' },
+        { t: 'troca', a: 'Am7', b: 'Em7' },
+        { t: 'tocar', titulo: 'Agora no tempo', seq: 'Am7:4 Em7:4 Am7:4 Em7:4 Am7:4 Em7:4', padrao: 'quatro', bpm: 60, ritmo: 'tempos' },
+      ] },
+      { id: 'u2l4', titulo: 'Bm7: 3 dedos', min: 3, passos: [
+        { t: 'acorde', acorde: 'Bm7' },
+        { t: 'troca', a: 'Am7', b: 'Bm7' },
+      ] },
+      { id: 'u2l5', titulo: 'Batida: ↓ ↓ ↓ ↓', min: 3, passos: [
+        { t: 'texto', titulo: 'Contando até 4', visual: 'batida',
+          texto: 'A batida mais simples: <b>4 batidas para baixo</b>, uma em cada tempo. Conte em voz alta <b>"1, 2, 3, 4"</b> e bata junto. Mão relaxada, como quem sacode água da mão.' },
+        { t: 'tocar', titulo: 'Batida com Am7, Bm7 e Em7', seq: 'Am7:4 Bm7:4 Em7:8 Am7:4 Bm7:4 Em7:8', padrao: 'quatro', bpm: 66, ritmo: 'tempos' },
+      ] },
+      { id: 'u2l6', titulo: 'Música: Taj Mahal', min: 5, musicaFinal: true, passos: [
+        { t: 'texto', titulo: 'Você já consegue!', visual: null,
+          texto: '<b>Taj Mahal</b>, do Jorge Ben Jor, usa exatamente <b>Am7, Bm7 e Em</b>. Com <b>capotraste na 2ª casa</b>, soa igual à gravação. Sem capo, também dá para treinar.' },
+        { t: 'tocar', musica: 'taj-mahal', secao: 0, ritmo: 'tempos' },
+      ] },
+    ]
   },
   {
-    id: 'l3', mod: 'm1', titulo: 'Primeiros acordes: Em e Am', xp: 30,
-    corpo: `
-      <p>Estes são os dois acordes mais fáceis. Repare que o <b>formato dos dedos</b> é parecido: no Am você só "desce" os dedos uma corda e acrescenta o indicador.</p>
-      <p>Aperte com a <b>ponta</b> dos dedos, logo atrás do traste (o ferrinho), não no meio da casa.</p>
-      <div class="box analogia"><b>Analogia:</b> apertar a corda é como apertar um botão de elevador. Ponta firme, sem amassar o vizinho.</div>
-      <div class="box pegadinha"><b>Pegadinha:</b> no Am a 6ª corda não toca (o X no desenho). Comece a palhetada pela 5ª.</div>`,
-    acordes: ['Em', 'Am'],
-    pratica: { tipo: 'trocas', a: 'Em', b: 'Am' }
+    id: 'u3', titulo: 'C e Dm7', resumo: 'Dois acordes novos para tocar Magnólia.', musica: 'magnolia',
+    licoes: [
+      { id: 'u3l1', titulo: 'C (Dó maior)', min: 3, passos: [
+        { t: 'acorde', acorde: 'C' },
+        { t: 'texto', titulo: 'Dedos "em escada"', visual: null,
+          texto: 'No C os dedos 3, 2 e 1 ficam em <b>escada</b>, cada um numa casa. Deixe os dedos <b>arqueados</b> para não abafar a 1ª corda solta.' },
+        { t: 'tocar', titulo: 'Toque junto: C', seq: 'C:16', padrao: 'quatro', bpm: 60, ritmo: 'tempos' },
+      ] },
+      { id: 'u3l2', titulo: 'Dm7', min: 3, passos: [
+        { t: 'acorde', acorde: 'Dm7' },
+        { t: 'troca', a: 'C', b: 'Dm7' },
+      ] },
+      { id: 'u3l3', titulo: 'Batida com "para cima"', min: 4, passos: [
+        { t: 'texto', titulo: '↓ e ↑', visual: 'batida2',
+          texto: 'Agora a mão volta <b>para cima</b> entre os tempos. Conte <b>"1 e 2 e 3 e 4 e"</b>: no número, para baixo ↓; no "e", para cima ↑. Na subida, pegue só as cordas mais finas.' },
+        { t: 'tocar', titulo: 'Treino: C e Dm7', seq: 'C:4 Dm7:4 C:4 Dm7:4', padrao: 'baixocima', bpm: 60, ritmo: 'batida' },
+      ] },
+      { id: 'u3l4', titulo: 'Música: Magnólia', min: 5, musicaFinal: true, passos: [
+        { t: 'texto', titulo: 'C, Dm7 e Em7', visual: null,
+          texto: '<b>Magnólia</b> gira em <b>C → Dm7 → Em7 → Dm7</b>. Você já sabe os três! Com <b>capo na 2ª casa</b>, soa igual à gravação.' },
+        { t: 'tocar', musica: 'magnolia', secao: 0, ritmo: 'tempos' },
+      ] },
+    ]
   },
   {
-    id: 'l4', mod: 'm1', titulo: 'A batida básica', xp: 30,
-    corpo: `
-      <p>Ritmo é mais importante que acorde. Um acorde "sujo" no tempo certo soa melhor que um acorde perfeito fora do tempo.</p>
-      <p>A batida básica é <span class="mono">↓ · ↓↑ · ↑ ↓↑</span>. Conte em voz alta: <i>"um, dois-e, e-quatro-e"</i>.</p>
-      <div class="box analogia"><b>Analogia:</b> a mão direita é um limpador de para-brisa. Ela vai e volta sempre, mesmo quando não encosta.</div>`,
-    padrao: 'pop',
-    pratica: { tipo: 'batida', padrao: 'pop' }
+    id: 'u4', titulo: 'Acordes com sétima', resumo: 'G7, C7 e D7 para tocar País Tropical.', musica: 'pais-tropical',
+    licoes: [
+      { id: 'u4l1', titulo: 'G7', min: 3, passos: [{ t: 'acorde', acorde: 'G7' }, { t: 'troca', a: 'G7', b: 'C' }] },
+      { id: 'u4l2', titulo: 'C7', min: 3, passos: [
+        { t: 'texto', titulo: 'C7 é o C + 1 dedo', visual: null, texto: 'Faça o <b>C</b> e acrescente o <b>dedo 4 (mindinho)</b> na 3ª casa da 3ª corda. Pronto: <b>C7</b>.' },
+        { t: 'acorde', acorde: 'C7' }, { t: 'troca', a: 'G7', b: 'C7' }] },
+      { id: 'u4l3', titulo: 'D7', min: 3, passos: [{ t: 'acorde', acorde: 'D7' }, { t: 'troca', a: 'C7', b: 'D7' }] },
+      { id: 'u4l4', titulo: 'Música: País Tropical', min: 5, musicaFinal: true, passos: [
+        { t: 'texto', titulo: 'G7 – C7 – D7', visual: null, texto: 'A ponte de <b>País Tropical</b> é <b>G7, C7, D7</b>. Comece só por ela; depois tente a música inteira.' },
+        { t: 'tocar', musica: 'pais-tropical', secao: 0, ritmo: 'tempos' },
+      ] },
+    ]
   },
   {
-    id: 'l5', mod: 'm2', titulo: 'C e G', xp: 30,
-    corpo: `
-      <p>Dó e Sol aparecem em quase toda música brasileira. O C pede um "esticão" dos dedos; o G usa as cordas das pontas.</p>
-      <p>Treine trocando devagar. Velocidade vem depois da precisão.</p>
-      <div class="box pegadinha"><b>Pegadinha:</b> no C a 6ª corda não toca. Se o som ficar embolado, você está batendo nela.</div>`,
-    acordes: ['C', 'G'],
-    pratica: { tipo: 'trocas', a: 'C', b: 'G' }
+    id: 'u5', titulo: 'Bossa: Chove Chuva', resumo: 'A7 e E7, e a batida da bossa nova.', musica: 'chove-chuva',
+    licoes: [
+      { id: 'u5l1', titulo: 'A7', min: 3, passos: [{ t: 'acorde', acorde: 'A7' }, { t: 'troca', a: 'A7', b: 'Dm7' }] },
+      { id: 'u5l2', titulo: 'E7', min: 3, passos: [{ t: 'acorde', acorde: 'E7' }, { t: 'troca', a: 'E7', b: 'Am7' }] },
+      { id: 'u5l3', titulo: 'Música: Chove Chuva', min: 5, musicaFinal: true, passos: [
+        { t: 'texto', titulo: 'Versão fácil', visual: null, texto: 'Na versão fácil, o <b>D7(9)</b> vira <b>D7</b> e o <b>E7(9)</b> vira <b>E7</b>: o app troca sozinho quando "Acordes fáceis" está ligado.' },
+        { t: 'tocar', musica: 'chove-chuva', secao: 0, ritmo: 'tempos' },
+      ] },
+    ]
   },
   {
-    id: 'l6', mod: 'm2', titulo: 'D e A', xp: 30,
-    corpo: `
-      <p>O D tem formato de triângulo e só usa as 4 cordas finas. O A coloca três dedos lado a lado na 2ª casa.</p>
-      <div class="box analogia"><b>Analogia:</b> no A os dedos ficam "espremidos no ônibus lotado". Se não couber, incline um pouco o pulso.</div>`,
-    acordes: ['D', 'A'],
-    pratica: { tipo: 'trocas', a: 'D', b: 'A' }
-  },
-  {
-    id: 'l7', mod: 'm2', titulo: 'Acordes com sétima: E7, A7, D7', xp: 35,
-    corpo: `
-      <p>O <span class="mono">7</span> deixa o acorde com sensação de "quero voltar para casa". Por isso ele aparece logo antes do acorde principal da música.</p>
-      <p>No samba, o <span class="mono">E7</span> chama o <span class="mono">Am</span>; no baião, o <span class="mono">D7</span> chama o <span class="mono">G</span>.</p>
-      <div class="box analogia"><b>Analogia:</b> o acorde com 7 é a vírgula; o acorde principal é o ponto final.</div>`,
-    acordes: ['E7', 'A7', 'D7'],
-    pratica: { tipo: 'trocas', a: 'Am', b: 'E7' }
-  },
-  {
-    id: 'l8', mod: 'm2', titulo: 'Sua primeira sequência', xp: 35,
-    corpo: `
-      <p>Duas sequências que abrem centenas de músicas:</p>
-      <p><b>Baião em Sol:</b> <span class="mono">G – C – D7 – G</span></p>
-      <p><b>Samba em Lá menor:</b> <span class="mono">Am – Dm – E7 – Am</span></p>
-      <p>Toque cada acorde por 4 tempos no metrônomo a 60 BPM. Só aumente quando trocar sem parar.</p>
-      <div class="box pegadinha"><b>Pegadinha:</b> não espere o acorde ficar perfeito para trocar. Troque no tempo, mesmo errando. O dedo aprende com a repetição.</div>`,
-    acordes: ['G', 'C', 'D7', 'Am', 'Dm', 'E7'],
-    pratica: { tipo: 'metronomo' }
-  },
-  {
-    id: 'l9', mod: 'm3', titulo: 'Baião', xp: 40,
-    corpo: `
-      <p>Ritmo nordestino de Luiz Gonzaga. Compasso de 2 tempos. O polegar faz o "tum" da zabumba e os dedos respondem.</p>
-      <p>Comece com <span class="mono">G – C – D7 – G</span>.</p>`,
-    padrao: 'baiao', acordes: ['G', 'C', 'D7'],
-    pratica: { tipo: 'batida', padrao: 'baiao' }
-  },
-  {
-    id: 'l10', mod: 'm3', titulo: 'Samba', xp: 40,
-    corpo: `
-      <p>O samba também tem 2 tempos por compasso. O segredo é <b>separar as mãos em duas funções</b>: polegar = surdo (tempo), dedos = tamborim (balanço).</p>
-      <p>Treine primeiro só o polegar até ficar automático. Depois coloque os dedos.</p>
-      <div class="box analogia"><b>Analogia:</b> é como andar e mascar chiclete. Parece impossível no começo, depois você nem pensa.</div>`,
-    padrao: 'samba', acordes: ['Am', 'Dm', 'E7'],
-    pratica: { tipo: 'batida', padrao: 'samba' }
-  },
-  {
-    id: 'l11', mod: 'm3', titulo: 'Pagode', xp: 40,
-    corpo: `
-      <p>O pagode nasceu do samba de roda e usa a mesma base, com os dedos mais presentes. Progressão típica: <span class="mono">C – A7 – Dm – G7</span>.</p>
-      <div class="box pegadinha"><b>Pegadinha:</b> o polegar acelera sozinho quando você empolga. Use o metrônomo.</div>`,
-    padrao: 'pagode', acordes: ['C', 'A7', 'Dm', 'G7'],
-    pratica: { tipo: 'batida', padrao: 'pagode' }
-  },
-  {
-    id: 'l12', mod: 'm3', titulo: 'Bossa nova', xp: 45,
-    corpo: `
-      <p>Criada no Rio no fim dos anos 50. Usa acordes com sétima maior (<span class="mono">7M</span>), que soam "suaves".</p>
-      <p>Sequência clássica: <span class="mono">Dm7 – G7 – C7M</span>. Na cifra brasileira escrevemos <span class="mono">7M</span>; em cifra gringa aparece <span class="mono">maj7</span>.</p>
-      <div class="box analogia"><b>Analogia:</b> o polegar é o tique-taque do relógio; os dedos conversam por cima dele.</div>`,
-    padrao: 'bossa', acordes: ['Dm7', 'G7', 'C7M'],
-    pratica: { tipo: 'batida', padrao: 'bossa' }
-  },
-  {
-    id: 'l13', mod: 'm3', titulo: 'Dedilhado MPB', xp: 45,
-    corpo: `
-      <p>Em vez de bater nas cordas, cada dedo toca uma corda. Muito usado em MPB e baladas.</p>
-      <p>Regra: polegar no baixo do acorde (a corda mais grave que toca), <b>i</b> na 3ª, <b>m</b> na 2ª, <b>a</b> na 1ª.</p>`,
-    padrao: 'dedilhado', acordes: ['Am', 'C', 'G', 'D'],
-    pratica: { tipo: 'batida', padrao: 'dedilhado' }
-  },
-  {
-    id: 'l14', mod: 'm4', titulo: 'Primeira pestana: F e Bm', xp: 50,
-    corpo: `
-      <p>Pestana é quando o indicador deita sobre várias cordas. Dói no começo, e tudo bem.</p>
-      <p>Use o <b>lado</b> do indicador (mais ossudo), puxe o braço do violão com o peso do braço, não com força do polegar.</p>
-      <div class="box pegadinha"><b>Pegadinha:</b> enquanto a pestana não sai, toque o F "pequeno" (F7M no app). Ninguém precisa sofrer no 1º mês.</div>`,
-    acordes: ['F', 'Bm', 'F7M'],
-    pratica: { tipo: 'trocas', a: 'C', b: 'F' }
-  },
-  {
-    id: 'l15', mod: 'm4', titulo: 'Tirando música pela cifra', xp: 50,
-    corpo: `
-      <p>Agora é com você. Escolha uma música que você gosta, procure a cifra e cadastre <b>só os acordes, na ordem</b> na aba Músicas.</p>
-      <p>O app toca o metrônomo e mostra o próximo acorde no tempo certo, para você tocar junto.</p>
-      <div class="box pegadinha"><b>Pegadinha:</b> se a música tiver acorde difícil, procure a versão "simplificada" da cifra ou use um acorde parecido (ex.: F7M no lugar de F).</div>`,
-    pratica: { tipo: 'musicas' }
+    id: 'u6', titulo: 'Acordes maiores básicos', resumo: 'G, D, A, E e Am: os mais usados em qualquer música.',
+    licoes: [
+      { id: 'u6l1', titulo: 'G', min: 3, passos: [{ t: 'acorde', acorde: 'G' }, { t: 'troca', a: 'G', b: 'C' }] },
+      { id: 'u6l2', titulo: 'D', min: 3, passos: [{ t: 'acorde', acorde: 'D' }, { t: 'troca', a: 'D', b: 'G' }] },
+      { id: 'u6l3', titulo: 'A e E', min: 4, passos: [{ t: 'acorde', acorde: 'A' }, { t: 'acorde', acorde: 'E' }, { t: 'troca', a: 'A', b: 'E' }] },
+      { id: 'u6l4', titulo: 'Am e Em', min: 3, passos: [{ t: 'acorde', acorde: 'Am' }, { t: 'acorde', acorde: 'Em' }, { t: 'troca', a: 'Am', b: 'Em' }] },
+    ]
   },
 ];
+// Lista "achatada" (o resto do app usa)
+const LESSONS = CURSO.flatMap(u => u.licoes.map(l => ({ ...l, mod: u.id })));
+const MODULES = CURSO.map(u => ({ id: u.id, nome: u.titulo }));
 
 /* ---------- CATÁLOGO DE MÚSICAS ----------
    Só a sequência de ACORDES (sem letra, por direitos autorais).

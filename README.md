@@ -67,21 +67,39 @@ As gravações do Jorge Ben Jor têm **direitos autorais**. Estar no YouTube ou 
 
 ---
 
-## 3. Jogos nas cordas e músicas
+## 3. Como o app ensina (baseado nos apps de violão para iniciantes)
 
-### Como ler a tela do jogo
-- As **6 cordas** correm da direita para a esquerda (em cima a 1ª corda, a mais fina; embaixo a 6ª, a mais grossa, igual à tablatura).
-- Cada **golpe** mostra, em cada corda tocada, o **número da casa** pintado na **cor do dedo**: azul = indicador (1), roxo = médio (2), laranja = anelar (3), rosa = mindinho (4). Círculo escuro com 0 = corda solta. Contorno amarelo = polegar.
-- A **seta** na ponta indica a direção: para baixo ou para cima.
-- Toque (tela ou violão) quando o golpe cruzar a **linha amarela**. A linha tracejada marca a troca de acorde.
-- Embaixo, o **braço do violão** mostra o acorde atual com os dedos e o próximo acorde tracejado, e a lista diz que dedo vai em que casa.
-- **Velocidade**: Lento (60%), Médio (80%) e Rápido (100% do andamento da música).
+O formato foi inspirado em como os principais apps ensinam quem nunca tocou:
+- **JustinGuitar:** poucos acordes por vez, a batida mais simples primeiro (4 para baixo) e o treino **"1 minuto de trocas"**.
+- **Simply Guitar:** uma pergunta no começo ("você já toca?") que leva ao ponto certo, e músicas liberadas conforme você aprende os acordes.
+- **Chordify:** tocar junto com uma **linha do tempo de acordes** sincronizada com a gravação, com **acordes simplificados** por padrão.
 
-### Músicas
-- **Prévia**: toca a música com violão, baixo, surdo e ganzá sintetizados (não é a gravação; o link "ouvir a gravação" abre o YouTube).
-- **Jorge Ben Jor**: Magnólia, Amante Amado, Taj Mahal, País Tropical e Chove Chuva, em arranjos simplificados (com capotraste onde ajuda a evitar pestana). Só acordes, sem letra.
-- **Buscar**: digite qualquer música. Se não estiver no app, a **IA pesquisa a cifra na internet** e monta o jogo. Você pode salvar no repertório.
-- **Colar cifra**: sem chave de API, copie a cifra de um site e cole: o app separa os acordes e descarta a letra.
+### O curso
+6 unidades, 24 lições de 2 a 5 minutos. Cada lição tem **uma ideia por tela** e um botão **Continuar**. Toda unidade termina com uma **música de verdade** que usa só o que você aprendeu:
+
+| Unidade | Você aprende | Música no fim |
+|---|---|---|
+| 1. Comece aqui | partes do violão, afinar, ler um acorde | — |
+| 2. Seus primeiros acordes | Em7 (1 dedo), Am7 (2), Bm7 (3), batida ↓↓↓↓ | Taj Mahal |
+| 3. C e Dm7 | C, Dm7, batida ↓↑ | Magnólia |
+| 4. Acordes com sétima | G7, C7, D7 | País Tropical |
+| 5. Bossa | A7, E7 | Chove Chuva |
+| 6. Acordes maiores básicos | G, D, A, E, Am, Em | — |
+
+Nada fica trancado: o app só sugere a ordem.
+
+### Como um acorde é ensinado
+1. Desenho grande, como o violão em pé na sua frente (6ª corda à esquerda, nome das cordas embaixo).
+2. **Dedo a dedo:** "Dedo 1 (indicador) na casa 1 da 2ª corda (Si)". Só aparece o dedo da vez, piscando.
+3. **Ouvir** o acorde ou **corda por corda** (para achar a corda abafada).
+4. **Conferir no microfone:** a IA diz se soou como o acorde certo.
+
+### Tocar junto
+- **Em cima:** o acorde da vez (grande, com o desenho) e o **próximo**, com aviso "troca em 3, 2, 1".
+- **Embaixo:** blocos de acordes passando, com as setas da batida (↓ ↑) e a contagem 1 2 3 4.
+- **Mão direita:** "Só na troca" (1 batida por acorde), "1 por tempo" ou "Ritmo da música".
+- **Acordes fáceis** (ligado por padrão): troca cada acorde pela versão com menos dedos e sem pestana da mesma família (ex.: Em → Em7, E7(9) → E7, Bm → Bm7).
+- **Sem pontos** por padrão: é só tocar junto. Pontuação na tela ou pelo microfone fica em "Mais opções".
 
 ### Som de violão de verdade
 - Os acordes tocam com **45 notas gravadas de um violão de náilon** (de Mi2, a 6ª corda solta, até Dó6), na pasta `sons/violao-nylon/`.
@@ -176,6 +194,8 @@ Isso se chama **ajuste fino com dados reais**, uma técnica usada em IA de verda
 | `busca.js` | Busca de músicas: catálogo, IA com busca na web, colar cifra |
 | `gravacao.js` | Importar sua gravação, sincronizar batendo no tempo, tocar junto |
 | `youtube.js` | Player oficial do YouTube, vídeo como relógio-mestre do jogo |
+| `aprender.js` | Curso: desenho de acorde, professor dedo a dedo, lições em passos, Início, Aprender, Acordes, boas-vindas |
+| `minimal.css` | Visual minimalista (v3): cores, fontes e as telas novas |
 | `capacitor.config.json` | Configuração do app Android (nome, ID, cores, barras do sistema) |
 | `android-build/` | Scripts do build Android e a chave de assinatura pessoal |
 | `assets/` | Ícone e tela de abertura do app Android |

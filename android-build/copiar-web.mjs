@@ -4,9 +4,9 @@
 import { cpSync, mkdirSync, rmSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const ARQUIVOS = [
-  'index.html', 'style.css', 'manifest.webmanifest',
+  'index.html', 'style.css', 'minimal.css', 'manifest.webmanifest',
   'data.js', 'modelo-acordes.js', 'modelo-acordes.json', 'ia.js', 'audio-detect.js',
-  'estrada.js', 'busca.js', 'gravacao.js', 'youtube.js', 'app.js'
+  'estrada.js', 'busca.js', 'gravacao.js', 'youtube.js', 'aprender.js', 'app.js'
 ];
 const PASTAS = ['icones', 'sons'];
 

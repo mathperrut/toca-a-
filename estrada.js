@@ -90,6 +90,28 @@ function acordePorNome(nome) {
   return r || null;
 }
 
+/* "Acordes fáceis": troca cada acorde pela forma MAIS FÁCIL da mesma família
+   (como o "Simplify chords" do Chordify). Custo = dedos usados + 3 se tem pestana.
+   Ex.: Em -> Em7 (1 dedo), Am -> Am7 (2 dedos), E7(9) -> E7, Bm -> Bm7. */
+function custoAcorde(a) {
+  if (!a) return 99;
+  const dedos = new Set(a.frets.map((f, i) => (f > 0 ? a.fingers[i] || 1 : 0)).filter(Boolean)).size;
+  return dedos + (a.barre ? 3 : 0) + (a.gerado ? 2 : 0);
+}
+function simplificar(nome) {
+  const p = partesAcorde(nome);
+  if (!p) return nome;
+  const q = p.qual, menor = q.startsWith('m') && !q.startsWith('7M');
+  const cands = [nome];
+  for (const [re, troca] of SIMPLIFICACOES) if (re.test(q)) cands.push(p.raiz + troca);
+  if (menor) cands.push(p.raiz + 'm', p.raiz + 'm7');
+  else if (/7/.test(q) && !q.startsWith('7M')) cands.push(p.raiz + '7');
+  else cands.push(p.raiz);
+  let melhor = nome, custo = custoAcorde(acordePorNome(nome));
+  for (const c of cands) { const k = custoAcorde(acordePorNome(c)); if (k < custo) { melhor = c; custo = k; } }
+  return melhor;
+}
+
 /* ===== 2. Músicas -> linha do tempo ===== */
 // "Am7:2 Bm7:2 Em:4" -> [{acorde:'Am7', tempos:2}, ...]
 function lerSequencia(seq, temposPadrao = 4) {
@@ -145,7 +167,7 @@ function cordasDoGolpe(acorde, tok) {
   return [];
 }
 const NOME_GOLPE = {
-  D: 'Para baixo ↓', U: 'Para cima ↑', B: 'Polegar no baixo', F: 'Dedos juntos (i m a)',
+  D: '↓ para baixo', U: '↑ para cima', B: 'Polegar no baixo', F: 'Dedos juntos (i m a)',
   X: 'Polegar + dedos', p: 'Polegar (p)', i: 'Indicador (i)', m: 'Médio (m)', a: 'Anelar (a)'
 };
 const NOMES_DEDOS = ['', 'indicador', 'médio', 'anelar', 'mindinho'];
@@ -220,33 +242,22 @@ class Estrada {
   constructor(container, cfg) {
     Object.assign(this, cfg);
     this.box = container;
+    if (this.facil) this.trechos = this.trechos.map(t => ({ ...t, acorde: simplificar(t.acorde) }));
     container.innerHTML = `
-      <div class="estrada">
-        <div class="estrada-hud">
-          <div class="hud-agora"><small>Agora</small><b class="mono" id="e-acorde">—</b></div>
-          <div class="hud-prox"><small>Depois</small><b class="mono" id="e-prox">—</b></div>
-          <div class="hud-pontos"><small>Pontos</small><b class="mono" id="e-pontos">0</b><span class="hud-combo" id="e-combo"></span></div>
+      <div class="tocar">
+        <div class="tc-acordes">
+          <div class="tc-agora"><div class="tc-diag" id="e-diag"></div><b class="tc-nome" id="e-acorde">—</b></div>
+          <div class="tc-prox"><small>Depois</small><div class="tc-diag mini" id="e-diag-prox"></div><b class="tc-nome-prox" id="e-prox">—</b><span class="tc-falta" id="e-falta"></span></div>
         </div>
-        <div class="estrada-palco">
-          <span class="mao-chip" id="e-mao">—</span>
-          <canvas class="estrada-canvas" id="e-canvas"></canvas>
-          <div class="estrada-feedback" id="e-feedback"></div>
+        <div class="tc-pista">
+          <canvas class="tc-canvas" id="e-canvas"></canvas>
           <div class="estrada-contagem" id="e-contagem" hidden></div>
+          <div class="estrada-feedback" id="e-feedback"></div>
         </div>
+        <div class="tc-info"><span class="tc-tempos" id="e-tempos"></span><span class="tc-mao" id="e-mao"></span><span class="tc-pontos" ${this.modo === 'livre' ? 'hidden' : ''}><b id="e-pontos">0</b> pts <span id="e-combo"></span></span></div>
         <div class="trilho estrada-prog"><i id="e-prog"></i></div>
-        <details class="legenda" ${S.cfg.viuLegenda ? '' : 'open'}><summary>Como ler as bolinhas</summary><div class="legenda-dedos" aria-label="Legenda">
-          <span>Número = casa · cor = dedo:</span>
-          <span><i class="bola d1">1</i>indicador</span><span><i class="bola d2">2</i>médio</span>
-          <span><i class="bola d3">3</i>anelar</span><span><i class="bola d4">4</i>mindinho</span>
-          <span><i class="bola solta">0</i>solta</span><span>contorno amarelo = polegar</span>
-        </div></details>
-      </div>
-      <div class="braco-area">
-        <div class="braco-box" id="e-braco"></div>
-        <div><span class="eyebrow">Mão esquerda</span><ul class="dedos-lista" id="e-dedos"></ul></div>
       </div>`;
     this.canvas = container.querySelector('#e-canvas');
-    container.querySelector('.legenda').addEventListener('toggle', () => { S.cfg.viuLegenda = true; });
     this.ctx2d = this.canvas.getContext('2d');
     this.vib = new Float32Array(6);
     this.rodando = false;
@@ -254,11 +265,8 @@ class Estrada {
 
   cores() {
     const cs = getComputedStyle(document.documentElement), v = n => cs.getPropertyValue(n).trim();
-    this.cor = {
-      fundo: v('--estrada-bg'), fundo2: v('--estrada-bg-2'), corda: v('--estrada-corda'), texto: v('--estrada-texto'),
-      grade: v('--estrada-grade'), alvo: v('--sun'), acento: v('--accent'), ruim: v('--bad'), bom: v('--good'),
-      dedo: ['#888', v('--dedo1'), v('--dedo2'), v('--dedo3'), v('--dedo4')], polegar: v('--sun')
-    };
+    this.cor = { fundo: v('--surface-2'), bloco: v('--surface'), blocoAtual: v('--accent-soft'), linha: v('--line'),
+      texto: v('--ink'), fraco: v('--muted'), acento: v('--accent'), ruim: v('--bad'), bom: v('--good') };
   }
   medir() {
     const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -266,14 +274,9 @@ class Estrada {
     this.W = w; this.H = h;
     this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
     this.ctx2d.setTransform(dpr, 0, 0, dpr, 0, 0);
-    this.labelW = 26;
-    this.hitX = this.labelW + (w - this.labelW) * 0.16;
-    this.topo = 34; this.base = h - 14;
-    this.dy = (this.base - this.topo) / 5;
-    const passo = 60 / this.bpm / this.padrao.sub;
-    this.pxPorSeg = Math.max((w - this.hitX) / 3.2, 30 / passo);
+    this.hitX = Math.round(w * 0.22);
+    this.pxPorSeg = (w - this.hitX) / (60 / this.bpm * 7);   // ~7 tempos visíveis à frente
   }
-  yCorda(i) { return this.topo + (5 - i) * this.dy; }
   x(t) { return this.hitX + (t - Som.agora) * this.pxPorSeg; }
 
   iniciar() {
@@ -287,20 +290,31 @@ class Estrada {
     const totalTempos = this.trechos.at(-1).inicio + this.trechos.at(-1).tempos;
     this.trechos.forEach(tr => { tr.t = this.t0 + tr.inicio * seg; tr.fim = tr.t + tr.tempos * seg; tr.checado = false; });
     this.notas = [];
-    let iTrecho = 0;
-    for (let k = 0; k < Math.round(totalTempos * this.padrao.sub); k++) {
-      const tok = this.padrao.passos[k % this.padrao.passos.length];
-      if (tok === '-') continue;
-      const tempo = k / this.padrao.sub;
-      while (iTrecho < this.trechos.length - 1 && this.trechos[iTrecho + 1].inicio <= tempo + 1e-6) iTrecho++;
-      const tr = this.trechos[iTrecho];
-      this.notas.push({ t: this.t0 + k * passo, tok, tr, cordas: cordasDoGolpe(tr.acorde, tok), julgada: false, agendada: false });
+    /* ritmo: 'acorde' = 1 batida para baixo em cada troca (o mais fácil)
+              'tempos' = 1 batida para baixo em cada tempo
+              'batida' = o ritmo completo da música */
+    const ritmo = this.ritmo || 'batida';
+    const nova = (t, tok, tr) => this.notas.push({ t, tok, tr, cordas: cordasDoGolpe(tr.acorde, tok), julgada: false, agendada: false });
+    if (ritmo === 'acorde') this.trechos.forEach(tr => nova(tr.t, 'D', tr));
+    else if (ritmo === 'tempos') {
+      this.trechos.forEach(tr => { for (let b = 0; b < Math.round(tr.tempos); b++) nova(tr.t + b * seg, 'D', tr); });
+    } else {
+      let iTrecho = 0;
+      for (let k = 0; k < Math.round(totalTempos * this.padrao.sub); k++) {
+        const tok = this.padrao.passos[k % this.padrao.passos.length];
+        if (tok === '-') continue;
+        const tempo = k / this.padrao.sub;
+        while (iTrecho < this.trechos.length - 1 && this.trechos[iTrecho + 1].inicio <= tempo + 1e-6) iTrecho++;
+        nova(this.t0 + k * passo, tok, this.trechos[iTrecho]);
+      }
     }
     this.cliques = [];
     for (let b = -contagem; b < totalTempos; b++) this.cliques.push({ t: this.t0 + b * seg, forte: b % (this.padrao.beats || 4) === 0, conta: b < 0, agendado: false });
     Object.assign(this, { pontos: 0, combo: 0, maxCombo: 0, perf: 0, bons: 0, erros: 0, foras: 0, desvios: [], ultimoAcerto: -1,
       acordesCertos: 0, acordesChecados: 0, trechoAtual: null, fim: this.notas.at(-1).t + 0.8 });
     this.margemPerda = 0.18 + (this.modo === 'mic' ? Math.max(0, S.cfg.latencia || 0) + 0.08 : 0);
+    const tempos = this.box.querySelector('#e-tempos');
+    tempos.innerHTML = Array.from({ length: this.padrao.beats >= 3 ? this.padrao.beats : 4 }, (_, i) => `<i>${i + 1}</i>`).join('');
     if (this.modo === 'mic') this.cancelaMic = Detector.aoAtacar(a => this.julgar(a.t - (S.cfg.latencia || 0)));
     this.aoRedimensionar = () => this.medir();
     window.addEventListener('resize', this.aoRedimensionar);
@@ -360,9 +374,11 @@ class Estrada {
     const i = this.trechos.indexOf(tr), prox = this.trechos[i + 1];
     const $b = s => this.box.querySelector(s);
     $b('#e-acorde').textContent = tr.acorde;
-    $b('#e-prox').textContent = prox ? prox.acorde : 'fim';
-    $b('#e-braco').innerHTML = bracoSVG(tr.acorde, prox && prox.acorde !== tr.acorde ? prox.acorde : null, this.capo);
-    $b('#e-dedos').innerHTML = dedosHTML(tr.acorde);
+    $b('#e-diag').innerHTML = diagramaAcorde(tr.acorde, { tam: 'lg' });
+    const outro = prox && prox.acorde !== tr.acorde ? prox : this.trechos.slice(i + 1).find(t => t.acorde !== tr.acorde);
+    $b('#e-prox').textContent = outro ? outro.acorde : 'fim';
+    $b('#e-diag-prox').innerHTML = outro ? diagramaAcorde(outro.acorde, { tam: 'sm', rotulos: false }) : '';
+    this.proxTroca = outro || null;
   }
 
   feedback(txt, cls) {
@@ -418,111 +434,93 @@ class Estrada {
     const cont = this.box.querySelector('#e-contagem');
     if (agora < this.t0) {
       const n = Math.ceil((this.t0 - agora) / (60 / this.bpm));
-      cont.hidden = false; cont.textContent = n <= this.contagemTempos ? n : '';
+      cont.hidden = false; cont.textContent = n <= this.contagemTempos ? n : 'Prepare';
     } else cont.hidden = true;
     // notas perdidas
-    for (const n of this.notas) if (!n.julgada && agora > n.t + this.margemPerda) { n.julgada = true; n.errou = true; this.erros++; this.combo = 0; this.feedback('Passou', 'ruim'); }
+    for (const n of this.notas) if (!n.julgada && agora > n.t + this.margemPerda) {
+      n.julgada = true;
+      if (this.modo !== 'livre') { n.errou = true; this.erros++; this.combo = 0; this.feedback('Passou', 'ruim'); }
+    }
     // trecho atual
     const atual = this.trechos.find(tr => agora >= tr.t - 0.05 && agora < tr.fim - 0.05) || (agora < this.t0 ? this.trechos[0] : null);
     if (atual) this.mostrarTrecho(atual);
     for (const tr of this.trechos) if (!tr.checado && agora > tr.t + 0.45 + Math.max(0, S.cfg.latencia || 0)) this.conferirAcorde(tr);
     // próximo golpe (instrução da mão direita)
     const prox = this.notas.find(n => !n.julgada && n.t > agora - 0.1);
-    this.box.querySelector('#e-mao').textContent = prox ? NOME_GOLPE[prox.tok] : '—';
+    this.box.querySelector('#e-mao').textContent = prox ? NOME_GOLPE[prox.tok] : '';
+    // "troca em 3, 2, 1": avisa o próximo acorde
+    const seg = 60 / this.bpm, falta = this.proxTroca ? Math.ceil((this.proxTroca.t - agora) / seg - 0.05) : 99;
+    const ef = this.box.querySelector('#e-falta');
+    ef.textContent = falta >= 1 && falta <= 3 && agora > this.t0 - seg ? `troca em ${falta}` : '';
+    this.box.querySelector('.tc-prox').classList.toggle('chegando', falta >= 1 && falta <= 2);
+    const beats = this.padrao.beats >= 3 ? this.padrao.beats : 4;
+    const bi = agora >= this.t0 ? Math.floor((agora - this.t0) / seg + 0.001) % beats : -1;
+    if (bi !== this._bi) { this._bi = bi; this.box.querySelectorAll('#e-tempos i').forEach((el, k) => el.classList.toggle('on', k === bi)); }
     this.box.querySelector('#e-prog').style.width = Math.min(100, Math.max(0, (agora - this.t0) / (this.fim - this.t0) * 100)) + '%';
     this.desenhar(agora);
     if (agora > this.fim + this.margemPerda) return this.terminar();
     this.raf = requestAnimationFrame(() => this.loop());
   }
 
+  /* Pista: blocos de acorde passando da direita para a esquerda.
+     Dentro de cada bloco, as setas da batida (↓ para baixo, ↑ para cima).
+     Toque quando a seta cruzar a linha verde. */
   desenhar(agora) {
     const c = this.ctx2d, W = this.W, H = this.H, cor = this.cor;
-    // fundo de madeira
-    const g = c.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, cor.fundo); g.addColorStop(1, cor.fundo2);
-    c.fillStyle = g; c.fillRect(0, 0, W, H);
-    const seg = 60 / this.bpm, visivelAte = agora + (W - this.hitX) / this.pxPorSeg + 0.3, visivelDe = agora - this.hitX / this.pxPorSeg - 0.3;
-    // faixas de cada acorde + nome
-    this.trechos.forEach((tr, i) => {
-      if (tr.fim < visivelDe || tr.t > visivelAte) return;
-      const x1 = Math.max(this.labelW, this.x(tr.t)), x2 = Math.min(W, this.x(tr.fim));
-      c.fillStyle = i % 2 ? 'rgba(255,255,255,0.035)' : 'rgba(0,0,0,0.06)';
-      c.fillRect(x1, this.topo - 12, x2 - x1, this.base - this.topo + 24);
-      const xn = tr.t < agora && tr.fim > agora ? Math.max(this.labelW + 6, this.x(tr.t) + 6) : this.x(tr.t) + 6;
-      c.fillStyle = cor.texto; c.font = '700 15px "IBM Plex Mono", monospace'; c.textBaseline = 'alphabetic';
-      if (xn < x2 - 10) c.fillText(tr.acorde, xn, 20);
+    c.clearRect(0, 0, W, H);
+    c.fillStyle = cor.fundo; c.fillRect(0, 0, W, H);
+    const seg = 60 / this.bpm, de = agora - this.hitX / this.pxPorSeg - 0.5, ate = agora + (W - this.hitX) / this.pxPorSeg + 0.5;
+    const yTop = 10, yBase = H - 24, alturaBloco = yBase - yTop;
+    // blocos de acorde
+    this.trechos.forEach(tr => {
+      if (tr.fim < de || tr.t > ate) return;
+      const x1 = this.x(tr.t) + 2, x2 = this.x(tr.fim) - 2, atual = agora >= tr.t && agora < tr.fim;
+      c.fillStyle = atual ? cor.blocoAtual : cor.bloco;
+      this.retRedondo(x1, yTop, Math.max(8, x2 - x1), alturaBloco, 12); c.fill();
+      c.strokeStyle = atual ? cor.acento : cor.linha; c.lineWidth = atual ? 2 : 1; c.stroke();
+      const xn = Math.max(x1 + 10, Math.min(this.hitX + 8, x2 - 60));
+      c.fillStyle = atual ? cor.acento : cor.texto;
+      c.font = '800 18px "Nunito Sans", system-ui, sans-serif'; c.textBaseline = 'top'; c.textAlign = 'left';
+      if (x2 - xn > 24) c.fillText(tr.acorde, atual ? xn : x1 + 10, yTop + 8);
     });
-    // linhas de tempo (compasso mais forte)
-    const compasso = this.padrao.beats || 4;
-    for (let b = Math.floor((visivelDe - this.t0) / seg); b * seg + this.t0 < visivelAte; b++) {
+    // marcas de tempo embaixo (1 2 3 4)
+    const beats = this.padrao.beats >= 3 ? this.padrao.beats : 4;
+    for (let b = Math.floor((de - this.t0) / seg); this.t0 + b * seg < ate; b++) {
       const x = this.x(this.t0 + b * seg);
-      if (x < this.labelW) continue;
-      c.strokeStyle = cor.grade; c.lineWidth = b % compasso === 0 ? 2 : 1; c.globalAlpha = b % compasso === 0 ? 0.9 : 0.4;
-      c.beginPath(); c.moveTo(x, this.topo - 8); c.lineTo(x, this.base + 8); c.stroke();
+      if (x < 0 || x > W) continue;
+      c.fillStyle = cor.fraco; c.font = '600 11px "Nunito Sans", system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'alphabetic';
+      if (b >= 0) c.fillText(String((b % beats) + 1), x, H - 8);
+    }
+    // setas da batida
+    const yMeio = yTop + alturaBloco * 0.62;
+    for (const n of this.notas) {
+      if (n.t < de || n.t > ate) continue;
+      const x = this.x(n.t), passou = n.t < agora - 0.05;
+      c.globalAlpha = n.acertou ? 1 : passou ? 0.25 : 1;
+      c.fillStyle = n.errou ? cor.ruim : n.acertou ? cor.bom : passou ? cor.fraco : cor.texto;
+      this.seta(x, yMeio, n.tok);
     }
     c.globalAlpha = 1;
-    // cordas (vibram quando você acerta)
-    for (let i = 0; i < 6; i++) {
-      const y = this.yCorda(i), amp = this.vib[i] * 3;
-      c.strokeStyle = cor.corda; c.lineWidth = 1 + (5 - i) * 0.35; // 6ª corda (i=0) mais grossa
+    // linha de tocar
+    c.strokeStyle = cor.acento; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(this.hitX, 4); c.lineTo(this.hitX, H - 20); c.stroke();
+    c.fillStyle = cor.acento; c.beginPath(); c.moveTo(this.hitX - 6, 4); c.lineTo(this.hitX + 6, 4); c.lineTo(this.hitX, 11); c.closePath(); c.fill();
+    c.textAlign = 'start';
+  }
+  // ↓ ↑ desenhadas (as letras P, d etc. para os ritmos com polegar)
+  seta(x, y, tok) {
+    const c = this.ctx2d;
+    if (tok === 'D' || tok === 'U') {
+      const s = tok === 'D' ? 1 : -1, h = 13;
       c.beginPath();
-      for (let x = this.labelW; x <= W; x += 6) c.lineTo(x, y + Math.sin(x * 0.25 + agora * 60) * amp);
-      c.stroke();
-      this.vib[i] *= 0.9;
-      c.fillStyle = cor.texto; c.font = '600 12px "IBM Plex Mono", monospace'; c.textBaseline = 'middle';
-      c.fillText(LETRAS_CORDAS[i], 8, y);
+      c.moveTo(x - 2.5, y - h * s); c.lineTo(x + 2.5, y - h * s); c.lineTo(x + 2.5, y + 2 * s);
+      c.lineTo(x + 8, y + 2 * s); c.lineTo(x, y + h * s); c.lineTo(x - 8, y + 2 * s); c.lineTo(x - 2.5, y + 2 * s);
+      c.closePath(); c.fill();
+    } else {
+      c.beginPath(); c.arc(x, y, 10, 0, Math.PI * 2); c.fill();
+      c.fillStyle = this.cor.bloco; c.font = '800 11px "Nunito Sans", system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText({ B: 'P', p: 'P', F: 'd', X: 'P+', i: 'i', m: 'm', a: 'a' }[tok] || '•', x, y + 0.5);
     }
-    // marca de troca de acorde (portão vertical)
-    this.trechos.forEach(tr => {
-      const x = this.x(tr.t) - 10;
-      if (x < this.labelW || x > W) return;
-      c.strokeStyle = cor.alvo; c.globalAlpha = 0.55; c.lineWidth = 2; c.setLineDash([4, 4]);
-      c.beginPath(); c.moveTo(x, 26); c.lineTo(x, this.base + 10); c.stroke();
-      c.setLineDash([]); c.globalAlpha = 1;
-    });
-    // golpes: em cada corda tocada, a CASA (número) na cor do DEDO
-    const r = Math.max(6, Math.min(9, this.dy * 0.42));
-    for (const n of this.notas) {
-      if (n.t < visivelDe || n.t > visivelAte || !n.cordas.length) continue;
-      if (n.acertou && agora - n.t > 0.12) continue;
-      const x = this.x(n.t), A = acordePorNome(n.tr.acorde);
-      c.globalAlpha = n.errou ? 0.28 : 1;
-      const polegar = n.tok === 'B' || n.tok === 'p' || n.tok === 'X';
-      const cMin = Math.min(...n.cordas), cMax = Math.max(...n.cordas);
-      const yTopo = this.yCorda(cMax), yBase = this.yCorda(cMin);
-      // haste do golpe + seta da direção
-      c.strokeStyle = n.errou ? cor.ruim : n.acertou ? cor.bom : cor.acento; c.lineWidth = 4; c.lineCap = 'round';
-      c.beginPath(); c.moveTo(x, yTopo); c.lineTo(x, yBase); c.stroke();
-      c.fillStyle = c.strokeStyle;
-      if (n.tok === 'D' || n.tok === 'U') {
-        const yp = n.tok === 'D' ? yBase + r + 3 : yTopo - r - 3, s2 = n.tok === 'D' ? 1 : -1;
-        c.beginPath(); c.moveTo(x - 5, yp - 4 * s2); c.lineTo(x + 5, yp - 4 * s2); c.lineTo(x, yp + 3 * s2); c.closePath(); c.fill();
-      }
-      // uma bolinha por corda: número da casa, cor do dedo
-      for (const i of n.cordas) {
-        const y = this.yCorda(i), f = A ? A.frets[i] : 0, d = A ? A.fingers[i] : 0;
-        const ehBaixo = polegar && i === cMin;
-        c.fillStyle = f > 0 ? (cor.dedo[d] || cor.acento) : '#2a2018';
-        c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
-        if (ehBaixo) { c.strokeStyle = cor.polegar; c.lineWidth = 2.5; c.stroke(); }
-        else if (f === 0) { c.strokeStyle = cor.corda; c.lineWidth = 1.5; c.stroke(); }
-        c.fillStyle = '#fff'; c.font = `700 ${Math.round(r * 1.25)}px "IBM Plex Mono", monospace`; c.textAlign = 'center'; c.textBaseline = 'middle';
-        c.fillText(String(Math.max(0, f)), x, y + 0.5);
-      }
-      // dedilhado: letra da mão direita embaixo
-      if ('pima'.includes(n.tok) && n.tok.length === 1) {
-        c.fillStyle = cor.polegar; c.font = '700 10px "IBM Plex Mono", monospace'; c.textAlign = 'center';
-        c.fillText(n.tok, x, this.base + 9);
-      }
-      c.globalAlpha = 1; c.textAlign = 'start'; c.lineCap = 'butt';
-    }
-    // linha de ataque
-    c.strokeStyle = cor.alvo; c.lineWidth = 3; c.shadowColor = cor.alvo; c.shadowBlur = 10;
-    c.beginPath(); c.moveTo(this.hitX, this.topo - 16); c.lineTo(this.hitX, this.base + 12); c.stroke();
-    c.shadowBlur = 0;
-    // máscara à esquerda das letras
-    c.fillStyle = cor.fundo; c.globalAlpha = 0.85; c.fillRect(0, 0, this.labelW - 4, H); c.globalAlpha = 1;
-    for (let i = 0; i < 6; i++) { c.fillStyle = cor.texto; c.font = '600 12px "IBM Plex Mono", monospace'; c.textBaseline = 'middle'; c.fillText(LETRAS_CORDAS[i], 8, this.yCorda(i)); }
   }
   retRedondo(x, y, w, h, r) {
     const c = this.ctx2d; r = Math.min(r, w / 2, h / 2);
@@ -533,7 +531,7 @@ class Estrada {
   terminar() {
     this.parar();
     const n = this.notas.length;
-    const pct = Math.round((this.perf * 100 + this.bons * 60) / (n * 100) * 100);
+    const pct = this.modo === 'livre' ? null : Math.round((this.perf * 100 + this.bons * 60) / (n * 100) * 100);
     const media = this.desvios.length >= 4 ? Math.round(this.desvios.reduce((a, b) => a + b, 0) / this.desvios.length * 1000) : null;
     this.aoFim?.({ pct, pontos: this.pontos, maxCombo: this.maxCombo, perf: this.perf, erros: this.erros, foras: this.foras, media, notas: n,
       acordesCertos: this.acordesCertos, acordesChecados: this.acordesChecados });
