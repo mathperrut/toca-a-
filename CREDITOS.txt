@@ -1,0 +1,11 @@
+Sons de violão de náilon (pasta violao-nylon)
+=============================================
+Origem: soundfont "Fluid R3 GM" (Frank Wen), instrumento 25 "Acoustic Guitar (nylon)",
+convertido em MP3 pelo projeto midi-js-soundfonts de Benjamin Gleitzman:
+https://github.com/gleitz/midi-js-soundfonts
+
+Licença: Creative Commons Attribution 3.0 (CC BY 3.0)
+https://creativecommons.org/licenses/by/3.0/
+
+Alteração feita no Toca Aí: os arquivos foram renomeados pelo número MIDI da nota
+(40.mp3 = Mi2, a 6ª corda solta ... 84.mp3 = Dó6). O áudio não foi modificado.

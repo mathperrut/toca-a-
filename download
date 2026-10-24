@@ -1,0 +1,5 @@
+node_modules/
+www/
+android/
+ia/__pycache__/
+*.apk

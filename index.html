@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- PWA: o que transforma o site em app instalável -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1E6A48">
+<link rel="icon" href="icones/icone-192.png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<!--INICIO-->
+<title>Toca Aí</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<!--FIM-HEAD-->
+</head>
+<body>
+<!--INICIO-BODY-->
+
+<!-- Cabeçalho: nível, XP e sequência de dias -->
+<header class="topo">
+  <div class="topo-in">
+    <div class="marca"><span class="logo" aria-hidden="true"></span><h1>Toca Aí</h1></div>
+    <button class="btn mini primario instalar" id="instalar" hidden>Instalar app</button>
+    <div class="status-jogador">
+      <div class="seq" title="Dias seguidos treinando">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1c1 3 4 4.5 4 8.2A4 4 0 0 1 4 9.5C4 7.6 5 6.7 5.8 5.6c.3 1.2.9 1.9 1.6 2.2C7.4 5.6 7.2 3 8 1z" fill="currentColor"/></svg>
+        <b id="seq" class="mono">0</b><span>dias</span>
+      </div>
+      <div class="nivel-box">
+        <div class="nivel-linha"><span>Nível <b id="nivel" class="mono">1</b> · <span id="titulo-nivel">Calouro</span></span><span id="xp-txt" class="mono">0 / 100 XP</span></div>
+        <div class="trilho xp"><i id="xp-barra"></i></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Navegação (embaixo no celular, em cima no computador) -->
+<nav class="nav" aria-label="Seções">
+  <button data-view="hoje"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Hoje</span></button>
+  <button data-view="trilha"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6.5L15.5 11M15.5 13L8.5 17.5"/></svg><span>Aprender</span></button>
+  <button data-view="acordes"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9.5 3v18M14.5 3v18M5 8h14M5 13h14"/></svg><span>Acordes</span></button>
+  <button data-view="musicas"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span>Músicas</span></button>
+  <button data-view="ferramentas"><svg viewBox="0 0 24 24"><path d="M9 21h6l-1-15h-4z"/><path d="M12 15l5-11"/></svg><span>Ferramentas</span></button>
+</nav>
+
+<main class="conteudo">
+  <section id="view-hoje" class="view"></section>
+  <section id="view-trilha" class="view" hidden></section>
+  <section id="view-jogos" class="view" hidden></section>
+  <section id="view-acordes" class="view" hidden></section>
+  <section id="view-musicas" class="view" hidden></section>
+  <section id="view-ferramentas" class="view" hidden></section>
+  <p class="rodape sub" id="sync">Progresso salvo neste navegador</p>
+</main>
+
+
+<!-- Janela usada por lições, jogos e player -->
+<div id="janela" class="janela" hidden>
+  <div class="janela-caixa" role="dialog" aria-modal="true" aria-labelledby="janela-titulo">
+    <div class="janela-topo"><h2 id="janela-titulo"></h2><button id="janela-fechar" class="btn redondo" aria-label="Fechar">×</button></div>
+    <div id="janela-corpo" class="janela-corpo"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="data.js"></script>
+<script src="modelo-acordes.js"></script>
+<script src="ia.js"></script>
+<script src="audio-detect.js"></script>
+<script src="estrada.js"></script>
+<script src="busca.js"></script>
+<script src="gravacao.js"></script>
+<script src="youtube.js"></script>
+<script src="app.js"></script>
+<!--FIM-->
+</body>
+</html>
