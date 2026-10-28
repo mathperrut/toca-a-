@@ -1,10 +1,13 @@
 # Laboratório (branch separada): testes que precisam de internet.
-# Não gera APK. Pode apagar esta branch quando quiser.
+# Não gera APK. Os resultados voltam para esta branch em lab/saida/.
 name: Laboratorio
 on:
   push:
     branches: [laboratorio]
+    paths-ignore: ['lab/saida/**']
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   sondar:
     runs-on: ubuntu-latest
@@ -13,12 +16,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Sondar
+      - name: Rodar
         working-directory: lab
-        run: node sondar.mjs
-      - uses: actions/upload-artifact@v4
+        run: |
+          mkdir -p saida
+          for s in $(cat tarefas.txt); do node "$s" 2>&1 | tee "saida/$(basename $s .mjs).log"; done
+      - name: Devolver resultados para a branch
         if: always()
-        with:
-          name: saida
-          path: lab/saida
-          if-no-files-found: ignore
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lab/saida
+          git commit -m "Resultados do laboratório" || echo "nada novo"
+          git push
