@@ -1,0 +1,2095 @@
+[
+ {
+  "art": "geraldo-vandre",
+  "mus": "pra-nao-dizer-que-nao-falei-das-flores",
+  "tomOriginal": "Fm",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Geraldo Vandré - Pra Não Dizer Que Não Falei Das Flores",
+  "artista": "Geraldo Vandré",
+  "acordesOriginal": [
+   "Fm",
+   "D#"
+  ],
+  "simplificada": true,
+  "tomSimp": "Fm",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Fm:4 D#:4 Fm:4 D#:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo Intro:",
+    "seq": "Fm:2 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Ponte",
+    "seq": "D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Ponte",
+    "seq": "D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Ponte",
+    "seq": "D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4 D#:4 Fm:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 114,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "KdvsXn8oVPY",
+    "titulo": "Pra não dizer que não falei das flores",
+    "canal": "Geraldo Vandre - Topic",
+    "duracao": "",
+    "pontos": 9,
+    "embed": 200
+   },
+   {
+    "id": "c_3raxTCKqs",
+    "titulo": "Pra Não Dizer Que Não Falei das Flores",
+    "canal": "Geraldo Vandre - Topic",
+    "duracao": "",
+    "pontos": 9,
+    "embed": 200
+   },
+   {
+    "id": "1KskJDDW93k",
+    "titulo": "Geraldo Vandré - Pra não dizer que não falei das Flores",
+    "canal": "gabrielmendesskate",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "7u_ra7OWntg",
+    "titulo": "Geraldo Vandré Pra nao dizer que nao falei das flores Legendado",
+    "canal": "Gian Luca",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "1KskJDDW93k",
+    "titulo": "Geraldo Vandré - Pra não dizer que não falei das Flores",
+    "canal": "gabrielmendesskate",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "c_3raxTCKqs",
+    "titulo": "Pra Não Dizer Que Não Falei das Flores",
+    "canal": "Geraldo Vandre - Topic",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "KdvsXn8oVPY",
+    "titulo": "Pra não dizer que não falei das flores",
+    "canal": "Geraldo Vandre - Topic",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "wkEGNgib2Yw",
+    "titulo": "Geraldo vandré ( ao vivo no maracanãzinho )",
+    "canal": "Trio Porão",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "7u_ra7OWntg",
+    "titulo": "Geraldo Vandré Pra nao dizer que nao falei das flores Legendado",
+    "canal": "Gian Luca",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "legiao-urbana",
+  "mus": "que-pais-e-este",
+  "tomOriginal": "Em",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "Pop Rock",
+  "titulo": "Legião Urbana - Que País É Este",
+  "artista": "Legião Urbana",
+  "acordesOriginal": [
+   "Em",
+   "C",
+   "D"
+  ],
+  "simplificada": true,
+  "tomSimp": "Em",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Início",
+    "seq": "Em:2 C:2 D:4 Em:2 C:2 D:4 Em:2 C:2 D:4 Em:2 C:2 D:8 Em:2 C:2 D:4 Em:2 C:2 D:4 Em:2 C:2 D:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 146,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "5w3kkxquB88",
+    "titulo": "MSX — Que País É Este? • Legião Urbana",
+    "canal": "Retro Tributes BR",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "uEDDt2oUXYU",
+    "titulo": "Legião Urbana - Que País É Este (ao vivo)",
+    "canal": "danielpradosh",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "ICa8EPNs3BI",
+    "titulo": "Legião Urbana - Que País É Este",
+    "canal": "Brasilidades",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "TKaPhFhp4rw",
+    "titulo": "Legião Urbana · Que país é este / Cajuína / Baile dos passarinhos / Aquele abraço (ao vivo)",
+    "canal": "Bille Cipriani",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "kFpkyT_KPpc",
+    "titulo": "Que Pais É Este",
+    "canal": "Legião Urbana",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "yALGyoGGM-A",
+    "titulo": "As curiosidades que vocês trouxeram de: \\\"QUE PAÍS É ESTE 1978/1987\\\" (Legião Urbana)",
+    "canal": "Júlio Ettore",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "M3mEqIDRqvU",
+    "titulo": "Legião Urbana · Que país é este",
+    "canal": "Bille Cipriani",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "y68mlZ6X2v0",
+    "titulo": "Legião Urbana - Que país é esse (Clipe Oficial)",
+    "canal": "Brasilidades",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "Dw6cCNjpXW8",
+    "titulo": "Plágio dos Ramones? A história de \\\"QUE PAÍS É ESTE\\\" (Legião Urbana)",
+    "canal": "Júlio Ettore",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "luiz-gonzaga",
+  "mus": "asa-branca",
+  "tomOriginal": "G",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "Xote",
+  "titulo": "Luiz Gonzaga - Asa Branca",
+  "artista": "Luiz Gonzaga",
+  "acordesOriginal": [
+   "G",
+   "G/F",
+   "C",
+   "D7/F#",
+   "G7",
+   "D7",
+   "F/A"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:4 C:4 G:2 D:2 G:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:4 C:4 G:2 D:2 G:4 G:4 C:4 D:4 G:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "G:4 C:4 G:2 D:2 G:4 G:4 C:4 D:4 G:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "G:4 C:4 G:2 D:2 G:4 G:4 C:4 D:4 G:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quinta Parte",
+    "seq": "G:4 C:4 G:2 D:2 G:4 G:4 C:4 D:4 G:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 116,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "0kCm1XTZ_qA",
+    "titulo": "Luiz Gonzaga - Asa Branca (Áudio Oficial)",
+    "canal": "Luiz Gonzaga",
+    "duracao": "",
+    "pontos": 8,
+    "embed": 200
+   },
+   {
+    "id": "zsFSHg2hxbc",
+    "titulo": "Luiz Gonzaga - Asa Branca ft. Fagner, Sivuca, Guadalupe",
+    "canal": "Luiz Gonzaga",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "MhMIsfsoymg",
+    "titulo": "Luiz Gonzaga - Asa Branca | Clipe Oficial #EternoGonzagão",
+    "canal": "Schin",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "nQm4uJn0090",
+    "titulo": "ASA BRANCA  -   LUIZ GONZAGA  #",
+    "canal": "Nilton Roberto",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "0kCm1XTZ_qA",
+    "titulo": "Luiz Gonzaga - Asa Branca (Áudio Oficial)",
+    "canal": "Luiz Gonzaga",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "zsFSHg2hxbc",
+    "titulo": "Luiz Gonzaga - Asa Branca ft. Fagner, Sivuca, Guadalupe",
+    "canal": "Luiz Gonzaga",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "P6cP1rUfyNo",
+    "titulo": "Asa Branca",
+    "canal": "Luiz Gonzaga",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "2pOgGZzck1c",
+    "titulo": "Luiz Gonzaga - Projeto Asa Branca (Áudio Oficial)",
+    "canal": "Luiz Gonzaga",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "MohOURp_UgQ",
+    "titulo": "Asa Branca",
+    "canal": "Luiz Gonzaga",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "tribalistas",
+  "mus": "velha-infancia",
+  "tomOriginal": "F#m",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Tribalistas - Velha Infância",
+  "artista": "Tribalistas",
+  "acordesOriginal": [
+   "F#m",
+   "Bm",
+   "E"
+  ],
+  "simplificada": true,
+  "tomSimp": "F#m",
+  "capoSimp": 2,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Em:4 Am:4 D:4 Em:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Ponte",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4 Am:4 D:4 Em:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": null,
+  "bpmStatus": 404,
+  "youtube": [
+   {
+    "id": "Fub2qOHlyOE",
+    "titulo": "Velha Infância (Ao Vivo)",
+    "canal": "Tribalistas - Topic",
+    "duracao": "",
+    "pontos": 9,
+    "embed": 200
+   },
+   {
+    "id": "ZkbuGPXJOPA",
+    "titulo": "Tribalistas - Velha Infância",
+    "canal": "Jonathan Gomes Pereira",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "dQjO0zo12Go",
+    "titulo": "Velha Infância - Tribalistas Ao Vivo",
+    "canal": "MARISAMONTE",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "a-p3bnk928A",
+    "titulo": "Os Tribalistas - Velha Infância",
+    "canal": "PhedroPhedroca",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "dQjO0zo12Go",
+    "titulo": "Velha Infância - Tribalistas Ao Vivo",
+    "canal": "MARISAMONTE",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "ZkbuGPXJOPA",
+    "titulo": "Tribalistas - Velha Infância",
+    "canal": "Jonathan Gomes Pereira",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "-A-b391d5Dw",
+    "titulo": "Tribalistas - Velha Infância (Clipe Oficial!)",
+    "canal": "DIOGO LEGENDAS BR ™",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "EG1u-hDEJjw",
+    "titulo": "Velha Infância - Tribalistas",
+    "canal": "Arnaldo Antunes",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "a-p3bnk928A",
+    "titulo": "Os Tribalistas - Velha Infância",
+    "canal": "PhedroPhedroca",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "vitor-kley",
+  "mus": "o-sol",
+  "tomOriginal": "F#m",
+  "formaOriginal": "Em",
+  "capoOriginal": 2,
+  "genero": "Surf Music",
+  "titulo": "Vitor Kley - O Sol",
+  "artista": "Vitor Kley",
+  "acordesOriginal": [
+   "Em7",
+   "D9",
+   "Am",
+   "D4",
+   "C7M",
+   "Am7(9)",
+   "Em",
+   "D4(9)",
+   "G/B",
+   "C5(9)",
+   "Am7",
+   "D4(9)/A"
+  ],
+  "simplificada": true,
+  "tomSimp": "Em",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Em:4 Am:4 Em:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira parte",
+    "seq": "Em:4 Am:4 Em:4 Am:4 Em:4 Am:4 Em:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-refrão",
+    "seq": "C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira parte",
+    "seq": "Em:4 Am:4 Em:4 Am:4 Em:4 Am:4 Em:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-refrão",
+    "seq": "C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda parte",
+    "seq": "C:4 Am:4 Em:8 D:4 C:8 Am:4 Em:8 D:4 C:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4 C:4 Am:4 Em:4 D:4 C:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 98,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "YVJijQIualA",
+    "titulo": "Vitor Kley  - O Sol  (Videoclipe Oficial)",
+    "canal": "Midas Music",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "vD0JsUY4ATE",
+    "titulo": "Vitor Kley - O Sol (Microfonado)",
+    "canal": "Midas Music",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "fxPfjyRI7xY",
+    "titulo": "Vitor Kley - O Sol (com mais SOL)",
+    "canal": "Midas Music",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "GOmCsxNSqcg",
+    "titulo": "Vitor Kley - O Sol (English subs)",
+    "canal": "Tropical Land",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "YVJijQIualA",
+    "titulo": "Vitor Kley  - O Sol  (Videoclipe Oficial)",
+    "canal": "Midas Music",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "yOwwSByMd0k",
+    "titulo": "Vitor Kley - O Sol (Áudio Oficial)",
+    "canal": "Midas Music",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "K6sxy0jVj_I",
+    "titulo": "VITOR KLEY canta O SOL",
+    "canal": "Músicas do Amplifica [OFICIAL]",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "1d0t-ROa0d8",
+    "titulo": "Vitor Kley - O Sol (VINNE, Double MZK Remix)",
+    "canal": "Vinne",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "X2Y1SpraKFI",
+    "titulo": "Vitor Kley - O Sol  ( Letra ) ‹ ♫ Letras de Músicas ♫ ›",
+    "canal": "Mundo Das Letras",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "ana-vilela",
+  "mus": "trem-bala",
+  "tomOriginal": "B",
+  "formaOriginal": "A",
+  "capoOriginal": 2,
+  "genero": "MPB",
+  "titulo": "Ana Vilela - Trem-Bala",
+  "artista": "Ana Vilela",
+  "acordesOriginal": [
+   "A9",
+   "D9",
+   "E"
+  ],
+  "simplificada": true,
+  "tomSimp": "A",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "A9:4 D9:4 A9:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A9:4 D9:4 A9:4 E:4 A9:4 D9:4 A9:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D9:4 E:4 A9:4 D9:4 E:4 A9:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D9:4 A9:4 E:4 A9:4 D9:4 A9:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 2",
+    "seq": "D9:4 E:4 A9:4 D9:4 E:4 A9:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "D9:4 A9:4 E:4 A9:4 D9:4 A9:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 3",
+    "seq": "D9:4 E:4 A9:4 D9:4 E:4 A9:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Ponte",
+    "seq": "D9:4 E:4 A9:4 D9:4 E:4 A9:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "D9:4 E:4 A9:4 D9:4 E:4 A9:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 93,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "sWhy1VcvvgY",
+    "titulo": "Ana Vilela - Trem-Bala - (Clipe Oficial)",
+    "canal": "Ana Vilela",
+    "duracao": "",
+    "pontos": 8,
+    "embed": 200
+   },
+   {
+    "id": "Kjo7lttvnaQ",
+    "titulo": "Ana Vilela - Trem-Bala part. Luan Santana - (Álbum \"Ana Vilela\") [Áudio Oficial]",
+    "canal": "Ana Vilela",
+    "duracao": "",
+    "pontos": 8,
+    "embed": 200
+   },
+   {
+    "id": "TEjqASLuRGw",
+    "titulo": "Trem-Bala (Música Autoral) Ana Vilela",
+    "canal": "Ana Vilela",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "TCZGnJFoO3g",
+    "titulo": "Ana Vilela canta a música Trem Bala e Deborah Secco chora no altas horas",
+    "canal": "Gostei HEIN",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "sWhy1VcvvgY",
+    "titulo": "Ana Vilela - Trem-Bala - (Clipe Oficial)",
+    "canal": "Ana Vilela",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "TLrtpzwzqzI",
+    "titulo": "TREM BALA - ANA VILELA E LUAN SANTANA - LEGENDADO",
+    "canal": "Christian Júnio",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "6X4bz5jZoZo",
+    "titulo": "Ana Vilela - Trem Bala (Letra)",
+    "canal": "musicscomletras",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "AaIPZwDnYdg",
+    "titulo": "Trem bala - Ana Vilela",
+    "canal": "Antônia no Divã",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "TEjqASLuRGw",
+    "titulo": "Trem-Bala (Música Autoral) Ana Vilela",
+    "canal": "Ana Vilela",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "charlie-brown-jr",
+  "mus": "so-os-loucos-sabem",
+  "tomOriginal": "Em",
+  "formaOriginal": "C#m",
+  "capoOriginal": 3,
+  "genero": "Pop Rock",
+  "titulo": "Charlie Brown Jr. - Só Os Loucos Sabem",
+  "artista": "Charlie Brown Jr.",
+  "acordesOriginal": [
+   "C#m7",
+   "A9",
+   "C#m",
+   "E",
+   "B4",
+   "F#m",
+   "E/G#",
+   "E5",
+   "E7M",
+   "C#9"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "G:4 Em:4 C:4 G:4 Em:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Em:4 C:4 G:4 Em:4 G:4 D:4 Em:2 C:4 G:4 Am:4 C:4 Em:4 C:4 G:4 Em:4 G:4 D:4 Em:4 C:4 G:4 Am:8 C:8",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Em:2 C:2 G:4 Em:2 G:2 D:4 Em:2 C:2 G:4 Am:4 C:4 G:4 Em:4 C:4 G:4 Em:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Em:2 C:4 G:4 Em:2 G:4 D:4 Em:4 C:4 G:4 Am:4 C:4 Em:2 C:2 G:4 Em:2 G:2 D:4 Em:4 C:4 G:4 Am:4 C:4 G:4 Em:4 C:4 G:4 Em:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Em:4 C:4 G:4 Em:4 G:4 D:4 Em:2 C:4 G:4 Am:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 Em:4 C:4 G:4 Em:4 C:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": null,
+  "bpmStatus": 404,
+  "youtube": [
+   {
+    "id": "JRJj4z-prvM",
+    "titulo": "Charlie Brown Jr. - Só Os Loucos Sabem (Video Clipe)",
+    "canal": "Charlie Brown Jr.",
+    "duracao": "",
+    "pontos": 8,
+    "embed": 200
+   },
+   {
+    "id": "NFADwNLNSd4",
+    "titulo": "Charlie Brown Jr. - Só os Loucos Sabem (Ao Vivo - Chegou Quem Faltava)",
+    "canal": "Charlie Brown Jr.",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "P3fzWuwVB5s",
+    "titulo": "Charlie Brown Jr - Só os loucos sabem",
+    "canal": "CharlieBrownJrVEVO",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "GVW2SS_Hr1g",
+    "titulo": "Charlie Brown Jr - acústico na rádio Mix FM com Céu Azul e Só os Loucos Sabem (30/11/2011)",
+    "canal": "Charlie Brown Jr.",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "JRJj4z-prvM",
+    "titulo": "Charlie Brown Jr. - Só Os Loucos Sabem (Video Clipe)",
+    "canal": "Charlie Brown Jr.",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "NFADwNLNSd4",
+    "titulo": "Charlie Brown Jr. - Só os Loucos Sabem (Ao Vivo - Chegou Quem Faltava)",
+    "canal": "Charlie Brown Jr.",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "P3fzWuwVB5s",
+    "titulo": "Charlie Brown Jr - Só os loucos sabem",
+    "canal": "CharlieBrownJrVEVO",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "Tk98pgrR2oU",
+    "titulo": "Charlie Brown Jr. - Só Os Loucos Sabem (letra)",
+    "canal": "Gootie Music",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "EsOMz2D7hpQ",
+    "titulo": "Charlie Brown Jr - Só Os Loucos Sabem",
+    "canal": "Radar Records Oficial",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "legiao-urbana",
+  "mus": "tempo-perdido",
+  "tomOriginal": "Em",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "Pop Rock",
+  "titulo": "Legião Urbana - Tempo Perdido",
+  "artista": "Legião Urbana",
+  "acordesOriginal": [
+   "C7M",
+   "Am7",
+   "Bm7",
+   "Em",
+   "C",
+   "Bm"
+  ],
+  "simplificada": true,
+  "tomSimp": "C",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "C:4 Am7:4 Bm:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C:4 Am7:4 Bm:4 Em:4 C:4 Am7:4 Bm:4 Em:4 C:4 Am7:4 Bm:8 Em:4 C:4 Am7:4 Bm:4 Em:4 C:4 Am7:4 Bm:4 Em:4 C:2 Am7:4 Bm:2 Em:4 Bm:2 Em:4 Bm:2 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "C:4 Am7:4 Bm:4 Em:4 C:4 Am7:4 Bm:2 Em:4 C:4 Am7:4 Bm:4 Em:2 C:4 Am7:4 Bm:4 Em:4 Bm:4 Em:4 Bm:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "C:2 Am7:4 Bm:4 Em:2 C:2 Am7:4 Bm:2 Em:4 C:4 Am7:4 Bm:4 Em:4 C:4 Am7:4 Bm:2 Em:4 Bm:2 Em:4 Bm:2 Em:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 186,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "qHJ8CIM4jCw",
+    "titulo": "Legião Urbana - Tempo perdido (Videoclipe)",
+    "canal": "Brasilidades",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "SLaNv85zvCk",
+    "titulo": "Legião Urbana - Tempo Perdido (Áudio Oficial)",
+    "canal": "Universal Music ",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "tI9kSZgMLsc",
+    "titulo": "Legião Urbana - Tempo Perdido (Ao Vivo Especial)",
+    "canal": "Brasilidades",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "YPLQHeUSX2g",
+    "titulo": "Legião Urbana · Tempo perdido",
+    "canal": "Bille Cipriani",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "tI9kSZgMLsc",
+    "titulo": "Legião Urbana - Tempo Perdido (Ao Vivo Especial)",
+    "canal": "Brasilidades",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "YPLQHeUSX2g",
+    "titulo": "Legião Urbana · Tempo perdido",
+    "canal": "Bille Cipriani",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "qHJ8CIM4jCw",
+    "titulo": "Legião Urbana - Tempo perdido (Videoclipe)",
+    "canal": "Brasilidades",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "DZ_4rOAEVvw",
+    "titulo": "Legião Urbana - Tempo Perdido (Melhor AUDIO)",
+    "canal": "Estúdio Submundo",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "ew6gCAdgjdw",
+    "titulo": "Legião Urbana - Tempo Perdido (Letra)",
+    "canal": "stéphanie legendas",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "gilberto-gil",
+  "mus": "andar-com-fe",
+  "tomOriginal": "C",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Gilberto Gil - Andar Com Fé",
+  "artista": "Gilberto Gil",
+  "acordesOriginal": [
+   "Dm7",
+   "Em7",
+   "C",
+   "F",
+   "G",
+   "Dm7(9)",
+   "C4",
+   "G4(9)",
+   "F7M",
+   "F7"
+  ],
+  "simplificada": true,
+  "tomSimp": "C",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Início",
+    "seq": "C:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4 F:4 G7:4 C:4 G7:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 95,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "DK06zbkZ18w",
+    "titulo": "GILBERTO GIL E AMIGOS - ANDAR COM FÉ | GIL 78 ANOS",
+    "canal": "Gilberto Gil",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "y6g83X6Lrwg",
+    "titulo": "Gilberto Gil - Andar com fé - DVD BandaDois (2009)",
+    "canal": "Gilberto Gil",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "JC63-PQ-O1w",
+    "titulo": "Gilberto Gil - Andar Com Fé (Clipe 1982) [Raridade]",
+    "canal": "Brasilidades",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "cH65dRyJ_Ys",
+    "titulo": "Gilberto Gil - Andar com Fé",
+    "canal": "Vitória Kielmanowicz",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "h0cKwTOPsmU",
+    "titulo": "Andar Com Fé",
+    "canal": "Gilberto Gil",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "q4mZYSqLZTo",
+    "titulo": "Andar Com Fé",
+    "canal": "Gilberto Gil",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "cH65dRyJ_Ys",
+    "titulo": "Gilberto Gil - Andar com Fé",
+    "canal": "Vitória Kielmanowicz",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "JC63-PQ-O1w",
+    "titulo": "Gilberto Gil - Andar Com Fé (Clipe 1982) [Raridade]",
+    "canal": "Brasilidades",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "2zSdToJIfC4",
+    "titulo": "GILBERTO GIL ANDAR COM FÉ",
+    "canal": "LUBOR",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "alceu-valenca",
+  "mus": "anunciacao",
+  "tomOriginal": "G",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "Forró",
+  "titulo": "Alceu Valença - Anunciação",
+  "artista": "Alceu Valença",
+  "acordesOriginal": [
+   "G",
+   "Am",
+   "C",
+   "Em",
+   "F"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:8 Am:4 C:4 G:4 Am:4 C:4 G:4 Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 Em:4 F:4 C:4 G:4 Em:4 F:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 Em:4 F:4 C:4 G:4 G:2 Em:4 F:4 C:4 G:4 Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 Em:4 F:4 C:4 G:4 Em:4 F:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 Em:4 F:4 C:4 G:4 G:2 Em:4 F:4 C:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Am:4 C:4 G:4 Am:4 C:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 102,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "OR74idpsweg",
+    "titulo": "Alceu Valenca - Anunciação",
+    "canal": "Alceu Valença",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "AvA78PzgHeA",
+    "titulo": "Alceu Valença - Anunciação (Ao Vivo na Fundição Progresso)",
+    "canal": "Alceu Valença",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "mOC92PFtowg",
+    "titulo": "Alceu Valença - Anunciação",
+    "canal": "Alceu Valença",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "ldwJJos9WSE",
+    "titulo": "Alceu Valença - Anunciação",
+    "canal": "Alceu Valença",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "OR74idpsweg",
+    "titulo": "Alceu Valenca - Anunciação",
+    "canal": "Alceu Valença",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "PrdBUorYboU",
+    "titulo": "Alceu Valença - Anunciação (com legenda)",
+    "canal": "Morgana",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "QxFAT3OkWcQ",
+    "titulo": "Anunciação - Alceu Valença - (Ao vivo) Em todos os sentidos",
+    "canal": "Indie Records",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "BXw_oXZhG5Q",
+    "titulo": "Alceu Valença e Orquestra Ouro Preto - Anunciação",
+    "canal": "Deck",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "TKyn9wrM_uM",
+    "titulo": "Alceu Valença  \\\"Anunciação\\\"  1983   (Audio Remastered)",
+    "canal": "lucio sampaio",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "taj-mahal",
+  "tomOriginal": "F#m",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Taj Mahal",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "F#m",
+   "D",
+   "E",
+   "F#m7M",
+   "F#m7",
+   "Bm7",
+   "C#m7(9)",
+   "C#m7",
+   "E7(9)",
+   "D#m"
+  ],
+  "simplificada": true,
+  "tomSimp": "Bm",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "Bm7:4 C#m7:4 F#m:4 Bm7:2 C#m7:4 F#m:4 Bm7:4 C#m7:4 F#m:4 Bm7:4 C#m7:4 F#m:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Bm7:4 C#m7:4 F#m:4 Bm7:4 C#m7:4 F#m:4 Bm7:2 C#m7:4 F#m:4 Bm7:2 C#m7:4 F#m:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Bm7:4 E7(9):4 F#m:4 Bm7:4 E7(9):4 F#m:4 Bm7:4 Bm7:4 F#m:4 Bm7:4 Bm7:4 F#m:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Bm7:4 C#m7:4 F#m:4 Bm7:4 C#m7:4 F#m:4 Bm7:2 C#m7:4 F#m:4 Bm7:2 C#m7:4 F#m:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 137,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "rfrpOhC6858",
+    "titulo": "Jorge Ben jor - Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "Ex9jWJ5V014",
+    "titulo": "Jorge Ben - Taj Mahal (1972)",
+    "canal": "Jrdn Sttr",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "ZGAJlkIIN-Q",
+    "titulo": "Jorge Ben Jor – Taj Mahal (Live at Roskilde Festival 2019)",
+    "canal": "Roskilde Festival",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "SeRiCux7JX8",
+    "titulo": "Jorge Ben Jor - Taj Mahal (1976)",
+    "canal": "Lucas Levino",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "c8AuG1W59ig",
+    "titulo": "Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "m8VvTDlkle8",
+    "titulo": "Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "LO_XtSGmJ9A",
+    "titulo": "Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "rfrpOhC6858",
+    "titulo": "Jorge Ben jor - Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "GqCjid2bs5U",
+    "titulo": "Medley: Pais Tropical / Fio Maravilha / Taj Mahal",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "pais-tropical",
+  "tomOriginal": "Em",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - País Tropical",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "G7",
+   "C7",
+   "D7",
+   "Em7",
+   "D",
+   "C"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Início",
+    "seq": "G7:2 C7:2 D7:4 Em:2 D:2 C:2 D:2 Em:4 D:2 C:2 D:2 Em:4 D:2 C:2 D:2 Em:4 D:2 C:4 D:2 Em:2 D:2 C:4 D:2 Em:2 D:2 C:4 D:4 Em:2 D:4 C:4 D:4 G7:4 C7:4 G7:4 C7:4 G7:4 C7:4 D7:4 Em:2 D:2 C:2 D:2 Em:4 D:2 C:2 D:2 Em:4 D:2 C:2 D:2 Em:4 D:2 C:4 D:2 Em:2 D:2 C:4 D:2 Em:2 D:2 C:4 D:4 Em:2 D:4 C:4 D:4 G7:4 C7:4 G7:4 C7:4 G7:4 C7:4 D7:4 Em:2 D:2 C:4 D:2 Em:2 D:2 C:4 D:2 Em:2 D:4 D:2 C:4 D:2 Em:2 D:2 C:4 D:2 Em:2 D:2 C:4 D:2 Em:2 D:4 C:4 D:2 G7:4 C7:4 D7:2 G7:4 C7:4 D7:2 G7:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 83,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "JzByVhWju88",
+    "titulo": "Jorge Ben Jor - País Tropical",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "efVH5sMcO1A",
+    "titulo": "Jorge Ben Jor - País Tropical (Áudio)",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "UAC7p466gEI",
+    "titulo": "Jorge Ben Jor - (Live) Katarina, País tropical - DVD Energia * 1982",
+    "canal": "Fahrenheit452",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "FslSgrUm8x8",
+    "titulo": "Jorge Ben Jor - País Tropical (1976)",
+    "canal": "Lucas Levino",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "efVH5sMcO1A",
+    "titulo": "Jorge Ben Jor - País Tropical (Áudio)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "JzByVhWju88",
+    "titulo": "Jorge Ben Jor - País Tropical",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "wiUg3YjszQI",
+    "titulo": "Jorge Ben Jor - País Tropical",
+    "canal": "Luiz Claudio C. Filho",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "1KM4QCJWXMI",
+    "titulo": "País tropical / Spiro giro",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "kpoj9omkSSI",
+    "titulo": "País tropical (Tropical Version)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "mas-que-nada",
+  "tomOriginal": "Gm",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Mas Que Nada",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "D7(4/9)",
+   "Gm7",
+   "Cm7",
+   "F7(9)",
+   "Bb7M",
+   "Eb7(9)",
+   "Ab7M",
+   "Am7(11)",
+   "D7(#9)",
+   "F7"
+  ],
+  "simplificada": true,
+  "tomSimp": "Gm",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 F7:4 Gm7:4 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4 Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Cm7:4 F7:4 Gm7:4 Cm7:4 F7:4 Gm7:4 D7:2 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4 Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "Gm7:4 Cm7:4 F7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 F7:4 Gm7:4 D7:4 Gm7:4 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Cm7:4 F7:4 Gm7:4 Cm7:4 F7:4 Gm7:4 D7:2 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4 Gm7:2 Cm7:2 F7:2 Gm7:4 D7:2 Gm7:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 89,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "rd3LEsKIjNI",
+    "titulo": "Jorge Ben Jor - Mas Que Nada",
+    "canal": "Zeca Pagodinho",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "oCM_VWzSiMo",
+    "titulo": "Jorge Ben Jor - Mas que nada",
+    "canal": "Caroline",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "2yfxCrDy4gs",
+    "titulo": "Jorge Ben Jor - Mas, Que Nada (Acústico MTV) [Remasterizado 4K]",
+    "canal": "Remasterizando",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "Ru5TOOBtnUs",
+    "titulo": "Jorge Ben- Mas, Que Nada!-1963.wmv",
+    "canal": "sriganesh68",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "hg0XftC43Zo",
+    "titulo": "Mas, Que Nada!",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "5r9X-iQfJ44",
+    "titulo": "Jorge Ben Jor - Mas Que Nada (Original 1963)",
+    "canal": "Excursionist's Lounge",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "05w5ch9l6zI",
+    "titulo": "Sergio Mendes \\u0026 Brasil '66 - Mas que nada - English subtitles",
+    "canal": "BrMusicExplained",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "dDlVZNfxVtE",
+    "titulo": "Mais Que Nada(Original)1963",
+    "canal": "Melissalindona",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "E6oXMWeNAdA",
+    "titulo": "Mas que nada",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "w-brasil-chama-o-sindico",
+  "erro": "Página não encontrada (404).",
+  "bpm": 187,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "bkM1u4GxHzw",
+    "titulo": "Jorge Ben Jor - W/Brasil - Chama O Síndico",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "fY1HviUjWdY",
+    "titulo": "W / Brasil (Chama o síndico)",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "hU69WnX6urY",
+    "titulo": "Jorge Ben Jor - W/Brasil (Chama O Síndico)",
+    "canal": "MysticPieces",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "u63YM31gCZ4",
+    "titulo": "W / Brasil (Chama o síndico) (Ao vivo)",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "bkM1u4GxHzw",
+    "titulo": "Jorge Ben Jor - W/Brasil - Chama O Síndico",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "fY1HviUjWdY",
+    "titulo": "W / Brasil (Chama o síndico)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "AjSSh9bQnU8",
+    "titulo": "Jorge Benjor - W Brasil (Video Clip by #djVizu)",
+    "canal": "Dj Vizu",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "3lnG9Ghd4W8",
+    "titulo": "Jorge Ben Jor - W/Brasil",
+    "canal": "talessouza",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "yzC_ROucovc",
+    "titulo": "Jorge Ben Jor - W/Brasil @ São Paulo 2026",
+    "canal": "Cristiano Souza",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "chove-chuva",
+  "tomOriginal": "Am",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Chove Chuva",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "Am7",
+   "Dm7",
+   "Cm7",
+   "D7(9)",
+   "A7(b13)",
+   "G7",
+   "Dm7(9)"
+  ],
+  "simplificada": true,
+  "tomSimp": "Am",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Am7:4 Dm7:4 Am7:4 Dm7:4 Am7:4 Dm7:4 Am7:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D7:4 Am7:4 D7:4 Am7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "D7:4 G7:4 Am7:2 A7:4 D7:4 G7:4 Am7:4 D7:4 Am7:4 D7:4 Am7:4 D7:2 Dm7:4 G7:4 Am7:4 A7:4 D7:4 G7:4 Am7:4 A7:4 D7:4 G7:4 Am7:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D7:4 Am7:4 D7:4 Am7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "D7:4 G7:4 Am7:2 A7:4 D7:4 G7:4 Am7:4 D7:4 Am7:4 D7:4 Am7:4 D7:2 Dm7:4 G7:4 Am7:4 A7:4 D7:4 G7:4 Am7:4 A7:4 D7:4 G7:4 Am7:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D7:4 Am7:4 D7:4 Am7:4 D7:4 Am7:4 D7:4 Am7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "D7:4 Am7:4 D7:4 Am7:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 135,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "Ubol9NyLWZc",
+    "titulo": "Jorge Ben - Chove Chuva (Áudio Oficial)",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 8,
+    "embed": 200
+   },
+   {
+    "id": "5bHqzhyU3wc",
+    "titulo": "ROBERTO CARLOS  CHOVE CHUVA Feat  JORGE BEN JOR '25 ''Ao Vivo'' #robertocarlos",
+    "canal": "ELMIR MEGAMUSIC",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "48TCDQOykI0",
+    "titulo": "Jorge Ben Jor - Por Causa deVocê,Menina/Chove Chuva",
+    "canal": "MysticPieces",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "RSlnTUJ8JCo",
+    "titulo": "Jorge Ben Jor - Chove Chuva",
+    "canal": "Caroline",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "Ubol9NyLWZc",
+    "titulo": "Jorge Ben - Chove Chuva (Áudio Oficial)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "J3lelxQ6QyQ",
+    "titulo": "Chove Chuva",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "hJ7Xpa36s0E",
+    "titulo": "Selassiê / Chove chuva",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "RSlnTUJ8JCo",
+    "titulo": "Jorge Ben Jor - Chove Chuva",
+    "canal": "Caroline",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "6KLH-9ZZvKA",
+    "titulo": "Chove Chuva",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "magnolia",
+  "tomOriginal": "G",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Magnólia",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "Gm",
+   "F#m",
+   "Em",
+   "D7M",
+   "Em7",
+   "F#m7",
+   "Fm"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm:4 F#m:4 Em:4 F#m:4 Em:4 D7M:4 Em7:8 D7M:4 Em7:8 F#m7:4 Em7:4 F#m7:4 Em7:4 F#m7:4 Em7:4 D7M:2 Em7:4 F#m7:4 Em7:4 D7M:2 Em7:4 F#m7:4 Em7:4 D7M:2 Em7:4 F#m:2 Gm:2 Fm:4 Em7:4 F#m:2 Gm:2 F#m:4 Em7:4 F#m:2 Gm:2 F#m:4 Em7:4 F#m:2 Gm:2 F#m:4 Em7:8 F#m:4 Gm:4 F#m:4 Em7:8 F#m:2 Gm:2 F#m:4 Em7:4 F#m7:4 Em7:4 D7M:2 Em7:4 F#m7:4 Em7:4 D7M:2 Em7:4 F#m7:4 Em7:4 F#m7:4 Em7:4 F#m7:4 Em7:4 F#m7:4 Em7:4 F#m7:2 Em7:2 F#m7:2 Em7:4 F#m7:2 Em7:2 F#m7:2 Em7:4 F#m7:2 Em7:4 F#m7:2 Em7:4 F#m7:2 Em7:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 121,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "fZwakAsxLIo",
+    "titulo": "Jorge Ben Jor   Magnólia",
+    "canal": "jotaexpress",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "6IjmayL2sD4",
+    "titulo": "Jorge Ben - 06 - Magnólia",
+    "canal": "Dionisio Urbim",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "tnAht3fBHME",
+    "titulo": "Jorge Ben   Magnólia",
+    "canal": "Eduardo Ferreira",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "B6pl4EfCsHM",
+    "titulo": "Jorge Ben Jor - Que Maravilha / Magnólia / Ive Brussel @ Nubank Parque, São Paulo - 17/10/2026",
+    "canal": "Bruno Capelas",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "NE0FAmjSE_8",
+    "titulo": "Magnólia",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "tnAht3fBHME",
+    "titulo": "Jorge Ben   Magnólia",
+    "canal": "Eduardo Ferreira",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "fZwakAsxLIo",
+    "titulo": "Jorge Ben Jor   Magnólia",
+    "canal": "jotaexpress",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "CTZiv9VsI-g",
+    "titulo": "Jorge Ben Jor - \\\"Magnólia\\\" (English Subtitles)",
+    "canal": "Linda Madeira",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "6IjmayL2sD4",
+    "titulo": "Jorge Ben - 06 - Magnólia",
+    "canal": "Dionisio Urbim",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "amante-amado",
+  "tomOriginal": "G",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Amante Amado",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "E7(9)",
+   "Eb7M",
+   "D7M",
+   "G7M",
+   "F#m7",
+   "Em7",
+   "A7",
+   "C"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 G:4 F#m:4 B:4 Em:4 A:2 D:4 G:4 F#m:4 B:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4 E:4 Eb:4 D:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": 84,
+  "bpmStatus": 200,
+  "youtube": [
+   {
+    "id": "Kj3RLeP_OBk",
+    "titulo": "Jorge Ben Jor - Amante Amado (A Banda Do Zé Pretinho) [Áudio Oficial]",
+    "canal": "MPB :: As Melhores!",
+    "duracao": "",
+    "pontos": 5,
+    "embed": 200
+   },
+   {
+    "id": "Ws3r24Uhu74",
+    "titulo": "Jorge Ben - Amante Amado",
+    "canal": "Larissa",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "RLNReBg1YfU",
+    "titulo": "Jorge Ben Jor - Amante Amado Slowed",
+    "canal": "hatedoclt",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "RSfjehsfxj4",
+    "titulo": "Jorge Ben - Amante Amado",
+    "canal": "Black Total Pura Sensibilidade",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "Ws3r24Uhu74",
+    "titulo": "Jorge Ben - Amante Amado",
+    "canal": "Larissa",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "Kj3RLeP_OBk",
+    "titulo": "Jorge Ben Jor - Amante Amado (A Banda Do Zé Pretinho) [Áudio Oficial]",
+    "canal": "MPB :: As Melhores!",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "mtmTC6zP2YY",
+    "titulo": "Jorge Ben Jor - Amante Amado -\\\"Quero ser mandado,adorado,acariciado, machucado...\\\" (letra/legendado)",
+    "canal": "Traduzindo Músicas",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "RLNReBg1YfU",
+    "titulo": "Jorge Ben Jor - Amante Amado Slowed",
+    "canal": "hatedoclt",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "PlIPxDJh_lM",
+    "titulo": "AMANTE AMADO (Jorge Ben Jor) - BASS COVER",
+    "canal": "Partilha Musical",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ },
+ {
+  "art": "jorge-ben-jor",
+  "mus": "filho-maravilha",
+  "tomOriginal": "G",
+  "formaOriginal": "",
+  "capoOriginal": 0,
+  "genero": "MPB",
+  "titulo": "Jorge Ben Jor - Filho Maravilha",
+  "artista": "Jorge Ben Jor",
+  "acordesOriginal": [
+   "Em",
+   "C",
+   "D",
+   "Em7",
+   "D9",
+   "Am7",
+   "Bm7"
+  ],
+  "simplificada": true,
+  "tomSimp": "G",
+  "capoSimp": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Em:4 C:4 D:4 Em7:4 C:2 D9:4 Em7:2 C:2 D9:2 Em7:4 C:4 D9:2 Em7:4 C:2 D9:4 Em7:4 C:2 D9:4 Em7:4 C:2 D9:2 Em7:4 C:2 Em7:2 C:2 D9:4 Em7:4 C:2 D9:4 Em7:4 C:2 D9:4 Em7:8 C:4 D9:2 Em7:4 C:2 D9:4 Em7:8 C:4 D9:4 Em7:4 C:2 D9:4 Em7:4 C:4 D9:2 Em7:4 C:4 D9:4 Em7:4 C:4 D9:4 Em7:4 C:4 D9:4 Em7:4 Am7:2 Bm7:4 Em7:2 Am7:2 Bm7:4 Em7:4 Am7:2 Bm7:4 Em7:2 Am7:2 Bm7:4 Em7:4 Am7:2 Bm7:4 Em7:2 Am7:2 Bm7:4 Em7:4 C:4 D9:4 Em7:2 C:2 D9:4 Em7:4 Am7:2 Bm7:4 Em7:2 Am7:2 Bm7:4 Em7:4 C:4 D9:4 Em7:2 C:2 D9:4",
+    "repetir": 1
+   }
+  ],
+  "bpm": null,
+  "bpmStatus": 404,
+  "youtube": [
+   {
+    "id": "RXqfj88I-p8",
+    "titulo": "Jorge Ben Jor - Filho Maravilha",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 7,
+    "embed": 200
+   },
+   {
+    "id": "UKZKNPmJpd0",
+    "titulo": "Jorge Ben Jor - Fio Maravilha (Áudio Oficial)",
+    "canal": "Jorge Ben Jor",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "3E95EZnDTlI",
+    "titulo": "Jorge Ben Jor - Filho Maravilha HQ",
+    "canal": "Éverton (Bombeiro Civil)🔥",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "EaOJEwDCovc",
+    "titulo": "Jorge Ben Jor - Filho Maravilha - Acustico MTV (Audio)",
+    "canal": "YOUMUSIC",
+    "duracao": "",
+    "pontos": 4,
+    "embed": 200
+   },
+   {
+    "id": "U4TmSAt_qwQ",
+    "titulo": "Filho maravilha (Fio maravilha)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "kND2lCewiF0",
+    "titulo": "Fio Maravilha",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "UKZKNPmJpd0",
+    "titulo": "Jorge Ben Jor - Fio Maravilha (Áudio Oficial)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "RXqfj88I-p8",
+    "titulo": "Jorge Ben Jor - Filho Maravilha",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   },
+   {
+    "id": "3BtEiEhnWCk",
+    "titulo": "Filho maravilha (Radio Version)",
+    "canal": "Jorge Ben Jor",
+    "pontos": 0,
+    "embed": 200
+   }
+  ]
+ }
+]
