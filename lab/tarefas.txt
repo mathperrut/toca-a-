@@ -1,1 +1,1 @@
-curar.mjs
+voz.py

@@ -1,0 +1,77 @@
+{
+ "partes": [
+  {"v": "titulo", "t": "As partes do violão", "fala": "Vamos conhecer as partes do violão."},
+  {"v": "partes-cabeca", "fala": "Em cima fica a cabeça. As tarraxas esticam ou afrouxam as cordas. É com elas que você afina."},
+  {"v": "partes-braco", "fala": "Depois vem o braço. Os ferrinhos são os trastes, e o espaço entre dois trastes é a casa."},
+  {"v": "partes-caixa", "fala": "Embaixo fica a caixa. Ela é oca e deixa o som forte. O som sai pela boca."},
+  {"v": "partes-cavalete", "fala": "As cordas ficam presas no cavalete, apoiadas no rastilho."},
+  {"v": "fim", "t": "Agora é só tocar", "fala": "Pronto. Agora você já sabe o nome de cada parte.", "som": "strum:G"}
+ ],
+ "cordas": [
+  {"v": "titulo", "t": "As 6 cordas", "fala": "O violão tem seis cordas."},
+  {"v": "cordas-num", "fala": "A mais grossa é a sexta corda. A mais fina é a primeira."},
+  {"v": "cordas-nomes", "fala": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.", "som": "cordas"},
+  {"v": "cordas-frase", "fala": "Para decorar: Eu Amo Doce de Goiaba, Bem Escuro. E, A, D, G, B, E."},
+  {"v": "fim", "t": "E A D G B E", "fala": "Essas letras são o nome das cordas na cifra."}
+ ],
+ "afinar": [
+  {"v": "titulo", "t": "Como afinar", "fala": "Violão desafinado deixa até o acorde certo com som errado. Vamos afinar."},
+  {"v": "afinar-0", "fala": "Abra a aba Afinador e toque uma corda solta.", "som": "nota:40"},
+  {"v": "afinar-grave", "fala": "Se o ponteiro ficar à esquerda, a corda está grave. Aperte a tarraxa, devagar."},
+  {"v": "afinar-agudo", "fala": "Se ficar à direita, está aguda. Afrouxe um pouco."},
+  {"v": "afinar-ok", "fala": "No centro e verde, está afinada. Faça isso nas seis cordas."},
+  {"v": "fim", "t": "Chegue subindo", "fala": "Dica: chegue na nota sempre subindo. Assim a corda segura a afinação."}
+ ],
+ "postura": [
+  {"v": "titulo", "t": "Postura e mãos", "fala": "Postura e mãos: o jeito certo de segurar o violão."},
+  {"v": "postura-dedos", "fala": "Na mão que aperta as cordas, cada dedo tem um número. Indicador um, médio dois, anelar três e mindinho quatro."},
+  {"v": "postura-casa", "fala": "Aperte com a ponta do dedo, logo atrás do traste. Assim o som sai limpo, com pouca força."},
+  {"v": "postura-polegar", "fala": "O polegar fica atrás do braço. A outra mão bate nas cordas com o pulso solto."},
+  {"v": "fim", "t": "Dor é normal", "fala": "Nas primeiras semanas a ponta dos dedos dói. É normal: os calos aparecem em duas ou três semanas."}
+ ],
+ "diagrama": [
+  {"v": "titulo", "t": "Como ler um acorde", "fala": "Como ler o desenho de um acorde."},
+  {"v": "diag-cordas", "fala": "O desenho é o violão de pé na sua frente. A linha da esquerda é a sexta corda, a mais grossa."},
+  {"v": "diag-trastes", "fala": "As linhas deitadas são os trastes. A linha grossa em cima é o começo do braço."},
+  {"v": "diag-em", "fala": "A bolinha mostra onde apertar, e o número diz qual dedo usar. Este é o Mi menor.", "som": "strum:Em"},
+  {"v": "diag-am", "fala": "A bolinha vazia em cima é corda solta. O xis é corda que não toca. Este é o Lá menor.", "som": "strum:Am"},
+  {"v": "fim", "t": "Bolinha, número, O e X", "fala": "Bolinha, número, bolinha vazia e xis. Com isso você lê qualquer acorde."}
+ ],
+ "batida": [
+  {"v": "titulo", "t": "A batida", "fala": "A batida: o que a mão direita faz."},
+  {"v": "batida-4", "fala": "A batida mais simples é para baixo, uma vez em cada tempo. Um, dois, três, quatro.", "som": "batida:quatro"},
+  {"v": "batida-8", "fala": "Depois, junte uma batida para cima no e entre os números. Um e dois e três e quatro e.", "som": "batida:baixocima"},
+  {"v": "batida-pendulo", "fala": "A mão nunca para. Ela vai e volta como um pêndulo. Nas pausas, só passa sem encostar nas cordas."},
+  {"v": "fim", "t": "Devagar e certo", "fala": "Comece devagar. A velocidade vem com o tempo."}
+ ],
+ "tab": [
+  {"v": "titulo", "t": "Como ler tablatura", "fala": "Como ler tablatura."},
+  {"v": "tab-linhas", "fala": "A tablatura tem seis linhas, uma para cada corda. A linha de cima é a primeira corda, a mais fina."},
+  {"v": "tab-numeros", "fala": "Os números dizem a casa que você aperta. Zero é corda solta."},
+  {"v": "tab-ler", "fala": "Leia da esquerda para a direita, uma nota de cada vez.", "som": "melodia"},
+  {"v": "fim", "t": "Uma tablatura que anda", "fala": "O jogo do Toca Aí é uma tablatura que anda até a linha vermelha."}
+ ],
+ "jogo": [
+  {"v": "titulo", "t": "Como funciona o jogo", "fala": "Como funciona o jogo do Toca Aí."},
+  {"v": "jogo-tela", "fala": "As seis cordas ficam deitadas, com a primeira corda em cima. Os acordes vêm da direita e deslizam até a linha vermelha."},
+  {"v": "jogo-bola", "fala": "A bolinha vermelha cai em cima de cada batida, na hora certa de tocar.", "som": "strum:A9"},
+  {"v": "jogo-espera", "fala": "No modo Esperar por mim, a música para em cada acorde até o microfone ouvir você acertar."},
+  {"v": "jogo-tempo", "fala": "No modo No tempo, a música não para. Você ganha pontos pelo tempo e pelo acorde certo."},
+  {"v": "fim", "t": "Três estrelas? Acelere", "fala": "Comece devagar e suba a velocidade quando ganhar três estrelas."}
+ ],
+ "samba": [
+  {"v": "titulo", "t": "Ritmos brasileiros", "fala": "Ritmos brasileiros no violão."},
+  {"v": "ritmo-samba", "fala": "No samba, o polegar faz o surdo, e os dedos fazem o tamborim.", "som": "batida:samba"},
+  {"v": "ritmo-baiao", "fala": "No baião, o polegar imita a zabumba, e os dedos respondem como o triângulo.", "som": "batida:baiao"},
+  {"v": "ritmo-bossa", "fala": "Na bossa nova, o polegar marca o tempo como um relógio, e os dedos entram fora do tempo.", "som": "batida:bossa"},
+  {"v": "ritmo-sambarock", "fala": "E no samba-rock do Jorge Ben Jor, a mão direita é solta e cheia de balanço.", "som": "batida:sambarock"},
+  {"v": "fim", "t": "O violão é uma bateria", "fala": "O polegar é o bumbo, e os dedos são a caixa e o chocalho."}
+ ],
+ "estudar": [
+  {"v": "titulo", "t": "Como estudar", "fala": "Como estudar violão."},
+  {"v": "estudar-pouco", "fala": "Dez minutos por dia ensinam mais do que duas horas só no domingo."},
+  {"v": "estudar-rotina1", "fala": "Um minuto para afinar. Três minutos para aprender um acorde novo, dedo a dedo."},
+  {"v": "estudar-rotina2", "fala": "Três minutos trocando entre dois acordes. E três minutos tocando uma música."},
+  {"v": "fim", "t": "Devagar e todo dia", "fala": "Toque devagar e certo, todo dia. A velocidade vem sozinha."}
+ ]
+}

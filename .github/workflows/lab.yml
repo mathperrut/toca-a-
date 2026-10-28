@@ -16,14 +16,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Instalar linkedom (DOMParser no Node)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependências
         working-directory: lab
-        run: npm init -y >/dev/null && npm i linkedom@0.18.12 --no-audit --no-fund
+        run: |
+          npm init -y >/dev/null && npm i linkedom@0.18.12 --no-audit --no-fund
+          pip install piper-tts onnxruntime
       - name: Rodar
         working-directory: lab
         run: |
           mkdir -p saida
-          for s in $(cat tarefas.txt); do node "$s" 2>&1 | tee "saida/$(basename $s .mjs).log"; done
+          for s in $(cat tarefas.txt); do
+            case "$s" in
+              *.py) python3 "$s" 2>&1 | tee "saida/$(basename $s .py).log" ;;
+              *) node "$s" 2>&1 | tee "saida/$(basename $s .mjs).log" ;;
+            esac
+          done
       - name: Devolver resultados para a branch
         if: always()
         run: |
