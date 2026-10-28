@@ -1,0 +1,24 @@
+# Laboratório (branch separada): testes que precisam de internet.
+# Não gera APK. Pode apagar esta branch quando quiser.
+name: Laboratorio
+on:
+  push:
+    branches: [laboratorio]
+  workflow_dispatch:
+jobs:
+  sondar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Sondar
+        working-directory: lab
+        run: node sondar.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saida
+          path: lab/saida
+          if-no-files-found: ignore
