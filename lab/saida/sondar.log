@@ -1,0 +1,597 @@
+===== 1. ENDPOINTS DE BUSCA =====
+
+--- https://solr.sscdn.co/cc/h2/?q=trem%20bala
+ status=200 tipo=application/json;charset=utf-8 final=https://solr.sscdn.co/cc/h2/?q=trem%20bala tam=5663
+({ "response":{"numFound":454,"start":0,"maxScore":186.17253,"numFoundExact":true,"docs":[ { "t":"2", "s":186.17253, "b":0, "m":"Trem-Bala", "a":"Ana Vilela", "i":"f/2/5/a/f25afafdc8f9a2f7db54e3938b45bfd3-tb.jpg", "d":"ana-vilela", "u":"trem-bala"}, { "t":"2", "s":112.397095, "b":0, "m":"Trem Bala", "a":"Kell Smith", "i":"c/3/4/e/c34eedde487a7d748a42420289167b84-tb.jpg", "d":"kell-smith", "u":"trem-bala"}, { "t":"2", "s":96.581436, "b":0, "m":"Trem Bala", "a":"Luan Santana", "i":"d/4/b/4/d4b43402a02caf9049963e7854f475f2-tb.jpg", "d":"luan-santana", "u":"trem-bala"}, { "t":"2", "s":95.638275, "b":0, "m":"Trem Bala", "a":"Filipe Ret", 
+
+--- https://solr.sscdn.co/cc/h1/?q=trem%20bala
+ status=200 tipo=application/json;charset=utf-8 final=https://solr.sscdn.co/cc/h1/?q=trem%20bala tam=19657
+suggest_callback({ "response":{"numFound":37,"start":0,"maxScore":179.6514,"numFoundExact":true,"docs":[ { "id":"mus398468", "t":"2", "iar":204673, "art":"Ana Vilela", "dns":"ana-vilela", "txt":"Trem-Bala", "full_txt":"Trem-Bala Ana Vilela", "url":"trem-bala", "url_inst":"/", "vaula":"", "ici":399920, "icbx":0, "icbt":0, "icga":0, "imu":398468, "h":61540, "p":1.0, "img":"f/2/5/a/f25afafdc8f9a2f7db54e3938b45bfd3-tb.jpg", "imgm":"https://akamai.sscdn.co/letras/250x250/fotos/f/2/5/a/f25afafdc8f9a2f7db54e3938b45bfd3.jpg", "vci":9, "vbx":0, "vbt":0, "vga":0, "block":0, "letra":"Não é sobre ter todas as pessoas do mundo pra si É sobre saber que em algum lugar alguém zela por ti É sobre c
+
+--- https://studiosolsolr-a.akamaihd.net/cc/h2/?q=trem%20bala
+ status=400 tipo=text/html final=https://studiosolsolr-a.akamaihd.net/cc/h2/?q=trem%20bala tam=312
+<HTML><HEAD> <TITLE>Invalid URL</TITLE> </HEAD><BODY> <H1>Invalid URL</H1> The requested URL "&#91;no&#32;URL&#93;", is invalid.<p> Reference&#32;&#35;9&#46;2100de17&#46;1793152042&#46;2ab14b8b <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;9&#46;2100de17&#46;1793152042&#46;2ab14b8b</P> </BODY></HTML> 
+
+--- https://solr.sscdn.co/letras/m1/?q=trem%20bala
+ status=200 tipo=application/json;charset=utf-8 final=https://solr.sscdn.co/letras/m1/?q=trem%20bala tam=4595
+LetrasSug({"response":{"numFound":5566,"start":0,"maxScore":29.545685,"docs":[{"art":"Ana Vilela","dns":"ana-vilela","full_txt":"Trem-Bala Ana Vilela","extra_txt":"","txt":"Trem-Bala","g":"MPB","h":8292,"iar":204673,"imu":2854366,"id":"mus2854366","imgm":"https://akamai.sscdn.co/letras/250x250/albuns/5/0/b/4/602691508517612.jpg","img":"https://akamai.sscdn.co/letras/250x250/fotos/8/5/4/e/854ee5fafe2cbaf60cb659a8c7946a70.jpg","img_alt_text":"","t":"2","url":"trem-bala","me_locales":["en_US","es_ES","pt_BR"],"score":29.545685},{"art":"Ana Vilela","dns":"ana-vilela","full_txt":"Trem-Bala (part. Luan Santana) Ana Vilela","extra_txt":"(part. Luan Santana)","txt":"Trem-Bala ","g":"MPB","h":536,"iar":204673,"imu":2899061,"id":"mus2899061","imgm":"https://akamai.sscdn.co/letras/250x250/albuns/5/0/b/4/602691508517612.jpg","img":"https://akamai.sscdn.co/letras/250x250/fotos/8/5/4/e/854ee5fafe2cbaf
+
+--- https://www.cifraclub.com.br/?q=trem%20bala
+ status=200 tipo=text/html; charset=utf-8 final=https://www.cifraclub.com.br/?q=trem%20bala tam=415525
+<!DOCTYPE html><html dir="ltr" lang="pt-BR" data-lang="pt" data-locale="pt-BR"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link href="https://akamai.sscdn.co/ccn/_next/static/css/1c507c316d8d079c.css" rel="stylesheet" as="style" media="print" fetchPriority="high" data-precedence="next"/><link href="https://akamai.sscdn.co/ccn/_next/static/css/32527ee06ddc997c.css" rel="stylesheet" as="style" media="print" fetchPriority="high" data-precedence="next"/><link href="https://akamai.sscdn.co/ccn/_next/static/css/ad083c797a85ddeb.css" rel="stylesheet" as="style" media="print" fetchPriority="high" data-precedence="next"/><link href="https://akamai.sscdn.co/ccn/_next/static/css/d4a214d65f57801b.css" rel="stylesheet" as="style" media="print" fetchPriority="high" data-precedence="next"/><link href="https://akamai.sscdn.co/ccn/_next/static/css/de
+
+--- https://www.cifraclub.com.br/busca/?q=trem%20bala
+ status=404 tipo=text/html; charset=utf-8 final=https://www.cifraclub.com.br/busca/?q=trem%20bala tam=214608
+<!DOCTYPE html><html id="__next_error__"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="script" fetchPriority="low" href="https://akamai.sscdn.co/ccn/_next/static/chunks/webpack-1e9c27b8478767a2.js"/><script src="https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/next-2eecc75a513de4c8.js" async=""></script><script src="https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/npm-0785e22724758850.js" async=""></script><script src="https://akamai.sscdn.co/ccn/_next/static/chunks/main-app-c93c2262abe3c2e8.js" async=""></script><meta name="robots" content="noindex"/><title>Cifra Club - Seu site de cifras e tablaturas</title><meta name="description" content="Cifras e tablaturas de músicas para violão, guitarra, baixo, piano, teclado, bateria e gaita. Possui videoaulas e classificados de professores."/><link rel="ma
+
+===== 2. JS DA HOME: onde a busca é feita =====
+home status 200 tam 511883
+scripts: https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/next-2eecc75a513de4c8.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/npm-0785e22724758850.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/main-app-c93c2262abe3c2e8.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/cc/components/compasso-94aabf33e21c9e93.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/5557-57f2d5c3e82ea5ca.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/9419-f1334dcbf5086809.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/8485-7ca36437cb8d8956.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/app/global-error-38434bd124feba01.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/zod-b590ba956fb85730.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/9258-27c952dbebff7602.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/7880-37c68f27621f95cc.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/5295-fb7fcdc057d65836.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/app/(home)/page-337d0bbd78815675.js
+  https://securepubads.g.doubleclick.net/tag/js/gpt.js
+  https://akamai.sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c374c161027e.m.js
+  https://akamai.sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.f2259588d8d24cea8194.js
+  https://akamai.sscdn.co/gcs/letras-static/ads/js/prebid_all.14ebd46b1a62bc11d7ceb6212030bf87.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/polyfills-42372ed130431b0a.js
+  https://akamai.sscdn.co/ccn/_next/static/chunks/webpack-1e9c27b8478767a2.js
+  home> sscdn.co/ccn/_next/static/css/1c507c316d8d079c.css
+  home> sscdn.co/ccn/_next/static/css/32527ee06ddc997c.css
+  home> sscdn.co/ccn/_next/static/css/ad083c797a85ddeb.css
+  home> sscdn.co/ccn/_next/static/css/d4a214d65f57801b.css
+  home> sscdn.co/ccn/_next/static/css/dee4d934ad35c2ce.css
+  home> sscdn.co/ccn/_next/static/css/210f7547e2c6a1f2.css
+  home> sscdn.co/ccn/_next/static/css/f4a76513b05c10c3.css
+  home> sscdn.co/ccn/_next/static/css/40832c715529509b.css
+  home> sscdn.co/ccn/_next/static/css/e9288e46fa5eae9c.css
+  home> sscdn.co/ccn/_next/static/css/c2cd70f07c0c9051.css
+  home> sscdn.co/ccn/_next/static/css/afb6b48599e4242d.css
+  home> sscdn.co/ccn/_next/static/css/31727b7534660f70.css
+  home> sscdn.co/ccn/_next/static/css/b20ffd56c564c5c0.css
+  home> sscdn.co/ccn/_next/static/css/55cb43c49e53491f.css
+  home> sscdn.co/ccn/_next/static/css/7e9b5ce7398bab7c.css
+  home> sscdn.co/ccn/_next/static/css/4443ae7154531964.css
+  home> sscdn.co/ccn/_next/static/css/6a2979d0a60c8805.css
+  home> sscdn.co/ccn/_next/static/css/d847922882d7cb3d.css
+  home> sscdn.co/ccn/_next/static/css/d2d37e7fd7c8cb80.css
+  home> sscdn.co/ccn/_next/static/css/0c542a3d761542c0.css
+  home> sscdn.co/ccn/_next/static/css/69ae5b7e4643ea02.css
+  home> sscdn.co/ccn/_next/static/css/011f1841b5804f89.css
+  home> sscdn.co/ccn/_next/static/css/8baaa2873f6ec58e.css
+  home> sscdn.co/ccn/_next/static/chunks/webpack-1e9c27b8478767a2.js
+  home> sscdn.co/ccn/_next/static/chunks/vendors/next-2eecc75a513de4c8.js
+  home> sscdn.co/ccn/_next/static/chunks/vendors/npm-0785e22724758850.js
+  home> sscdn.co/ccn/_next/static/chunks/main-app-c93c2262abe3c2e8.js
+  home> sscdn.co/ccn/_next/static/chunks/cc/components/compasso-94aabf33e21c9e93.js
+  home> sscdn.co/ccn/_next/static/chunks/5557-57f2d5c3e82ea5ca.js
+  home> sscdn.co/ccn/_next/static/chunks/9419-f1334dcbf5086809.js
+  home> sscdn.co/ccn/_next/static/chunks/8485-7ca36437cb8d8956.js
+  home> sscdn.co/ccn/_next/static/chunks/app/global-error-38434bd124feba01.js
+  home> sscdn.co/ccn/_next/static/chunks/vendors/zod-b590ba956fb85730.js
+  home> sscdn.co/ccn/_next/static/chunks/9258-27c952dbebff7602.js
+  home> sscdn.co/ccn/_next/static/chunks/7880-37c68f27621f95cc.js
+  home> sscdn.co/ccn/_next/static/chunks/5295-fb7fcdc057d65836.js
+  home> sscdn.co/ccn/_next/static/chunks/app/(home)/page-337d0bbd78815675.js
+  home> sscdn.co/ccn/_next/static/css/f9591b560589abd5.css
+  home> sscdn.co/ccn/_next/static/chunks/1198.02baba7e9e725428.js
+  home> sscdn.co/id/v2/pt-br/client.mdr.latest.js
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-76x76.png
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-76x76.png
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-120x120.png
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-152x152.png
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-180x180.png
+  home> sscdn.co
+  home> solr.sscdn.co
+  home> sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c374c161027e.m.js
+  home> sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.f2259588d8d24cea8194.js
+  home> sscdn.co/gcs/letras-static/ads/js/prebid_all.14ebd46b1a62bc11d7ceb6212030bf87.js
+  home> sscdn.co/ccn/_next/static/chunks/polyfills-42372ed130431b0a.js
+  home> suggest-root
+  home> sscdn.co/ccn/_next/static/p/favicon/favicon-512x512.png
+  home> sscdn/gcs/cifraclub/destaques/5/c/0/5/9eddd4c1793039863_x1_app.png
+  home> sscdn/gcs/cifraclub/destaques/a/e/2/b/9eddd4c1793039864_x2_app.png
+  home> sscdn/gcs/cifraclub/destaques/d/c/6/8/99eeabd1793039860_x1_big_935.png
+  home> sscdn/gcs/cifraclub/destaques/b/9/8/1/99eeabd1793039861_x2_big_935.png
+  home> sscdn/gcs/cifraclub/destaques/2/c/5/1/92902a21793039857_x1_big_1055.png
+  home> sscdn/gcs/cifraclub/destaques/8/5/2/b/92902a21793039858_x2_big_1055.png
+  home> sscdn/gcs/cifraclub/destaques/1/5/7/a/a1ef17d1793039853_x1_big_1295.png
+  home> sscdn/gcs/cifraclub/destaques/a/c/e/5/a1ef17d1793039855_x2_big_1295.png
+  home> sscdn/gcs/cifraclub/destaques/a/e/2/b/9eddd4c1793039864_x2_app.png
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb2.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb5.jpg
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb2.jpg
+  home> search.com/cs/6036356/beacon.js
+  home> sscdn.co/ccn/_next/static/chunks/webpack-1e9c27b8478767a2.js
+  home> sscdn.co/ccn/_next/static/css/1c507c316d8d079c.css\
+  home> sscdn.co/ccn/_next/static/css/32527ee06ddc997c.css\
+  home> sscdn.co/ccn/_next/static/css/ad083c797a85ddeb.css\
+  home> sscdn.co/ccn/_next/static/css/d4a214d65f57801b.css\
+  home> sscdn.co/ccn/_next/static/css/dee4d934ad35c2ce.css\
+  home> sscdn.co/ccn/_next/static/css/210f7547e2c6a1f2.css\
+  home> sscdn.co/ccn/_next/static/css/f4a76513b05c10c3.css\
+  home> sscdn.co/ccn/_next/static/css/40832c715529509b.css\
+  home> sscdn.co/ccn/_next/static/css/e9288e46fa5eae9c.css\
+  home> sscdn.co/ccn/_next/static/css/c2cd70f07c0c9051.css\
+  home> sscdn.co/ccn/_next/static/css/afb6b48599e4242d.css\
+  home> sscdn.co/ccn/_next/static/css/31727b7534660f70.css\
+  home> sscdn.co/ccn/_next/static/css/b20ffd56c564c5c0.css\
+  home> sscdn.co/ccn/_next/static/css/55cb43c49e53491f.css\
+  home> sscdn.co/ccn/_next/static/css/7e9b5ce7398bab7c.css\
+  home> sscdn.co/ccn/_next/static/css/4443ae7154531964.css\
+  home> sscdn.co/ccn/_next/static/css/6a2979d0a60c8805.css\
+  home> sscdn.co/ccn/_next/static/css/d847922882d7cb3d.css\
+  home> sscdn.co/ccn/_next/static/css/d2d37e7fd7c8cb80.css\
+  home> sscdn.co/ccn/_next/static/css/f9591b560589abd5.css\
+  home> sscdn.co/ccn/_next/static/css/7e9b5ce7398bab7c.css\
+  home> sscdn.co/ccn/_next/static/css/4443ae7154531964.css\
+  home> sscdn.co/ccn/_next/static/css/6a2979d0a60c8805.css\
+  home> sscdn.co/ccn/_next/static/css/d847922882d7cb3d.css\
+  home> sscdn.co/ccn/_next/static/css/d2d37e7fd7c8cb80.css\
+  home> sscdn.co/ccn/_next/static/css/1c507c316d8d079c.css\
+  home> sscdn.co/ccn/_next/static/css/32527ee06ddc997c.css\
+  home> sscdn.co/ccn/_next/static/css/ad083c797a85ddeb.css\
+  home> sscdn.co/ccn/_next/static/css/d4a214d65f57801b.css\
+  home> sscdn.co/ccn/_next/static/css/dee4d934ad35c2ce.css\
+  home> sscdn.co/ccn/_next/static/css/210f7547e2c6a1f2.css\
+  home> sscdn.co/ccn/_next/static/css/f4a76513b05c10c3.css\
+  home> sscdn.co/ccn/_next/static/css/40832c715529509b.css\
+  home> sscdn.co/ccn/_next/static/css/e9288e46fa5eae9c.css\
+  home> sscdn.co/ccn/_next/static/css/c2cd70f07c0c9051.css\
+  home> sscdn.co/ccn/_next/static/css/afb6b48599e4242d.css\
+  home> sscdn.co/ccn/_next/static/css/31727b7534660f70.css\
+  home> sscdn.co/ccn/_next/static/css/b20ffd56c564c5c0.css\
+  home> sscdn.co/ccn/_next/static/css/55cb43c49e53491f.css\
+  home> sscdn.co/ccn/_next/static/css/1c507c316d8d079c.css\
+  home> sscdn.co/ccn/_next/static/css/32527ee06ddc997c.css\
+  home> sscdn.co/ccn/_next/static/css/dee4d934ad35c2ce.css\
+  home> sscdn.co/ccn/_next/static/css/f9591b560589abd5.css\
+  home> sscdn.co/ccn/_next/static/css/0c542a3d761542c0.css\
+  home> sscdn.co/ccn/_next/static/css/69ae5b7e4643ea02.css\
+  home> sscdn.co/ccn/_next/static/css/011f1841b5804f89.css\
+  home> sscdn.co/ccn/_next/static/css/0c542a3d761542c0.css\
+  home> sscdn.co/ccn/_next/static/css/69ae5b7e4643ea02.css\
+  home> sscdn.co/ccn/_next/static/css/011f1841b5804f89.css\
+  home> sscdn.co/ccn/_next/static/p/favicon/favicon-512x512.png\\\
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-76x76.png\
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-76x76.png\
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-120x120.png\
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-152x152.png\
+  home> sscdn.co/ccn/_next/static/p/favicon/apple-touch-icon-180x180.png\
+  home> Search\
+  home> searchPlaceholder\
+  home> searchLabel\
+  home> SearchParamsProvider\
+  home> SuggestProvider\
+  home> SuggestModal\
+  home> sscdn.co\
+  home> solr.sscdn.co\
+  home> suggest-root\
+  home> sscdn.co/ccn/_next/static/css/f9591b560589abd5.css\
+  home> sscdn.co/ccn/_next/static/css/f9591b560589abd5.css\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/c/7/7/0/c770d2a8bd28d76a72fc7817e76a92f8.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/mpb-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/mpb-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/mpb-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/mpb-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/d/c/e/6/dce6e4659528c0ceed89fcdc4cc95785.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-roll-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-roll-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-roll-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-roll-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/b/b/e/5/bbe525b5d4b91e25ed2b3143a17b99d9.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/pop-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pop-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pop-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pop-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/1/b/f/9/1bf9c9b4011cff128fe376867acfee48.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-alternativo-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-alternativo-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-alternativo-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/rock-alternativo-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/9/1/0/6/9106f1b61cc155e930be5fa69f70b9b5.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/reggae-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/reggae-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/reggae-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/reggae-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/1/b/e/c/1becefc90ad230489cdaef49071d66aa.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/pagode-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pagode-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pagode-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/pagode-inactive-dark.svg\
+  home> sscdn.co/letras/80x80/fotos/d/2/a/e/d2ae6d6bba50ed709c30b5d8c305247c.jpg\
+  home> sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c374c161027e.m.js\
+  home> sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.f2259588d8d24cea8194.js\
+  home> sscdn.co/gcs/letras-static/ads/js/prebid_all.14ebd46b1a62bc11d7ceb6212030bf87.js\
+  home> search.com/cs/6036356/beacon.js
+  home> sscdn.co/id/v2/pt-br/client.mdr.latest.js\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/6/1/c/a61c5917e3f95cca5d81ce5af8122d84-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/poprock-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/4/0/f/a40f9080a9b3f522eadef50cfc93aa05-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/a/c/6/0/ac604419702b825286f719b4809aa87a-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/5/3/f/a/53faef11a1dfb70f30601ff5b0d417e2-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/7/f/4/6/7f469ba930ca6ee1fa589cc1810098d2-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/b/3/9/5/b395c92c105d114fce1e1d47adebf351-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/c/c/c/dccc7b9e1e254fe1e7c2914469a837d4-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/sertanejo-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/2/d/e/e/2dee5517f5f706c4c43a2c9e5bff1b8f-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb4.jpg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-light.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-dark.svg\
+  home> sscdn.co/gcs/cifraclub/genres/gospelreligioso-inactive-dark.svg\
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb2.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb_160.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/5/7/8/c/578c4c3083006441be86e842b7904880-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/3/0/8/3/3083b1621a661eee9c2eb4ef9d03daa5-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/c/4/3/6c43c6533e5ece5e2d539c4804f28f9e-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/c/4/3/6c43c6533e5ece5e2d539c4804f28f9e-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/d/0/f/a/d0fa7f85069089514ea4f141b98725f1-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/c/8/2/e/c82ef54e8c965ba3a30d3f5f20fc36a7-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/6/b/3/b/6b3b21c0aef2c64effaa345f169804d2-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/2/d/4/b/2d4b0f0c7fc60a15b4ca205ce2e192f9-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/2/d/4/b/2d4b0f0c7fc60a15b4ca205ce2e192f9-tb4.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb_180.jpg\
+  home> sscdn.co/uploadfile/letras/fotos/f/c/a/0/fca0c27675ee02cdbd9e20c662139f2f-tb4.jpg\
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2024%2F10%2Ff1c6476-Musicas-de-Halloween-para-tocar.pn
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2024%2F10%2Ff1c6476-Musicas-de-Halloween-para-tocar.pn
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F10%2F70549b0-Musicas-de-Milton-Nascimento.png\u
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F10%2F70549b0-Musicas-de-Milton-Nascimento.png\u
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F09%2F0b7a9ba-Escala-bebop.png\u0026w=384\u0026q
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F09%2F0b7a9ba-Escala-bebop.png\u0026w=640\u0026q
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2022%2F09%2F7e4badf-musicas-do-Iron-Maiden.png\u0026w=
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2022%2F09%2F7e4badf-musicas-do-Iron-Maiden.png\u0026w=
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2024%2F03%2F83fece7-dicas-para-cuidar-do-seu-instrumen
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2024%2F03%2F83fece7-dicas-para-cuidar-do-seu-instrumen
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F03%2F7cc445e-Cifras-de-MPB.png\u0026w=384\u0026
+  home> sscdn.co/tb/next/?url=%2Ftb%2Fcifra-blog%2Fpt%2Fwp-content%2Fuploads%2F2023%2F03%2F7cc445e-Cifras-de-MPB.png\u0026w=640\u0026
+  home> sscdn/gcs/cifraclub/destaques/5/c/0/5/9eddd4c1793039863_x1_app.png
+  home> sscdn/gcs/cifraclub/destaques/a/e/2/b/9eddd4c1793039864_x2_app.png
+  home> sscdn/gcs/cifraclub/destaques/d/c/6/8/99eeabd1793039860_x1_big_935.png
+  home> sscdn/gcs/cifraclub/destaques/b/9/8/1/99eeabd1793039861_x2_big_935.png
+  home> sscdn/gcs/cifraclub/destaques/2/c/5/1/92902a21793039857_x1_big_1055.png
+  home> sscdn/gcs/cifraclub/destaques/8/5/2/b/92902a21793039858_x2_big_1055.png
+  home> sscdn/gcs/cifraclub/destaques/1/5/7/a/a1ef17d1793039853_x1_big_1295.png
+  home> sscdn/gcs/cifraclub/destaques/a/c/e/5/a1ef17d1793039855_x2_big_1295.png
+  home> sscdn/gcs/cifraclub/destaques/a/e/2/b/9eddd4c1793039864_x2_app.png\
+  home> sscdn/gcs/cifraclub/destaques/0/2/d/f/9eddd4c1792777611_x1_app.png
+  home> sscdn/gcs/cifraclub/destaques/a/2/b/9/9eddd4c1792777612_x2_app.png
+  home> sscdn/gcs/cifraclub/destaques/a/2/b/9/9eddd4c1792777612_x2_app.png\
+  home> sscdn/gcs/cifraclub/destaques/6/9/a/2/9eddd4c1792602989_x1_app.png
+  home> sscdn/gcs/cifraclub/destaques/f/b/c/2/9eddd4c1792602990_x2_app.png
+  home> sscdn/gcs/cifraclub/destaques/f/b/c/2/9eddd4c1792602990_x2_app.png\
+  home> sscdn/gcs/cifraclub/destaques/4/f/4/4/9eddd4c1792777921_x1_app.png
+  home> sscdn/gcs/cifraclub/destaques/8/a/6/8/9eddd4c1792777922_x2_app.png
+  home> sscdn/gcs/cifraclub/destaques/8/a/6/8/9eddd4c1792777922_x2_app.png\
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/vendors/next-2eecc75a513de4c8.js 200
+    > ._sentryRewriteFramesAssetPrefixPath="/ccn",globalThis._sentryAssetPrefix="https://akamai.sscdn.co/ccn/",globalThis._sentryExperimentalThirdPartyOriginStackFrames=void 0,globalThis._sentryRouteManifest='{"dynamicRoutes":[{"path":"/estilos/:g
+    > ._sentryRewriteFramesAssetPrefixPath="/ccn",globalThis._sentryAssetPrefix="https://akamai.sscdn.co/ccn/",globalThis._sentryExperimentalThirdPartyOriginStackFrames=void 0,globalThis._sentryRouteManifest='{"dynamicRoutes":[{"path":"/estilos/:g
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/main-app-c93c2262abe3c2e8.js 200
+    > ._sentryRewriteFramesAssetPrefixPath="/ccn",globalThis._sentryAssetPrefix="https://akamai.sscdn.co/ccn/",globalThis._sentryExperimentalThirdPartyOriginStackFrames=void 0,globalThis._sentryRouteManifest='{"dynamicRoutes":[{"path":"/estilos/:g
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/cc/components/compasso-94aabf33e21c9e93.js 200
+    > &e.alt?{"data-tooltip-trigger":!0}:{},children:[(0,l.jsx)(s.A,{src:e.src||"https://akamai.sscdn.co/cc/img/desktop/avatar.svg",alt:e.alt||"",title:o?void 0:e.alt,width:m,height:m,className:c().avatar,unoptimized:!0}),(0,l.jsx)("i",{className:
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/9419-f1334dcbf5086809.js 200
+    > tributes},()=>$())):$()},p=c.CACHE,m=r.KV?p:c.SANDBOX,d=r.Cu?c.CACHE:c.NOCACHE,g="https://solr.sscdn.co",h={fileDownload:"https://www.cifraclub.com.br/ajax/gp_partitura_download.php",registerShopcart:`${p}/v3/payment/shopcart/register`
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/8485-7ca36437cb8d8956.js 200
+    > 374:(e,t,a)=>{"use strict";a.d(t,{P:()=>r});let r={swapMe:{maskImage:"url('https://akamai.sscdn.co/ccn/_next/static/p/sprites/sprite-storybook-cb806f91.svg')",maskPosition:"0px 0px",maskRepeat:"no-repeat","-webkit-mask-image":"url(sprites/sp
+    > 32px",height:"32px",display:"inline-block"},"swapMe-fill":{maskImage:"url('https://akamai.sscdn.co/ccn/_next/static/p/sprites/sprite-storybook-cb806f91.svg')",maskPosition:"-32px 0px",maskRepeat:"no-repeat","-webkit-mask-image":"url(sprites/
+
+  JS https://akamai.sscdn.co/ccn/_next/static/chunks/5295-fb7fcdc057d65836.js 200
+    > ,songId:Number(n),artist:{name:`${o}`},name:`${l}`,url:`${u}`,image:`${c||"https://akamai.sscdn.co/cc/img/desktop/thumb-art.svg?v=3"}`,time:new Date(d||Date.now())})}return a},h=async(e="0")=>{if(m.delete(e),"0"!==e){let{deleteHistory:e}=awa
+
+===== 3. ESTRUTURA DE UMA PÁGINA DE CIFRA =====
+
+--- ana-vilela/trem-bala/ status=200 final=https://www.cifraclub.com.br/ana-vilela/trem-bala/ tam=467234
+ title: Trem-Bala - Ana Vilela - Cifra Club
+  <h1[^>]*>[\s\S]{0, => (nada)
+  <h2[^>]*>[\s\S]{0, => <h2 class="u-srOnly" id="header-title">Menu principal</h2>
+  .{0,120}cifra_tom. => (nada)
+  .{0,120}cifra_capo => (nada)
+  .{0,100}[Cc]apotra => style="--anchorName:--chord-tone">B<!-- --> (com forma de A)</button></div><div class="IERZz"><span>Capotraste<!-- -->:</span> <button type="button" class="eVroG" data-anchor="--chord-capo" style="--anchorName:--chord-capo">2ª casa</button></div></div><!--&--><div class
+  .{0,80}simplificad => li class=""><a class="xiQgs" data-variant="neutral" href="/ana-vilela/trem-bala/simplificada.html"><span class="_5QAC i4jne yzapp" data-tablet-size="labelFixedModerateSmall" data-desktop-size="labelFixedModerate
+ <pre> encontrados: 1 [ '<pre class="_crVx" data-chord-content="true" data-song-part=' ]
+ PRE (mascarado, 2500 chars):
+<div class="kvMV">​[xxxxx] <b data-chord-name="A9" data-chord-index="0" data-chord-scope-id="inline-chord-0" data-chord-original-text="A9">x9</b>  <b data-chord-name="D9" data-chord-index="1" data-chord-scope-id="inline-chord-1" data-chord-original-text="D9">x9</b>  <b data-chord-name="A9" data-chord-index="2" data-chord-scope-id="inline-chord-2" data-chord-original-text="A9">x9</b>  <b data-chord-name="E" data-chord-index="3" data-chord-scope-id="inline-chord-3" data-chord-original-text="E">x</b>
+
+</div><div class="kvMV"><div class="tabs"><span class="tab">[xxx - xxxxx]
+
+xxxxx 1 xx 3
+       <b data-chord-name="A9" data-chord-index="4" data-chord-scope-id="inline-chord-4" data-chord-original-text="A9">x9</b>
+x|-----0----------0-------------------------| 
+x|-----0---0------0---0---------------------| 
+x|---------2----------2---------------------| 
+x|---2---2------2---2-----------------------| 
+x|-0----------0-----------------------------| 
+x|------------------------------------------| 
+</span>
+<span class="tab">xxxxx 2 xx 3
+       <b data-chord-name="D9" data-chord-index="5" data-chord-scope-id="inline-chord-5" data-chord-original-text="D9">x9</b>
+x|-----0----------0-------------------------| 
+x|-----3---3------3---3---------------------| 
+x|---2---2------2---2-----------------------| 
+x|-0----------0-----------------------------| 
+x|------------------------------------------| 
+x|------------------------------------------| 
+</span>
+<span class="tab">xxxxx 1 xx 3
+       <b data-chord-name="A9" data-chord-index="6" data-chord-scope-id="inline-chord-6" data-chord-original-text="A9">x9</b>
+x|-----0----------0-------------------------| 
+x|-----0---0------0---0---------------------| 
+x|---------2----------2---------------------| 
+x|---2---2------2---2-----------------------| 
+x|-0----------0-----------------------------| 
+x|------------------------------------------| 
+</span>
+<span class="tab">xxxxx 3 xx 3
+       <b data-chord-name="E" data-chord-index="7" data-chord-scope-id="inline-chord-7" data-chord-original-text="E">x</b>
+x|------------------------------------------| 
+x|-----0---0-0------------------------------| 
+x|-----1---2-1------------------------------| 
+x|---2---2---2------------------------------| 
+x|------------------------------------------| 
+x|-0---------0------------------------------| 
+</span></div>
+​[xxxxxxxx xxxxx]
+
+</div><div class="kvMV">​             <b data-chord-name="A9" data-chord-index="8" data-chord-scope-id="inline-chord-8" data-chor
+ youtube: 1
+   > dCaptions\":false,\"id\":3618,\"thumbnailURL\":\"https://i3.ytimg.com/vi/SMqr6yqHhUQ/mqdefault.jpg\",\"title\":\"Trem-Bala (
+ ld+json tipo: ["@context","@type","name","url","byArtist"] [ 'MusicRecording', 'Article' ]
+ ld+json tipo: ["@context","@type","name","url","image","composer"] MusicComposition
+ ld+json tipo: ["@context","@type","itemListElement"] BreadcrumbList
+  js-data>  window.__pageArgs = {};</script><script type="module" src="https://akamai.sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c
+  js-data> \"params\":{\"pubId\":\"7a57b8749a71f88\"}}]}];\n window.__pageArgs = {};59:[[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$60\"}}],\"$L61\",\"$L62\",\"$L63\",
+
+--- jorge-ben-jor/mas-que-nada/ status=200 final=https://www.cifraclub.com.br/jorge-ben-jor/mas-que-nada/ tam=505034
+ title: Mas Que Nada - Jorge Ben Jor - Cifra Club
+  <h1[^>]*>[\s\S]{0, => (nada)
+  <h2[^>]*>[\s\S]{0, => <h2 class="u-srOnly" id="header-title">Menu principal</h2>
+  .{0,120}cifra_tom. => (nada)
+  .{0,120}cifra_capo => (nada)
+  .{0,100}[Cc]apotra => (nada)
+  .{0,80}simplificad => ss=""><a class="xiQgs" data-variant="neutral" href="/jorge-ben-jor/mas-que-nada/simplificada.html"><span class="_5QAC i4jne yzapp" data-tablet-size="labelFixedModerateSmall" data-desktop-size="labelFixedModerate
+ <pre> encontrados: 1 [ '<pre class="_crVx" data-chord-content="true" data-song-part=' ]
+ PRE (mascarado, 2500 chars):
+<div class="kvMV">​[xxxxx] <b data-chord-name="D7(4/9)" data-chord-index="0" data-chord-scope-id="inline-chord-0" data-chord-original-text="D7(4/9)">x7(4/9)</b>  <b data-chord-name="Gm7" data-chord-index="1" data-chord-scope-id="inline-chord-1" data-chord-original-text="Gm7">xx7</b>  <b data-chord-name="D7(4/9)" data-chord-index="2" data-chord-scope-id="inline-chord-2" data-chord-original-text="D7(4/9)">x7(4/9)</b>
+</div><div class="kvMV">​        <b data-chord-name="Gm7" data-chord-index="3" data-chord-scope-id="inline-chord-3" data-chord-original-text="Gm7">xx7</b>  <b data-chord-name="D7(4/9)" data-chord-index="4" data-chord-scope-id="inline-chord-4" data-chord-original-text="D7(4/9)">x7(4/9)</b>  <b data-chord-name="Gm7" data-chord-index="5" data-chord-scope-id="inline-chord-5" data-chord-original-text="Gm7">xx7</b>  <b data-chord-name="Cm7" data-chord-index="6" data-chord-scope-id="inline-chord-6" data-chord-original-text="Cm7">xx7</b>
+</div><div class="kvMV">​        <b data-chord-name="F7(9)" data-chord-index="7" data-chord-scope-id="inline-chord-7" data-chord-original-text="F7(9)">x7(9)</b>  <b data-chord-name="Bb7M" data-chord-index="8" data-chord-scope-id="inline-chord-8" data-chord-original-text="Bb7M">xx7x</b>  <b data-chord-name="Eb7(9)" data-chord-index="9" data-chord-scope-id="inline-chord-9" data-chord-original-text="Eb7(9)">xx7(9)</b>  <b data-chord-name="Ab7M" data-chord-index="10" data-chord-scope-id="inline-chord-10" data-chord-original-text="Ab7M">xx7x</b>
+</div><div class="kvMV">​        <b data-chord-name="Am7(11)" data-chord-index="11" data-chord-scope-id="inline-chord-11" data-chord-original-text="Am7(11)">xx7(11)</b>  <b data-chord-name="Gm7" data-chord-index="12" data-chord-scope-id="inline-chord-12" data-chord-original-text="Gm7">xx7</b>  <b data-chord-name="D7(9+)" data-chord-index="13" data-chord-scope-id="inline-chord-13" data-chord-original-text="D7(9+)">x7(9+)</b>
+
+</div><div class="kvMV"><div class="tabs"><span class="tab">[xxx - xxxxx]
+
+xxxxx 1 xx 3
+   <b data-chord-name="D7(4/9)" data-chord-index="14" data-chord-scope-id="inline-chord-14" data-chord-original-text="D7(4/9)">x7(4/9)</b>       <b data-chord-name="Gm7" data-chord-index="15" data-chord-scope-id="inline-chord-15" data-chord-original-text="Gm7">xx7</b>
+x|-3--3------3--------------------------------
+x|-5--5------5---3---3----3--3----------------
+x|-5----5----5---3---3----3--3----------------
+x|---------------3---3----3--3----------------
+x|-5-------5------------
+ youtube: 1
+   > dCaptions\":false,\"id\":6359,\"thumbnailURL\":\"https://i3.ytimg.com/vi/L9QsdlijzT0/mqdefault.jpg\",\"title\":\"MAS QUE NAD
+ ld+json tipo: ["@context","@type","name","url","byArtist"] [ 'MusicRecording', 'Article' ]
+ ld+json tipo: ["@context","@type","name","url","image","composer"] MusicComposition
+ ld+json tipo: ["@context","@type","itemListElement"] BreadcrumbList
+  js-data>  window.__pageArgs = {};</script><script type="module" src="https://akamai.sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c
+  js-data> \"params\":{\"pubId\":\"7a57b8749a71f88\"}}]}];\n window.__pageArgs = {};59:[[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$60\"}}],\"$L61\",\"$L62\",\"$L63\",
+
+--- ana-vilela/trem-bala/simplificada.html status=200 final=https://www.cifraclub.com.br/ana-vilela/trem-bala/simplificada.html tam=461952
+ title: Trem-Bala - Ana Vilela - Cifra Club
+  <h1[^>]*>[\s\S]{0, => (nada)
+  <h2[^>]*>[\s\S]{0, => <h2 class="u-srOnly" id="header-title">Menu principal</h2>
+  .{0,120}cifra_tom. => (nada)
+  .{0,120}cifra_capo => (nada)
+  .{0,100}[Cc]apotra => (nada)
+  .{0,80}simplificad => /><link rel="canonical" href="https://www.cifraclub.com.br/ana-vilela/trem-bala/simplificada.html"/><link rel="alternate" hrefLang="pt" href="https://www.cifraclub.com.br/ana-vilela/trem-bala/simplificada.html"/
+ <pre> encontrados: 1 [ '<pre class="_crVx" data-chord-content="true" data-song-part=' ]
+ PRE (mascarado, 2500 chars):
+<div class="kvMV">​[xxxxx] <b data-chord-name="A9" data-chord-index="0" data-chord-scope-id="inline-chord-0" data-chord-original-text="A9">x9</b>  <b data-chord-name="D9" data-chord-index="1" data-chord-scope-id="inline-chord-1" data-chord-original-text="D9">x9</b>  <b data-chord-name="A9" data-chord-index="2" data-chord-scope-id="inline-chord-2" data-chord-original-text="A9">x9</b>  <b data-chord-name="E" data-chord-index="3" data-chord-scope-id="inline-chord-3" data-chord-original-text="E">x</b>
+
+</div><div class="kvMV"><div class="tabs"><span class="tab">[xxx - xxxxx]
+
+xxxxx 1 xx 2
+   <b data-chord-name="A9" data-chord-index="4" data-chord-scope-id="inline-chord-4" data-chord-original-text="A9">x9</b>              <b data-chord-name="D9" data-chord-index="5" data-chord-scope-id="inline-chord-5" data-chord-original-text="D9">x9</b>
+x|------0------0--------0------0------------| 
+x|------0------0--------3------3------------| 
+x|------2------2--------2------2------------| 
+x|-----------------0-0-----0-0--------------| 
+x|-0-0-----0-0------------------------------| 
+x|------------------------------------------| 
+</span>
+<span class="tab">xxxxx 2 xx 2
+   <b data-chord-name="A9" data-chord-index="6" data-chord-scope-id="inline-chord-6" data-chord-original-text="A9">x9</b>              <b data-chord-name="E" data-chord-index="7" data-chord-scope-id="inline-chord-7" data-chord-original-text="E">x</b>
+x|------0------0--------0------0------------| 
+x|------0------0--------0------0------------| 
+x|------2------2--------1------1------------| 
+x|------------------------------------------| 
+x|-0-0-----0-0------------------------------| 
+x|-----------------0-0-----0-0--------------| 
+</span></div>
+​[xxxxxxxx xxxxx]
+
+</div><div class="kvMV">​             <b data-chord-name="A9" data-chord-index="8" data-chord-scope-id="inline-chord-8" data-chord-original-text="A9">x9</b>
+​xxx x xxxxx xxx
+</div><div class="kvMV">​                               <b data-chord-name="D9" data-chord-index="9" data-chord-scope-id="inline-chord-9" data-chord-original-text="D9">x9</b>
+​xxxxx xx xxxxxxx xx xxxxx xxx xx
+</div><div class="kvMV">​           <b data-chord-name="A9" data-chord-index="10" data-chord-scope-id="inline-chord-10" data-chord-original-text="A9">x9</b>
+​x xxxxx xxxxx
+</div><div class="kvMV">​                                     <b data-chord-name="E" data-chord-index="11" data-chord-scope-id="inline-chord-11" data-chord-original-text="E">x</b>
+​xxx xx xxxxx xxxxx, xxxxxx xxxx
+ youtube: 1
+   > dCaptions\":false,\"id\":3638,\"thumbnailURL\":\"https://i3.ytimg.com/vi/uonh4iD6Yr8/mqdefault.jpg\",\"title\":\"Trem-Bala (
+ ld+json tipo: ["@context","@type","name","url","byArtist"] [ 'MusicRecording', 'Article' ]
+ ld+json tipo: ["@context","@type","name","url","image","composer"] MusicComposition
+ ld+json tipo: ["@context","@type","itemListElement"] BreadcrumbList
+  js-data>  window.__pageArgs = {};</script><script type="module" src="https://akamai.sscdn.co/gcs/letras-static/ads/js/hb_cifraweb.a5b7cfd2c
+  js-data> \"params\":{\"pubId\":\"7a57b8749a71f88\"}}]}];\n window.__pageArgs = {};55:[[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$5c\"}}],\"$L5d\",\"$L5e\",\"$L5f\",
+
+===== 4. BUSCA DO YOUTUBE =====
+status 200 tam 562980 consent? false
+  ids simples: 
+
+FIM
