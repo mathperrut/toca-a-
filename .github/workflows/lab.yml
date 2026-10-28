@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Instalar linkedom (DOMParser no Node)
+        working-directory: lab
+        run: npm init -y >/dev/null && npm i linkedom@0.18.12 --no-audit --no-fund
       - name: Rodar
         working-directory: lab
         run: |

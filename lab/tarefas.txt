@@ -1,1 +1,1 @@
-sondar.mjs
+testar-cifras.mjs
