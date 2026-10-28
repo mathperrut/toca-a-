@@ -1,13 +1,13 @@
 {
   "appId": "br.com.tocaai.app",
-  "appName": "Toca Aí",
+  "appName": "Toca A\u00ed",
   "webDir": "www",
   "server": {
     "androidScheme": "https",
     "hostname": "localhost"
   },
   "android": {
-    "backgroundColor": "#15100C"
+    "backgroundColor": "#000000"
   },
   "plugins": {
     "SystemBars": {

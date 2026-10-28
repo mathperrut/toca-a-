@@ -9,7 +9,7 @@
    3. ACORDE   → compara as notas que soam com o desenho de cada
                  acorde. Usado no jogo de Trocas.
 
-   Depende de: Som (app.js) para usar o mesmo relógio de áudio,
+   Depende de: Som (som.js) para usar o mesmo relógio de áudio,
    CHORDS (data.js) para saber as notas de cada acorde.
    ========================================================= */
 'use strict';
@@ -329,7 +329,9 @@ function mediana(arr) { const s = [...arr].sort((a, b) => a - b); return s.lengt
 // Mensagem padrão quando o microfone não está disponível
 function msgSemMicrofone(err) {
   if (err && (err.name === 'NotAllowedError' || err.name === 'SecurityError'))
-    return 'O microfone foi bloqueado. Na página publicada no Claude o navegador não libera o microfone: abra o app pelos arquivos no seu PC (veja o README). Se já estiver no PC, clique no cadeado da barra de endereço e permita o microfone.';
-  if (err && err.name === 'NotFoundError') return 'Nenhum microfone encontrado. Conecte um fone com microfone ou use o do notebook.';
-  return 'O microfone não está disponível aqui. Abra o app pelos arquivos no seu PC com "python -m http.server" (veja o README).';
+    return window.Capacitor
+      ? 'O microfone está bloqueado. Abra as configurações do Android, Apps, Toca Aí, Permissões, e permita o microfone.'
+      : 'O microfone está bloqueado. Toque no cadeado da barra de endereço e permita o microfone.';
+  if (err && err.name === 'NotFoundError') return 'Nenhum microfone encontrado neste aparelho.';
+  return 'O microfone não está disponível aqui. No celular, use o app instalado (APK).';
 }

@@ -4,11 +4,11 @@
 import { cpSync, mkdirSync, rmSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const ARQUIVOS = [
-  'index.html', 'style.css', 'minimal.css', 'manifest.webmanifest',
-  'data.js', 'modelo-acordes.js', 'modelo-acordes.json', 'ia.js', 'audio-detect.js',
-  'estrada.js', 'busca.js', 'gravacao.js', 'youtube.js', 'aprender.js', 'app.js'
+  'index.html', 'tema.css', 'manifest.webmanifest',
+  'data.js', 'acordes.js', 'som.js', 'modelo-acordes.js', 'modelo-acordes.json', 'ia.js', 'audio-detect.js',
+  'cifras.js', 'gravacao.js', 'youtube.js', 'apostilas.js', 'aprender.js', 'jogo.js', 'app.js'
 ];
-const PASTAS = ['icones', 'sons'];
+const PASTAS = ['icones', 'sons', 'fontes', 'videos'];
 
 rmSync('www', { recursive: true, force: true });
 mkdirSync('www');
@@ -16,7 +16,7 @@ for (const f of ARQUIVOS) {
   if (!existsSync(f)) { console.error('Arquivo faltando: ' + f); process.exit(1); }
   cpSync(f, `www/${f}`);
 }
-for (const p of PASTAS) cpSync(p, `www/${p}`, { recursive: true });
+for (const p of PASTAS) if (existsSync(p)) cpSync(p, `www/${p}`, { recursive: true });
 
 // O player do YouTube precisa saber de que "site" ele está sendo aberto.
 // No GitHub Actions usamos SEU-USUARIO.github.io (o mesmo endereço do seu site);

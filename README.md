@@ -1,159 +1,118 @@
-# Toca Aí — app de violão com música brasileira
+# Toca Aí — violão com música brasileira
 
-App **Android (.apk)** para aprender violão com samba, pagode, MPB, bossa nova e baião: jogo nas cordas, músicas tocando junto com a **gravação original pelo YouTube**, e uma **IA treinada em Python** que reconhece os acordes que você toca.
+App **Android (.apk)** para aprender violão do zero com MPB, rock nacional, baião e samba-rock. Você escolhe uma música, o app monta um **jogo parecido com o Yousician** e o **microfone confere** se você tocou o acorde certo, na hora certa.
 
 | Parte | Linguagem | O que faz |
 |---|---|---|
-| App (raiz da pasta) | HTML, CSS, JavaScript | Telas, lições, jogos, afinador, metrônomo |
-| `capacitor.config.json`, `package.json`, `android-build/` | JSON + JavaScript (Node) | Empacotam o app como **app Android (.apk)** com o Capacitor |
-| `.github/workflows/apk.yml` | YAML (GitHub Actions) | Robô que **gera o .apk sozinho** na nuvem a cada atualização |
-| `youtube.js` | JavaScript | Player oficial do YouTube sincronizado com o jogo |
-| `ia/` | **Python** (NumPy, SciPy, scikit-learn) | Gera dados, treina a rede neural e exporta `modelo-acordes.json` |
+| App (raiz da pasta) | HTML, CSS, JavaScript | Telas, jogo, curso, apostilas, afinador |
+| `capacitor.config.json`, `package.json`, `android-build/` | JSON + JavaScript (Node) | Empacotam o site como **app Android** com o Capacitor |
+| `.github/workflows/apk.yml` | YAML (GitHub Actions) | Robô que **gera o .apk sozinho** a cada atualização |
+| `ia/` | **Python** (NumPy, SciPy, scikit-learn) | Projeto de estudo: rede neural que reconhece acordes |
 
 ---
 
-## 1. Instalar no seu Android (.apk)
+## 1. Instalar no celular
 
-O .apk é gerado de graça pelo **GitHub Actions** (um computador do GitHub compila o app para você). Você faz isso **uma vez** e depois só baixa o app no celular.
+1. No **celular**, abra `https://github.com/mathperrut/toca-a-/releases/latest`.
+2. Toque em **TocaAi.apk**, depois em **Abrir**.
+3. O Android avisa que o app não veio da Play Store: **Configurações → Permitir desta fonte** e volte para instalar.
+4. Na primeira vez que o app pedir o **microfone**, toque em **Permitir** (sem isso o jogo não consegue conferir o que você toca).
 
-### 1.1 Subir o projeto para o GitHub
-1. Crie uma conta em [github.com](https://github.com) (se ainda não tiver).
-2. Clique em **New repository**, nome `toca-ai`, marque **Public** e clique em **Create repository**.
-3. Na página do repositório vazio, clique em **uploading an existing file**.
-4. Extraia o `toca-ai.zip` no computador, abra a pasta `toca-ai` e **arraste tudo que está dentro dela** para a página (não a pasta em si). Clique em **Commit changes**.
+**Atualizar:** baixe a versão nova em Releases e instale **por cima**. O progresso continua, porque toda versão usa a mesma assinatura (`android-build/debug.keystore`, chave de uso pessoal, senha `android`; para a Play Store seria preciso uma chave própria e secreta).
 
-> **Atenção à pasta `.github`:** ela começa com ponto e fica **oculta** em alguns computadores (Mac e Linux), então pode não ser enviada. Confira se o repositório mostra a pasta `.github`. Se não mostrar: **Add file → Create new file**, digite o nome `.github/workflows/apk.yml`, cole o conteúdo do arquivo `apk.yml` (abra com o Bloco de Notas ou o VS Code) e clique em **Commit changes**.
+**Como o .apk nasce:** cada envio para a branch `main` faz o GitHub Actions copiar o app para um projeto Android, gerar ícones, compilar e publicar uma versão nova em **Releases** (5 a 10 minutos). Para gerar no PC (precisa do Android Studio): `npm install`, `npm run android`, `npx cap open android`.
 
-### 1.2 Esperar o robô gerar o app
-1. Abra a aba **Actions** do repositório. Vai aparecer **"Gerar APK Android"** rodando (bolinha amarela).
-2. Leva **5 a 10 minutos**. Quando ficar verde ✓, está pronto.
-3. Se ficar vermelho ✗, clique nele, depois no passo que falhou, copie o erro e me mande.
-
-### 1.3 Instalar no celular
-1. No **celular**, abra `https://github.com/SEU-USUARIO/toca-ai/releases/latest`.
-2. Toque em **TocaAi.apk** para baixar e depois em **Abrir**.
-3. O Android vai avisar que é um app de "fonte desconhecida" (ele não veio da Play Store). Toque em **Configurações → Permitir desta fonte** e volte para instalar.
-4. Pronto: o **Toca Aí** aparece na tela inicial como qualquer app.
-
-Na primeira vez que usar o afinador ou um jogo com microfone, o Android pergunta se o app pode usar o microfone: toque em **Permitir**.
-
-### Atualizar o app
-Toda vez que você mudar algo e enviar para o GitHub, o robô gera uma versão nova em **Releases**. Baixe e instale **por cima**: o seu progresso continua, porque toda versão usa a mesma assinatura (`android-build/debug.keystore`).
-
-> **Sobre a assinatura:** o arquivo `debug.keystore` é uma chave de "uso pessoal" (senha `android`). Ela serve para instalar no seu celular. Para publicar na **Play Store** você precisaria criar uma chave própria e secreta (e nunca colocá-la num repositório público).
-
-### Outras formas de usar
-- **Pelo navegador (PWA):** em **Settings → Pages**, escolha a branch `main` e a pasta `/ (root)`. O app fica em `https://SEU-USUARIO.github.io/toca-ai/`; no Chrome do celular, toque em **Instalar app**.
-- **No computador:** na pasta, rode `python -m http.server 8000` e abra `http://localhost:8000`.
-- **Gerar o .apk no seu PC** (opcional, precisa do Android Studio): `npm install`, `npm run android`, `npx cap open android` e, no Android Studio, **Build → Build APK**.
+**Pelo navegador:** dá para abrir como site (`python -m http.server 8000` e `http://localhost:8000`), mas a **busca automática de cifras só funciona no .apk** (explicação na seção 3).
 
 ---
 
-## 2. Músicas com a gravação original (YouTube)
+## 2. O que tem no app
 
-As gravações do Jorge Ben Jor têm **direitos autorais**. Estar no YouTube ou no Spotify não deixa uma música livre para copiar. Por isso o app **não baixa nem guarda o áudio**: ele usa o **player oficial do YouTube**, que é a forma permitida de tocar um vídeo dentro de outro app.
+### Jogo (inspirado no Yousician)
+- **Seis cordas deitadas**, a 1ª (mais fina) em cima, como na tablatura. Em Ajustes dá para inverter.
+- Os acordes chegam como **blocos coloridos**; cada batida é uma **barra com seta** (▼ para baixo, ▲ para cima); notas soltas são **bolinhas com o número da casa**.
+- A **linha vermelha** é o "agora" e uma **bolinha vermelha quica** marcando o tempo.
+- Em cima: o acorde da vez com o desenho, o próximo e o aviso **"em 3, 2, 1"** antes da troca.
 
-- As 5 músicas do catálogo já vêm com o vídeo do canal oficial **"Jorge Ben Jor - Topic"** (publicado pela gravadora).
-- Para qualquer outra música: na tela dela, cole o link do YouTube (no app do YouTube: **Compartilhar → Copiar link**).
-- **Sincronize uma vez** (uns 20 segundos): toque o vídeo e, quando entrar o 1º acorde, toque em **Bater no tempo** junto com a música. Depois disso, o **jogo nas cordas anda junto com o vídeo**, e por cima do vídeo aparece o acorde da vez.
-- **Velocidades:** o YouTube aceita só algumas velocidades. O app pede 60%/80%/100% e usa a mais próxima que o YouTube permitir (mostra no topo do jogo, por exemplo "vídeo a 75%").
-- Precisa de **internet**. Sem internet, o jogo usa o violão gravado do app.
-
-**Como o jogo acompanha o vídeo:** o vídeo é o "relógio-mestre". A cada quadro o jogo compara onde ele está com onde o vídeo está. Diferença pequena: corrige 30% por quadro, sem tranco. Diferença grande (o vídeo parou para carregar): o jogo pula junto. Nos testes, o jogo ficou a menos de 30 ms do vídeo, e depois de uma travada de 1 s ele se realinhou no quadro seguinte.
-
-**Regras do YouTube que o app segue:** o vídeo fica visível (no mínimo 200×200 px), o áudio não é separado nem gravado, e a velocidade é mudada pela própria API do player.
-
-**Se aparecer "erro 153" ou "erro 152":** o YouTube recusou o player naquele aparelho. O app já envia a origem da página (o robô configura o app com o endereço `SEU-USUARIO.github.io`), o que costuma resolver. Se mesmo assim acontecer, use o botão **Abrir no YouTube** ou importe um arquivo de áudio seu (seção "Tocar junto com a gravação").
-
----
-
-## 3. Como o app ensina (baseado nos apps de violão para iniciantes)
-
-O formato foi inspirado em como os principais apps ensinam quem nunca tocou:
-- **JustinGuitar:** poucos acordes por vez, a batida mais simples primeiro (4 para baixo) e o treino **"1 minuto de trocas"**.
-- **Simply Guitar:** uma pergunta no começo ("você já toca?") que leva ao ponto certo, e músicas liberadas conforme você aprende os acordes.
-- **Chordify:** tocar junto com uma **linha do tempo de acordes** sincronizada com a gravação, com **acordes simplificados** por padrão.
-
-### O curso
-6 unidades, 24 lições de 2 a 5 minutos. Cada lição tem **uma ideia por tela** e um botão **Continuar**. Toda unidade termina com uma **música de verdade** que usa só o que você aprendeu:
-
-| Unidade | Você aprende | Música no fim |
+| Modo | Para quem | Como funciona |
 |---|---|---|
-| 1. Comece aqui | partes do violão, afinar, ler um acorde | — |
-| 2. Seus primeiros acordes | Em7 (1 dedo), Am7 (2), Bm7 (3), batida ↓↓↓↓ | Taj Mahal |
-| 3. C e Dm7 | C, Dm7, batida ↓↑ | Magnólia |
-| 4. Acordes com sétima | G7, C7, D7 | País Tropical |
-| 5. Bossa | A7, E7 | Chove Chuva |
-| 6. Acordes maiores básicos | G, D, A, E, Am, Em | — |
+| **Esperar por mim** (padrão) | Quem está começando | A música **para em cada acorde** até o microfone ouvir o acorde certo |
+| **No tempo** | Quem já troca os acordes | Pontua cada batida (Perfeito, Bom, Ok) e dá +50 quando o acorde soa certo |
+| **Praticar** | Para ouvir e acompanhar | Sem pontos, com o violão do app tocando junto |
 
-Nada fica trancado: o app só sugere a ordem.
+- **Velocidade:** 40%, 60% (padrão), 80% ou 100%, inclusive no meio do jogo (botão de pausa).
+- **Resultado:** porcentagem, até 3 estrelas (45%, 70% e 90%), o acorde que mais deu trabalho e um botão para treiná-lo.
 
-### Como um acorde é ensinado
-1. Desenho grande, como o violão em pé na sua frente (6ª corda à esquerda, nome das cordas embaixo).
-2. **Dedo a dedo:** "Dedo 1 (indicador) na casa 1 da 2ª corda (Si)". Só aparece o dedo da vez, piscando.
-3. **Ouvir** o acorde ou **corda por corda** (para achar a corda abafada).
-4. **Conferir no microfone:** a IA diz se soou como o acorde certo.
+### Buscar qualquer música (no .apk)
+1. Aba **Músicas** → digite o nome → **Montar jogo**.
+2. O app baixa a **cifra simplificada do Cifra Club**, pega só os acordes, coloca **capotraste** se isso deixar os acordes mais fáceis, troca acordes difíceis por versões sem pestana e procura a **gravação oficial no YouTube**.
+3. A música fica salva em **Minhas músicas**, pronta para jogar.
 
-### Tocar junto
-- **Em cima:** o acorde da vez (grande, com o desenho) e o **próximo**, com aviso "troca em 3, 2, 1".
-- **Embaixo:** blocos de acordes passando, com as setas da batida (↓ ↑) e a contagem 1 2 3 4.
-- **Mão direita:** "Só na troca" (1 batida por acorde), "1 por tempo" ou "Ritmo da música".
-- **Acordes fáceis** (ligado por padrão): troca cada acorde pela versão com menos dedos e sem pestana da mesma família (ex.: Em → Em7, E7(9) → E7, Bm → Bm7).
-- **Sem pontos** por padrão: é só tocar junto. Pontuação na tela ou pelo microfone fica em "Mais opções".
+No navegador, o botão abre a busca do Cifra Club; você copia a cifra e cola em **Colar cifra**.
 
-### Som de violão de verdade
-- Os acordes tocam com **45 notas gravadas de um violão de náilon** (de Mi2, a 6ª corda solta, até Dó6), na pasta `sons/violao-nylon/`.
-- Para cada nota o app pega a gravação mais próxima e ajusta a velocidade um tiquinho para acertar a afinação exata (assim o capotraste também soa certo).
-- Quando a mesma corda é tocada de novo, a nota anterior para, como num violão real.
-- Em **Ferramentas > Som do violão** dá para trocar entre **Gravado** e **Sintetizado**.
-- **Créditos:** soundfont *Fluid R3 GM* (Frank Wen), convertido pelo projeto [midi-js-soundfonts](https://github.com/gleitz/midi-js-soundfonts), licença [Creative Commons Attribution 3.0](https://creativecommons.org/licenses/by/3.0/). Detalhes em `sons/CREDITOS.txt`.
-- Abrindo o `index.html` direto (dois cliques), o navegador bloqueia o carregamento dos sons e o app usa o sintetizado. Com Live Server ou GitHub Pages, o som gravado funciona (e fica guardado para uso offline).
+### Músicas para começar
+| Música | Artista | Acordes | Capo |
+|---|---|---|---|
+| Pra Não Dizer Que Não Falei das Flores | Geraldo Vandré | Em D | 1 |
+| Que País É Este | Legião Urbana | Em C D | — |
+| Asa Branca | Luiz Gonzaga | G C D | — |
+| Velha Infância | Tribalistas | Em Am D | 2 |
+| O Sol | Vitor Kley | Em Am C D | 2 |
+| Trem-Bala | Ana Vilela | A9 D9 E | 2 |
+| Só os Loucos Sabem | Charlie Brown Jr. | G Em C D Am | — |
+| Tempo Perdido | Legião Urbana | C Am7 Bm Em | — |
+| Andar com Fé | Gilberto Gil | A E7 D | 3 |
+| Anunciação | Alceu Valença | G Am C Em F | — |
 
-### Tocar junto com a gravação da música
-O app **não inclui as gravações originais** (direitos autorais). Mas você pode usar um arquivo de áudio que **você** tenha:
-1. Abra a música e toque em **Importar áudio** (MP3, M4A, WAV). O arquivo fica **só no seu aparelho** (IndexedDB) e não é enviado para lugar nenhum.
-2. Toque em **Sincronizar**: dê play e, quando entrar o 1º acorde, toque em **Bater no tempo** junto com a música, pelo menos 8 vezes.
-3. O app traça a **reta que melhor passa pelas suas batidas** (regressão linear): a inclinação dá o andamento (BPM) e o ponto inicial dá onde começa o 1º acorde. Toque em **Testar** para ouvir o metrônomo junto com a música e ajuste com −/+ se precisar.
-4. Pronto: a **prévia** passa a tocar a música de verdade mostrando o acorde da vez, e o **jogo** anda junto com a gravação.
+Mais 8 do **Jorge Ben Jor** (Taj Mahal, Mas Que Nada, W/Brasil, País Tropical...) e 7 **melodias de domínio público** para treinar notas soltas.
 
-Como funciona por dentro (`gravacao.js`):
-- **Lento/Médio**: o `<audio>` muda a velocidade **sem mudar o tom** (`preservesPitch`).
-- O app compara a cada quadro onde a gravação está com onde deveria estar e acelera ou freia até 6% para alcançar. Nos testes, o atraso caiu de ~65 ms para ~10 ms em 3 segundos.
-- **Limitação:** o jogo segue a sequência de acordes do app. Se o arranjo do app for diferente da gravação (repetições, introdução), use **Copiar para editar** e ajuste as seções. Músicas tocadas por pessoas também "respiram" no andamento, então em músicas longas pode haver pequenas diferenças.
+### Curso, apostilas e vídeos
+- **Curso:** 8 unidades, 30 lições curtas (uma ideia por tela). Cada unidade termina numa música que usa só o que você aprendeu: Em → Em e D → Em, C e D → G e baião → Am e batida pop → A, E e tablatura → sétimas e Jorge Ben.
+- **Apostilas (9):** como o violão funciona, afinar, postura, ler diagrama e tablatura, notas, como os acordes se formam, ritmo, ritmos brasileiros e como estudar. Cada uma tem analogias, "pegadinhas" e um quiz de 3 perguntas.
+- **Mini vídeos (10):** de 25 a 57 segundos, com narração e o som do violão: partes do violão, cordas, afinar, postura, diagrama, batida, tablatura, como jogar, samba e rotina de estudo.
 
-### A IA que pesquisa músicas (`busca.js`)
-- Usa a **API do Claude** com a ferramenta de **busca na web** (modelo `claude-haiku-5-5`, o mais barato).
-- É **paga por uso**: cada busca na web custa US$ 0,01 mais o processamento (no total, alguns centavos de dólar por música). Crie a chave em [platform.claude.com](https://platform.claude.com/) e cole em **Ferramentas > Busca com IA**.
-- A chave fica só no `localStorage` do seu celular. **Não coloque a chave no código nem no GitHub**: qualquer pessoa que abrir o site veria.
-- A IA devolve um JSON com seções e acordes; o app confere os campos, gera o desenho de acordes que não conhece (pestana E/A) e simplifica extensões (ex.: `C7(9)` vira desenho de `C7`).
-- Sempre confira com a gravação: a IA pode errar.
+### Som de violão gravado
+- Duas coleções de **notas gravadas de violões reais**: **clássico (náilon)** e **acústico**, escolhidas em Ajustes.
+- A batida é montada em tempo real: as cordas entram uma depois da outra, cada nota varia um pouco de força e afinação, a nota anterior da mesma corda é abafada e há um eco curto de sala.
 
-## 4. A IA de reconhecimento (pasta `ia/`)
+### Afinador e metrônomo
+Afinador corda por corda (marca cada corda afinada) e metrônomo com luzes.
 
-### O problema
-Descobrir qual acorde está soando a partir do som do microfone.
+---
 
-### O caminho (pipeline clássico de machine learning)
+## 3. Como funciona por dentro (para estudar)
 
-1. **Dados** (`sintetizador.py`): gravar milhares de acordes à mão é inviável, então um "violão sintético" (algoritmo Karplus-Strong) gera os exemplos. Para ficar parecido com a vida real, cada exemplo varia: afinação imperfeita, corda abafada, batida pra cima ou pra baixo, ruído de fundo, acorde anterior ainda soando, corpo do violão. Isso se chama **aumento de dados**.
-2. **Características** (`caracteristicas.py`): cada pedaço de áudio (~0,18 s) vira **24 números**: a força de cada uma das 12 notas (cromagrama) + as 12 notas só nos graves (ajuda a achar o baixo do acorde).
-3. **Modelo** (`treinar.py`): uma **rede neural** pequena (24 → 96 neurônios → 33 saídas: 32 acordes + "nenhum").
-4. **Avaliação**: testamos em dados que o modelo **nunca viu**, e comparamos com o método antigo (moldes de acorde).
-5. **Exportação**: os pesos viram `modelo-acordes.json`. O `ia.js` refaz as mesmas contas no celular.
+**Microfone conferindo o acorde** (`audio-detect.js`, `jogo.js`)
+1. Um *AudioWorklet* procura o **ataque** (o "estalo" da palhetada), não o volume, porque a batida anterior ainda está soando.
+2. O som vira um **cromagrama**: 12 números, a força de cada nota (Dó, Dó#, Ré...).
+3. O app monta o **molde** do acorde esperado a partir do desenho de verdade (cordas e casas, com os harmônicos de cada corda e o capotraste).
+4. Compara os dois com a **similaridade de cosseno** (o "ângulo" entre dois vetores). Se o esperado for parecido o bastante e não perder para outro acorde da música, conta como certo. Se errar, o app diz com qual acorde soou ("Soou como Am").
+5. Notas soltas usam o **método MPM** (o mesmo do afinador) para achar a frequência.
+6. O atraso do microfone é medido sozinho durante o jogo (ou em Ajustes → Calibrar).
 
-### Resultado (teste sintético)
+**Busca automática** (`cifras.js`)
+- No .apk, o plugin `CapacitorHttp` faz o pedido pelo Android, sem a regra de **CORS** que impede um site de ler outro. É por isso que no navegador não funciona.
+- A página da cifra é lida como HTML: cada acorde está num `<b>`; o app guarda **só os acordes**, nunca a letra.
+- A **duração** de cada acorde é estimada pela distância até o próximo na linha (cifra não traz o tempo).
+- **Capotraste inteligente:** testa capo de 0 a 7, transpõe os acordes e soma o "custo" de cada um (pestana custa caro, acorde aberto custa pouco). Fica com o menor total.
 
-| Método | Acerto entre 32 acordes |
-|---|---|
-| Moldes (método antigo) | 63,3% |
-| **Rede neural** | **84,6%** |
-| Rede neural escolhendo entre 2 acordes (jogo de Trocas) | 99,4% |
+**Gravação do YouTube como relógio** (`youtube.js`): o vídeo é o "relógio-mestre". A cada quadro o jogo compara a posição dele com a do vídeo: diferença pequena, corrige 30% por quadro; diferença grande (o vídeo travou), pula junto. O app usa o player oficial e não baixa nem separa o áudio.
 
-Os erros que sobram fazem sentido musicalmente: G × G7M, E7 × E7(9), D7 × D7(9) (diferem em uma nota só). No jogo da música, no modo microfone, a IA confere o acorde a cada troca.
+**Som** (`som.js`): para cada nota, pega a gravação mais próxima e muda a velocidade um pouquinho para acertar a afinação exata (assim o capotraste soa certo).
 
-**Garantia de que Python e celular calculam igual:** o teste de paridade comparou as características do Python e do JavaScript: diferença máxima de 0,00000000000000017.
+**Vídeos** (`videos/`): os quadros foram desenhados em HTML e fotografados com Playwright; a narração é uma voz sintética (Piper) e o violão vem das mesmas notas gravadas do app; o ffmpeg junta tudo.
 
-### Rodar o treino no seu PC
+---
+
+## 4. A IA em Python (pasta `ia/`)
+
+Projeto de estudo de **machine learning** (o jogo usa o método dos moldes, que aceita capotraste e qualquer acorde).
+
+1. **Dados** (`sintetizador.py`): um violão sintético (Karplus-Strong) gera milhares de acordes com variações (afinação, corda abafada, ruído, sala). Isso é **aumento de dados**.
+2. **Características** (`caracteristicas.py`): cada pedaço de áudio vira 24 números (cromagrama + cromagrama só dos graves).
+3. **Modelo** (`treinar.py`): rede neural 24 → 96 → 33 (32 acordes + "nenhum").
+4. **Resultado** em dados que o modelo nunca viu: **84,6%** (o método antigo de moldes fazia 63,3%).
+5. **Exportação:** os pesos viram `modelo-acordes.json`, e o `ia.js` refaz as contas no celular.
 
 ```bash
 cd ia
@@ -161,71 +120,37 @@ pip install -r requirements.txt
 python treinar.py
 ```
 
-Leva alguns minutos (usa todos os núcleos do processador). Ele substitui o `modelo-acordes.json` e o `modelo-acordes.js` na raiz.
-
-### Ensinar a IA com o SEU violão (o passo que mais melhora)
-
-A IA aprendeu com violão sintético. Violão de verdade, microfone de celular e o seu quarto são diferentes. Para ela se adaptar:
-
-1. No app: **Ferramentas → Ensinar a IA com o seu violão**.
-2. Escolha um acorde, toque em **Gravar 5 batidas** e toque. Repita com vários acordes (quanto mais, melhor; tente 3 rodadas de cada).
-3. Toque em **Exportar amostras** (ou Copiar e cole num arquivo `amostras-toca-ai.json`).
-4. No PC:
-   ```bash
-   python treinar.py --amostras amostras-toca-ai.json
-   ```
-   As suas amostras valem 10× mais no treino. O script mostra o acerto nas suas amostras de teste.
-5. Envie os novos `modelo-acordes.json` e `modelo-acordes.js` para o GitHub e aumente a `VERSAO` no `sw.js`.
-
-Isso se chama **ajuste fino com dados reais**, uma técnica usada em IA de verdade.
+**Desafio:** gravar acordes do seu violão, treinar a rede com eles e comparar com o método dos moldes do jogo.
 
 ---
 
-## 5. Como o código está organizado
+## 5. Arquivos
 
 | Arquivo | Papel |
 |---|---|
 | `index.html` | Estrutura das telas |
-| `style.css` | Visual, tema claro/escuro |
-| `data.js` | Conteúdo: acordes, lições, ritmos, missões. **O Python também lê os acordes daqui** |
-| `audio-detect.js` | Microfone: afinador, detector de batidas, reconhecimento de acorde |
-| `ia.js` | FFT, características e rede neural no celular |
-| `estrada.js` | Jogo nas cordas (canvas), braço do violão, prévia sonora, desenho de qualquer acorde |
-| `busca.js` | Busca de músicas: catálogo, IA com busca na web, colar cifra |
-| `gravacao.js` | Importar sua gravação, sincronizar batendo no tempo, tocar junto |
-| `youtube.js` | Player oficial do YouTube, vídeo como relógio-mestre do jogo |
-| `aprender.js` | Curso: desenho de acorde, professor dedo a dedo, lições em passos, Início, Aprender, Acordes, boas-vindas |
-| `minimal.css` | Visual minimalista (v3): cores, fontes e as telas novas |
-| `capacitor.config.json` | Configuração do app Android (nome, ID, cores, barras do sistema) |
-| `android-build/` | Scripts do build Android e a chave de assinatura pessoal |
-| `assets/` | Ícone e tela de abertura do app Android |
-| `.github/workflows/apk.yml` | Robô do GitHub que gera e publica o .apk |
-| `sons/` | Notas gravadas de violão (CC BY 3.0) e créditos |
-| `app.js` | Lógica: XP, jogos, telas, salvamento, PWA |
-| `sw.js` | Service worker: guarda o app no celular para abrir offline |
-| `manifest.webmanifest` | Nome, ícone e cores do app instalado |
-| `modelo-acordes.json` / `.js` | Pesos da rede neural treinada (o `.js` é cópia para abrir o app direto do arquivo) |
-| `ia/` | Código Python de treino |
+| `tema.css` | Visual (preto, branco e vermelho, fonte Jost), tema claro e escuro |
+| `data.js` | Acordes, ritmos, curso, melodias e as músicas do catálogo |
+| `acordes.js` | Nomes e desenhos de acordes, versões fáceis, sequências |
+| `som.js` | Violão gravado, batidas, metrônomo |
+| `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone |
+| `cifras.js` | Busca e leitura de cifras, capotraste inteligente, YouTube |
+| `aprender.js` | Curso, lições, professor de acordes, tela Acordes |
+| `apostilas.js` | Apostilas, quizzes e mini vídeos |
+| `youtube.js`, `gravacao.js` | Player do YouTube, sincronia e tocar junto |
+| `audio-detect.js`, `ia.js` | Microfone (ataque, cromagrama, afinador) e rede neural |
+| `app.js` | Telas, progresso, ajustes, afinador, integração com o Android |
+| `sw.js`, `manifest.webmanifest` | Funcionar offline e instalar como app |
+| `sons/`, `fontes/`, `videos/`, `icones/`, `assets/` | Notas gravadas, fonte, mini vídeos, ícones e tela de abertura |
 
-### Detecção sonora (resumo)
-- **Afinador**: método MPM. Compara a onda com ela mesma deslocada; quando encaixa, o deslocamento é um período. Frequência = 1 / período.
-- **Batidas**: detecta o "estalo" do ataque (`x[n] − x[n−1]`), não o volume, porque no ritmo a batida anterior ainda está soando. Calibre o atraso em Ferramentas → Microfone.
-- **Acordes**: rede neural (acima). Sem o modelo, o app volta para o método de moldes.
+## 6. Limitações
+- Use **fone de ouvido** no modo No tempo: sem ele o microfone também ouve o violão do app.
+- Lugar barulhento atrapalha: ajuste a **Sensibilidade** em Ajustes.
+- A duração dos acordes de músicas buscadas é estimada. Com a gravação sincronizada, o jogo fica bem mais fiel.
+- A busca depende do formato das páginas do Cifra Club; se ele mudar, a busca pode parar e o app avisa (dá para colar a cifra).
 
-### Limitações
-- Use **fone de ouvido** nos jogos com microfone: sem ele o microfone escuta o clique.
-- Ambientes barulhentos atrapalham. Ajuste a **Sensibilidade**.
-- O acerto de 84,6% é em dados sintéticos. No violão real será menor até você ensinar a IA com suas amostras.
-- Não é publicado na Play Store (PWA instala direto do navegador).
-
----
-
-## 6. Próximos desafios para você
-
-1. **Rede convolucional (CNN)** sobre o espectrograma inteiro, em vez de 24 números. Biblioteca: `tensorflow` ou `pytorch`, exportando para `tensorflow.js`.
-2. **Detectar acorde + tempo juntos** no "Tocar junto" das músicas.
-3. **Publicar na Play Store**: criar uma chave de assinatura própria (guardada como segredo no GitHub) e gerar um `.aab` com `./gradlew bundleRelease`.
-4. **Exportar/importar progresso** para trocar de celular.
-
-## Sobre as músicas
-O app **não traz letras nem cifras completas**, por direitos autorais. Você procura a cifra e cola só a sequência de acordes na aba Músicas.
+## 7. Créditos e direitos
+- **Sons:** notas gravadas da University of Iowa Electronic Music Studios e de *quartertone* (Freesound), reunidas pelo projeto [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments), licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Detalhes em `sons/CREDITOS.txt`.
+- **Fonte:** Jost (SIL Open Font License, `fontes/OFL-Jost.txt`).
+- **Narração dos vídeos:** voz "faber" do [Piper](https://github.com/rhasspy/piper).
+- **Músicas:** o app não traz letras nem gravações. Guarda só a sequência de acordes; as gravações tocam pelo player oficial do YouTube. As melodias inclusas são de domínio público.

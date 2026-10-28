@@ -13,7 +13,7 @@
 
    Como o jogo acompanha o vídeo: o VÍDEO é o relógio-mestre.
    A cada quadro o jogo compara onde está com onde o vídeo está
-   e se ajusta (ver Estrada.seguirVideo em estrada.js).
+   e se ajusta (ver seguirVideo em jogo.js).
    ========================================================= */
 'use strict';
 
@@ -144,6 +144,8 @@ class TocadorYouTube {
     });
   }
   parar() { try { this.player?.pauseVideo(); } catch (e) {} }
+  pausar() { this.parar(); }
+  continuar() { try { this.player?.playVideo(); } catch (e) {} }
   acompanhar() {}                 // no YouTube o vídeo manda; quem acompanha é o jogo
   destruir() { try { this.player?.destroy(); } catch (e) {} this.player = null; }
 }
@@ -158,103 +160,95 @@ function metaYouTube(m) {
 }
 function ytPronto(m) {
   const meta = S.youtube?.[m.id];
-  return !!(meta && meta.usar && meta.sincronizada && painelYT.tocador && painelYT.ok);
+  return !!(meta && meta.sincronizada && painelYT.tocador && painelYT.ok);
 }
-
-const painelYT = { tocador: null, ok: false, timerAcorde: null };
+const painelYT = { tocador: null, ok: false };
 
 function painelYouTube(caixa, m) {
   painelYT.tocador?.destruir(); painelYT.tocador = null; painelYT.ok = false;
-  clearInterval(painelYT.timerAcorde);
   const meta = metaYouTube(m);
-  const busca = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(`${m.titulo} ${m.artista}`);
+  const busca = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(`${m.artista} ${m.titulo}`);
   if (!meta) {
     caixa.innerHTML = `
       <div class="yt-vazio">
-        <div><b>Gravação original</b><p class="sub">Cole o link do vídeo da música no YouTube para jogar junto com a gravação de verdade.</p></div>
-        <form class="busca-linha" id="yt-form"><input id="yt-link" type="url" inputmode="url" placeholder="https://youtu.be/…" aria-label="Link do YouTube"><button class="btn primario" type="submit">Usar</button></form>
-        <p class="sub"><a href="${busca}" target="_blank" rel="noopener">Procurar no YouTube</a>, copie o link (Compartilhar → Copiar link) e cole aqui.</p>
-        <p class="sub" id="yt-msg"></p>
+        <p class="sub">Ouça a música original enquanto aprende. ${Cifras.automatico ? 'O app procura o vídeo oficial para você.' : 'Cole o link do vídeo no YouTube.'}</p>
+        ${Cifras.automatico ? `<button class="btn" id="yt-auto">${IC.busca} Procurar a gravação</button>` : ''}
+        <form class="busca pequena" id="yt-form">${IC.link}<input id="yt-link" type="url" inputmode="url" placeholder="Link do YouTube" aria-label="Link do YouTube"><button class="btn mini" type="submit">Usar</button></form>
+        <p class="sub"><a href="${busca}" target="_blank" rel="noopener">Abrir o YouTube</a> e copiar o link (Compartilhar, Copiar link).</p>
+        <p class="sub" id="yt-msg" aria-live="polite"></p>
       </div>`;
+    const usar = id => { S.youtube[m.id] = { videoId: id, offset: 0, bpm: m.bpm, sincronizada: false, usar: true }; Store.salvar(); painelYouTube(caixa, m); };
     caixa.querySelector('#yt-form').addEventListener('submit', e => {
       e.preventDefault();
       const id = extrairIdYoutube(caixa.querySelector('#yt-link').value);
       if (!id) { caixa.querySelector('#yt-msg').textContent = 'Não reconheci esse link. Ele deve ser de um vídeo do YouTube.'; return; }
-      S.youtube = S.youtube || {};
-      S.youtube[m.id] = { videoId: id, offset: 0, bpm: m.bpm, sincronizada: false, usar: true };
-      Store.salvar();
-      painelYouTube(caixa, m);
+      usar(id);
+    });
+    caixa.querySelector('#yt-auto')?.addEventListener('click', async e => {
+      const b = e.currentTarget; b.disabled = true; b.innerHTML = '<span class="spinner" aria-hidden="true"></span> Procurando…';
+      try {
+        const vids = await Cifras.youtube(m.titulo, m.artista);
+        if (vids[0]) usar(vids[0].id); else throw new Error('Não achei a gravação.');
+      } catch (err) { b.disabled = false; b.innerHTML = `${IC.busca} Procurar a gravação`; caixa.querySelector('#yt-msg').textContent = err.message || 'Sem conexão.'; }
     });
     return;
   }
   caixa.innerHTML = `
     <div class="yt-painel">
-      <div class="yt-cabeca yt-extra"><b>Gravação original</b><span class="sub">${m.youtubeCanal ? esc(m.youtubeCanal) + ' · ' : ''}YouTube</span></div>
-      <div class="yt-moldura">
-        <div class="yt-player" id="yt-player"></div>
-        <div class="yt-acorde" id="yt-acorde" hidden><b class="mono" id="yt-ac-agora"></b><span class="mono" id="yt-ac-prox"></span></div>
-      </div>
+      <div class="yt-moldura" id="yt-moldura"><div class="yt-player" id="yt-player"></div></div>
       <p class="sub yt-status" id="yt-status">Carregando o player…</p>
-      <div class="linha-ctrl yt-extra">
-        <button class="btn primario" id="yt-sinc">${meta.sincronizada ? 'Sincronizar de novo' : 'Sincronizar (1 vez)'}</button>
-        <button class="btn" id="yt-trocar">Trocar vídeo</button>
-        <label class="check"><input type="checkbox" id="yt-usar" ${meta.usar ? 'checked' : ''}> Jogar com o vídeo</label>
+      <div class="linha-botoes">
+        <button class="btn primario" id="yt-junto" ${meta.sincronizada ? '' : 'hidden'}>${IC.play} Tocar junto com a gravação</button>
+        <button class="btn" id="yt-sinc">${meta.sincronizada ? 'Sincronizar de novo' : 'Sincronizar para tocar junto'}</button>
+        <button class="btn sem-borda" id="yt-trocar">Trocar vídeo</button>
       </div>
-      <div id="yt-sinc-area" class="yt-extra"></div>
+      <div id="yt-sinc-area"></div>
     </div>`;
   const q = s => caixa.querySelector(s);
   const status = t => { const el = q('#yt-status'); if (el) el.innerHTML = t; };
   const textoStatus = () => meta.sincronizada
-    ? `Sincronizado: 1º acorde em ${meta.offset.toFixed(2)} s · ${Math.round(meta.bpm)} BPM. O jogo vai andar junto com o vídeo.`
-    : '<b>Falta sincronizar.</b> Leva 20 segundos: toque o vídeo e bata no tempo junto com a música.';
+    ? 'Sincronizado: no jogo, os acordes andam junto com o vídeo.'
+    : 'Para o jogo andar junto com o vídeo, sincronize uma vez: leva 20 segundos.';
   const tc = new TocadorYouTube(q('#yt-player'), meta.videoId, {
-    aoErro: (msg, cod) => {
-      painelYT.ok = false;
-      status(`${esc(msg)} <a href="https://www.youtube.com/watch?v=${encodeURIComponent(meta.videoId)}" target="_blank" rel="noopener">Abrir no YouTube</a>`);
-    }
+    aoErro: msg => { painelYT.ok = false; status(`${esc(msg)} <a href="https://www.youtube.com/watch?v=${encodeURIComponent(meta.videoId)}" target="_blank" rel="noopener">Abrir no YouTube</a>`); }
   });
   painelYT.tocador = tc;
   tc.pronto.then(() => { painelYT.ok = true; status(textoStatus()); }).catch(e => {
     painelYT.ok = false;
-    if (e.codigo) return; // aoErro já mostrou a mensagem
-    status(window.claude
-      ? 'Aqui dentro do Claude o player do YouTube é bloqueado. Ele funciona no app instalado (APK) e no site.'
-      : 'O player do YouTube não carregou. Ele precisa de internet. <a href="https://www.youtube.com/watch?v=' + encodeURIComponent(meta.videoId) + '" target="_blank" rel="noopener">Abrir no YouTube</a>');
+    if (e.codigo) return;
+    status('O player do YouTube não carregou (precisa de internet). <a href="https://www.youtube.com/watch?v=' + encodeURIComponent(meta.videoId) + '" target="_blank" rel="noopener">Abrir no YouTube</a>');
   });
-  // acorde da vez por cima do vídeo (quando sincronizado)
-  painelYT.timerAcorde = setInterval(() => {
-    const box = q('#yt-acorde');
-    if (!box) return clearInterval(painelYT.timerAcorde);
-    if (!meta.sincronizada || !tc.tocando) { box.hidden = true; return; }
-    const tempos = (tc.posicao - meta.offset) * meta.bpm / 60;
-    const trechos = musicaParaTrechos(m);
-    const i = trechos.findLastIndex(t => t.inicio <= tempos);
-    if (i < 0 || tempos > trechos.at(-1).inicio + trechos.at(-1).tempos) { box.hidden = true; return; }
-    box.hidden = false;
-    const nome = a => (S.cfg.facil !== false ? simplificar(a) : a);   // mesma versão que o jogo mostra
-    q('#yt-ac-agora').textContent = nome(trechos[i].acorde);
-    q('#yt-ac-prox').textContent = trechos[i + 1] ? '→ ' + nome(trechos[i + 1].acorde) : '';
-  }, 100);
-  q('#yt-usar').addEventListener('change', e => { meta.usar = e.target.checked; Store.salvar(); });
-  q('#yt-trocar').addEventListener('click', () => {
-    S.youtube[m.id] = { removido: true }; Store.salvar();
-    painelYouTube(caixa, m);   // volta para o campo de colar link
-  });
+  q('#yt-trocar').addEventListener('click', () => { S.youtube[m.id] = { removido: true }; Store.salvar(); painelYouTube(caixa, m); });
   q('#yt-sinc').addEventListener('click', async () => {
     try { await tc.pronto; } catch (e) { return; }
-    await tc.definirTaxa(1);   // sincroniza sempre na velocidade normal
-    abrirSincronia(q('#yt-sinc-area'), m, meta, tc, () => { q('#yt-sinc-area').innerHTML = ''; status(textoStatus()); q('#yt-sinc').textContent = 'Sincronizar de novo'; });
+    await tc.definirTaxa(1);
+    abrirSincronia(q('#yt-sinc-area'), m, meta, tc, () => { q('#yt-sinc-area').innerHTML = ''; status(textoStatus()); q('#yt-sinc').textContent = 'Sincronizar de novo'; q('#yt-junto').hidden = false; });
     q('#yt-sinc-area').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   });
+  q('#yt-junto').addEventListener('click', () => jogarComGravacao(m, $('#mu-parte')?.value === '' ? null : +($('#mu-parte')?.value)));
 }
 
-// "Ouvir prévia" com o vídeo: toca a partir de 1 s antes do 1º acorde
-async function previaComYouTube(m) {
-  if (!ytPronto(m)) return false;
-  const meta = S.youtube[m.id];
-  const tc = painelYT.tocador;
-  if (tc.tocando) { tc.parar(); return 'parou'; }
-  document.querySelector('#mt-yt')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-  await tc.tocarDe(Math.max(0, meta.offset - 1), 1);
-  return true;
+/* Jogo com o vídeo: o vídeo é o relógio-mestre e fica visível em cima do jogo
+   (regra do YouTube: o player precisa aparecer na tela). */
+async function jogarComGravacao(m, secao = null, opcoes = {}) {
+  if (!ytPronto(m)) return toast('Sincronize o vídeo primeiro');
+  const meta = S.youtube[m.id], tc = painelYT.tocador;
+  const taxa = await tc.definirTaxa(Math.max(0.5, Math.min(1, (opcoes.vel || S.cfg.vel) / 100)));
+  const pos0 = posicaoNaGravacao(meta, temposAteSecao(m, secao));
+  const moldura = document.querySelector('#yt-moldura');
+  moldura?.classList.add('no-jogo');
+  // com o vídeo a música não pode parar, então "esperar por mim" vira "praticar"
+  const pedido = opcoes.modo || S.cfg.modo;
+  const modo = pedido === 'tempo' ? 'tempo' : 'pratica';
+  jogarMusica(m, secao, {
+    modo, bpm: meta.bpm * taxa, bpmBase: meta.bpm, gravacao: { tocador: tc, pos0, taxa, mestre: true }, container: $('#janela'),
+    // "Jogar de novo", "Recomeçar" e troca de velocidade: volta o vídeo junto
+    refazer: novo => jogarComGravacao(m, secao, {
+      vel: novo.bpm ? Math.round(novo.bpm / meta.bpm * 100) : Math.round(taxa * 100),
+      modo: novo.modo || modo
+    }),
+    aoSair: () => { moldura?.classList.remove('no-jogo'); tc.parar(); },
+    aoFim: () => { moldura?.classList.remove('no-jogo'); }
+  });
+  await tc.tocarDe(Math.max(0, pos0 - 2.5 * taxa));   // começa 2,5 s antes do 1º acorde
 }

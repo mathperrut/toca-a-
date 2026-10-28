@@ -45,8 +45,8 @@ jobs:
         continue-on-error: true   # se falhar, o app sai com o ícone padrão, mas sai
         run: >
           npx --yes @capacitor/assets@3.0.5 generate --android
-          --iconBackgroundColor "#1E6A48" --iconBackgroundColorDark "#1E6A48"
-          --splashBackgroundColor "#EEF1E8" --splashBackgroundColorDark "#15100C"
+          --iconBackgroundColor "#000000" --iconBackgroundColorDark "#000000"
+          --splashBackgroundColor "#FFFFFF" --splashBackgroundColorDark "#000000"
 
       - name: Permissão de microfone e número da versão
         run: node android-build/configurar-android.mjs

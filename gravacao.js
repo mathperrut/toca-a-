@@ -1,11 +1,6 @@
 /* =========================================================
    TOCA AÍ — gravacao.js
-   Tocar junto com a GRAVAÇÃO da música.
-
-   O app não traz as gravações originais (direitos autorais).
-   Você importa um arquivo de áudio que já tem no aparelho (MP3,
-   M4A...). Ele fica guardado SÓ no seu aparelho (IndexedDB) e
-   nunca é enviado para lugar nenhum.
+   Sincronizar o jogo com a GRAVAÇÃO da música (vídeo do YouTube).
 
    Para o jogo andar junto com a gravação, o app precisa saber:
    - em que segundo da gravação começa o 1º acorde (offset);
@@ -123,72 +118,6 @@ function temposAteSecao(musica, indice) {
   return t;
 }
 
-/* ---------- Painel "Gravação da música" dentro da tela da música ---------- */
-async function painelGravacao(caixa, m, aoMudar) {
-  const meta = S.gravacoes[m.id];
-  const reg = meta ? await BancoAudio.ler(m.id) : null;
-  if (!meta || !reg) {
-    caixa.innerHTML = `
-      <div class="grav-vazia">
-        <div><b>Tocar com a gravação da música</b>
-        <p class="sub">Importe um arquivo de áudio que você tenha (MP3, M4A, WAV). Ele fica só neste aparelho. Depois você sincroniza batendo no tempo e o jogo anda junto com a música de verdade.</p>
-        ${meta && !reg ? '<p class="sub">O arquivo dessa música foi importado em outro aparelho. Importe de novo aqui.</p>' : ''}</div>
-        <label class="btn" for="gv-arquivo">Importar áudio</label>
-        <input type="file" id="gv-arquivo" accept="audio/*" hidden>
-      </div>`;
-    caixa.querySelector('#gv-arquivo').addEventListener('change', async e => {
-      const arq = e.target.files[0];
-      if (!arq) return;
-      if (arq.size > 60 * 1024 * 1024) { toast('Arquivo grande demais (máximo 60 MB)'); return; }
-      try {
-        await BancoAudio.salvar(m.id, arq);
-        S.gravacoes[m.id] = { nome: arq.name, offset: 0, bpm: m.bpm, usar: true, sincronizada: false };
-        Store.salvar();
-        toast('Áudio importado. Agora sincronize.');
-        await painelGravacao(caixa, m, aoMudar);
-        caixa.querySelector('#gv-sinc')?.click();
-      } catch (err) { toast('Não foi possível guardar o arquivo neste aparelho.'); }
-    });
-    aoMudar?.();
-    return;
-  }
-  caixa.innerHTML = `
-    <div class="grav-cheia">
-      <div class="grav-linha">
-        <span class="grav-icone" aria-hidden="true">♪</span>
-        <div class="grav-info"><b>${esc(meta.nome)}</b><span class="sub">${meta.sincronizada ? `1º acorde em ${meta.offset.toFixed(2)} s · ${Math.round(meta.bpm)} BPM` : 'Ainda não sincronizada'}</span></div>
-      </div>
-      <label class="check"><input type="checkbox" id="gv-usar" ${meta.usar ? 'checked' : ''}> Tocar a gravação na prévia e no jogo</label>
-      <div class="linha-ctrl">
-        <button class="btn" id="gv-ouvir">▶ Ouvir</button>
-        <button class="btn primario" id="gv-sinc">${meta.sincronizada ? 'Sincronizar de novo' : 'Sincronizar'}</button>
-        <button class="btn" id="gv-remover">Remover</button>
-      </div>
-      <div id="gv-sinc-area"></div>
-    </div>`;
-  let tocador = null;
-  const pararTudo = () => { tocador?.destruir(); tocador = null; };
-  caixa.querySelector('#gv-usar').addEventListener('change', e => { meta.usar = e.target.checked; Store.salvar(); aoMudar?.(); });
-  caixa.querySelector('#gv-ouvir').addEventListener('click', e => {
-    if (tocador) { pararTudo(); e.target.textContent = '▶ Ouvir'; return; }
-    tocador = new TocadorGravacao(reg.blob);
-    tocador.el.addEventListener('ended', () => { pararTudo(); e.target.textContent = '▶ Ouvir'; });
-    tocador.tocarDe(Math.max(0, meta.offset - 1));
-    e.target.textContent = '■ Parar';
-  });
-  caixa.querySelector('#gv-remover').addEventListener('click', async e => {
-    const b = e.currentTarget;
-    if (!b.dataset.confirmar) { b.dataset.confirmar = '1'; b.textContent = 'Toque de novo para remover'; return; }
-    pararTudo();
-    await BancoAudio.apagar(m.id).catch(() => {});
-    delete S.gravacoes[m.id]; Store.salvar();
-    await painelGravacao(caixa, m, aoMudar);
-  });
-  caixa.querySelector('#gv-sinc').addEventListener('click', () => { pararTudo(); abrirSincronia(caixa.querySelector('#gv-sinc-area'), m, meta, reg.blob, () => painelGravacao(caixa, m, aoMudar)); });
-  caixa._limpar = pararTudo;
-  aoMudar?.();
-}
-
 function abrirSincronia(area, m, meta, fonte, aoSalvar) {
   const proprio = fonte instanceof Blob;            // arquivo: criamos e destruímos o tocador aqui
   const tocador = proprio ? new TocadorGravacao(fonte) : fonte;
@@ -196,12 +125,12 @@ function abrirSincronia(area, m, meta, fonte, aoSalvar) {
   area.innerHTML = `
     <div class="sinc">
       <ol class="sinc-passos">
-        <li>Toque <b>▶ Tocar</b> e escute.</li>
+        <li>Toque em <b>Tocar</b> e escute.</li>
         <li>Quando entrar o <b>1º acorde (${esc(primeiro)})</b>, toque em <b>Bater no tempo</b> junto com cada tempo da música (1, 2, 3, 4…). Pelo menos 8 vezes.</li>
         <li>Toque <b>Testar</b>: o metrônomo deve bater junto com a música. Ajuste com −/+ se precisar.</li>
       </ol>
-      <div class="linha-ctrl">
-        <button class="btn" id="sc-play">▶ Tocar</button>
+      <div class="linha-botoes">
+        <button class="btn" id="sc-play">Tocar</button>
         <button class="btn" id="sc-zerar">Recomeçar</button>
       </div>
       <button class="btn primario largo grande sc-bater" id="sc-bater">Bater no tempo</button>
@@ -210,25 +139,25 @@ function abrirSincronia(area, m, meta, fonte, aoSalvar) {
         <label>1º acorde em (s)<input type="number" id="sc-off" step="0.01" min="0" value="${meta.offset.toFixed(2)}"></label>
         <label>Andamento (BPM)<input type="number" id="sc-bpm" step="0.1" min="40" max="220" value="${(+meta.bpm).toFixed(1)}"></label>
       </div>
-      <div class="linha-ctrl">
+      <div class="linha-botoes">
         <button class="btn mini" data-aj="-0.05">−50 ms</button><button class="btn mini" data-aj="-0.01">−10 ms</button>
         <button class="btn mini" data-aj="0.01">+10 ms</button><button class="btn mini" data-aj="0.05">+50 ms</button>
       </div>
-      <div class="acoes-licao"><button class="btn" id="sc-testar">Testar com metrônomo</button><button class="btn primario" id="sc-salvar">Salvar sincronia</button></div>
+      <div class="linha-botoes"><button class="btn" id="sc-testar">Testar com metrônomo</button><button class="btn primario" id="sc-salvar">Salvar sincronia</button></div>
     </div>`;
   let batidas = [], testeTimer = null;
   const q = s => area.querySelector(s);
-  const parar = () => { tocador.parar(); clearInterval(testeTimer); Som.pararTudo(); q('#sc-play').textContent = '▶ Tocar'; };
-  q('#sc-play').addEventListener('click', () => { if (!tocador.el.paused) return parar(); tocador.tocarDe(tocador.el.currentTime || 0); q('#sc-play').textContent = '■ Pausar'; });
+  const parar = () => { tocador.parar(); clearInterval(testeTimer); Som.pararTudo(); q('#sc-play').textContent = 'Tocar'; };
+  q('#sc-play').addEventListener('click', () => { if (!tocador.el.paused) return parar(); tocador.tocarDe(tocador.el.currentTime || 0); q('#sc-play').textContent = 'Pausar'; });
   q('#sc-zerar').addEventListener('click', () => { parar(); tocador.el.currentTime = 0; batidas = []; q('#sc-info').textContent = 'Nenhuma batida ainda.'; });
   q('#sc-bater').addEventListener('pointerdown', e => {
     e.preventDefault();
-    if (tocador.el.paused) { q('#sc-info').textContent = 'Primeiro toque ▶ Tocar.'; return; }
+    if (tocador.el.paused) { q('#sc-info').textContent = 'Primeiro toque em Tocar.'; return; }
     batidas.push(tocador.el.currentTime);
     const r = calcularSincronia(batidas);
     if (r) {
       q('#sc-off').value = r.offset.toFixed(2); q('#sc-bpm').value = r.bpm.toFixed(1);
-      q('#sc-info').innerHTML = `${batidas.length} batidas · variação média de ${r.erroMedioMs} ms${r.erroMedioMs > 60 ? ' (tente bater mais regular)' : ''}`;
+      q('#sc-info').innerHTML = `${batidas.length} batidas, variação média de ${r.erroMedioMs} ms${r.erroMedioMs > 60 ? ' (tente bater mais regular)' : ''}`;
     } else q('#sc-info').textContent = `${batidas.length} batidas (continue até 8)`;
   });
   area.querySelectorAll('[data-aj]').forEach(b => b.addEventListener('click', () => { q('#sc-off').value = Math.max(0, +q('#sc-off').value + +b.dataset.aj).toFixed(2); }));
@@ -238,7 +167,7 @@ function abrirSincronia(area, m, meta, fonte, aoSalvar) {
     const off = +q('#sc-off').value, bpm = +q('#sc-bpm').value, seg = 60 / bpm;
     const inicio = Math.max(0, off - 1.5);
     tocador.tocarDe(inicio).then(() => {
-      q('#sc-play').textContent = '■ Pausar';
+      q('#sc-play').textContent = 'Pausar';
       let proximo = 0;
       testeTimer = setInterval(() => {
         if (tocador.el.paused) return clearInterval(testeTimer);
@@ -261,28 +190,4 @@ function abrirSincronia(area, m, meta, fonte, aoSalvar) {
     aoSalvar?.();
   });
   area._limpar = () => { parar(); if (proprio) tocador.destruir(); };
-}
-
-// Prévia usando a gravação: toca a música e mostra o acorde da vez
-async function previaComGravacao(m, { segundos = 30, aoAcorde, aoFim } = {}) {
-  const meta = S.gravacoes[m.id];
-  const reg = meta && meta.usar && meta.sincronizada ? await BancoAudio.ler(m.id) : null;
-  if (!reg) return false;
-  Previa.parar();
-  const tocador = new TocadorGravacao(reg.blob);
-  const trechos = musicaParaTrechos(m);
-  const inicio = Math.max(0, meta.offset - 1);
-  let ultimo = null;
-  const estado = { musica: m, gravacao: true };
-  Previa.tocando = estado;
-  await tocador.tocarDe(inicio);
-  const timer = setInterval(() => {
-    if (Previa.tocando !== estado || tocador.el.paused || tocador.el.currentTime > inicio + segundos) { fim(); return; }
-    const tempos = (tocador.el.currentTime - meta.offset) * meta.bpm / 60;
-    const tr = trechos.filter(t => t.inicio <= tempos).at(-1);
-    if (tr && tr !== ultimo) { ultimo = tr; aoAcorde?.(tr); }
-  }, 50);
-  const fim = () => { clearInterval(timer); tocador.destruir(); if (Previa.tocando === estado) { Previa.tocando = null; aoFim?.(); } };
-  estado.parar = fim;
-  return true;
 }

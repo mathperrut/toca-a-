@@ -1,11 +1,25 @@
-Sons de violão de náilon (pasta violao-nylon)
-=============================================
-Origem: soundfont "Fluid R3 GM" (Frank Wen), instrumento 25 "Acoustic Guitar (nylon)",
-convertido em MP3 pelo projeto midi-js-soundfonts de Benjamin Gleitzman:
-https://github.com/gleitz/midi-js-soundfonts
+Sons de violão do Toca Aí
+=========================
+Todas as notas são GRAVAÇÕES REAIS de violões (uma nota por arquivo).
+O nome do arquivo é o número MIDI da nota (40.mp3 = Mi2, a 6ª corda solta).
 
-Licença: Creative Commons Attribution 3.0 (CC BY 3.0)
+Pasta "classico" (violão clássico de nylon)
+  Gravação: pacote "classicalguitar-multisampled" de quartertone, no Freesound
+  (https://freesound.org/people/quartertone/packs/11573/).
+
+Pasta "acustico" (violão acústico)
+  Gravação: University of Iowa Electronic Music Studios
+  (http://theremin.music.uiowa.edu/).
+
+As duas coleções foram editadas e reunidas pelo projeto tonejs-instruments
+de Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments),
+que as distribui sob a licença Creative Commons Attribution 3.0 (CC BY 3.0):
 https://creativecommons.org/licenses/by/3.0/
 
-Alteração feita no Toca Aí: os arquivos foram renomeados pelo número MIDI da nota
-(40.mp3 = Mi2, a 6ª corda solta ... 84.mp3 = Dó6). O áudio não foi modificado.
+Alterações feitas no Toca Aí: silêncio inicial cortado, duração limitada
+(6 s nas graves, 4,5 s nas médias, 3,2 s nas agudas) com fade-out,
+volume igualado entre as notas e conversão para MP3 mono de 96 kbps.
+
+A "batida" (as cordas entrando uma depois da outra, a força e a afinação
+variando um pouco em cada nota, o eco curto de sala) é feita pelo app em
+tempo real, a partir dessas notas (ver som.js).

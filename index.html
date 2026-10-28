@@ -5,58 +5,53 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <!-- PWA: o que transforma o site em app instalável -->
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#1E6A48">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icones/icone-192.png">
 <link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <!--INICIO-->
 <title>Toca Aí</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&family=IBM+Plex+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="minimal.css">
+<link rel="stylesheet" href="tema.css">
 <!--FIM-HEAD-->
 </head>
 <body>
 <!--INICIO-BODY-->
 
-<!-- Cabeçalho mínimo: marca, sequência de dias e ajustes -->
+<!-- Cabeçalho: marca, dias seguidos e ajustes -->
 <header class="topo">
   <div class="topo-in">
-    <div class="marca"><span class="logo" aria-hidden="true"></span><h1>Toca Aí</h1></div>
-    <button class="btn mini primario instalar" id="instalar" hidden>Instalar app</button>
+    <div class="marca"><span class="logo" aria-hidden="true"></span><h1>toca aí</h1></div>
     <div class="topo-dir">
-      <span class="seq" title="Dias seguidos treinando"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3c1.5 4 6 5.5 6 11a6 6 0 0 1-12 0c0-2.8 1.5-4.2 2.6-5.6.4 1.8 1.4 2.8 2.4 3.2C11 8.6 11 5.6 12 3z" fill="currentColor"/></svg><b id="seq">0</b></span>
-      <button class="btn-icone" id="btn-ajustes" aria-label="Ajustes"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+      <button class="btn mini primario" id="instalar" hidden>Instalar</button>
+      <span class="seq" title="Dias seguidos treinando"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3c1.5 4 6 5.5 6 11a6 6 0 0 1-12 0c0-2.8 1.5-4.2 2.6-5.6.4 1.8 1.4 2.8 2.4 3.2C11 8.6 11 5.6 12 3z" fill="currentColor"/></svg><b id="seq">0</b><span class="sr">dias seguidos</span></span>
+      <button class="btn-icone" id="btn-ajustes" aria-label="Ajustes"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
     </div>
   </div>
 </header>
 
-<!-- Navegação: 5 abas (embaixo no celular, em cima no computador) -->
-<nav class="nav" aria-label="Seções">
-  <button data-view="hoje"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Início</span></button>
-  <button data-view="trilha"><svg viewBox="0 0 24 24"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h12"/><path d="M9 8h6"/></svg><span>Aprender</span></button>
-  <button data-view="musicas"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span>Músicas</span></button>
-  <button data-view="acordes"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9.5 3v18M14.5 3v18M5 8h14M5 13h14"/></svg><span>Acordes</span></button>
-  <button data-view="ferramentas"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2"/><circle cx="12" cy="12" r="5"/><path d="M12 12l2-2"/></svg><span>Afinador</span></button>
-</nav>
-
 <main class="conteudo">
   <section id="view-hoje" class="view"></section>
-  <section id="view-trilha" class="view" hidden></section>
-  <section id="view-jogos" class="view" hidden></section>
-  <section id="view-acordes" class="view" hidden></section>
+  <section id="view-aprender" class="view" hidden></section>
   <section id="view-musicas" class="view" hidden></section>
-  <section id="view-ferramentas" class="view" hidden></section>
-  <p class="rodape sub" id="sync" hidden>Progresso salvo neste navegador</p>
+  <section id="view-acordes" class="view" hidden></section>
+  <section id="view-afinador" class="view" hidden></section>
 </main>
 
+<!-- Navegação: 5 abas (embaixo no celular, em cima no computador) -->
+<nav class="nav" aria-label="Seções">
+  <button data-view="hoje"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Início</span></button>
+  <button data-view="aprender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20"/></svg><span>Aprender</span></button>
+  <button data-view="musicas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><span>Músicas</span></button>
+  <button data-view="acordes"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9.5 3v18M14.5 3v18M5 8h14M5 13h14"/></svg><span>Acordes</span></button>
+  <button data-view="afinador"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M4.2 7.5l2.1 2.1M19.8 7.5l-2.1 2.1M3 15h3M18 15h3"/><path d="M12 15l3.5-5"/><circle cx="12" cy="15" r="1.6"/></svg><span>Afinador</span></button>
+</nav>
 
-<!-- Janela usada por lições, jogos e player -->
+<!-- Janela usada por lições, músicas e ajustes -->
 <div id="janela" class="janela" hidden>
   <div class="janela-caixa" role="dialog" aria-modal="true" aria-labelledby="janela-titulo">
-    <div class="janela-topo"><h2 id="janela-titulo"></h2><button id="janela-fechar" class="btn redondo" aria-label="Fechar">×</button></div>
+    <div class="janela-topo"><button id="janela-fechar" class="btn-icone" aria-label="Fechar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><h2 id="janela-titulo"></h2></div>
     <div id="janela-corpo" class="janela-corpo"></div>
   </div>
 </div>
@@ -64,14 +59,17 @@
 <div id="toast" class="toast" role="status" hidden></div>
 
 <script src="data.js"></script>
+<script src="acordes.js"></script>
+<script src="som.js"></script>
 <script src="modelo-acordes.js"></script>
 <script src="ia.js"></script>
 <script src="audio-detect.js"></script>
-<script src="estrada.js"></script>
-<script src="busca.js"></script>
+<script src="cifras.js"></script>
 <script src="gravacao.js"></script>
 <script src="youtube.js"></script>
+<script src="apostilas.js"></script>
 <script src="aprender.js"></script>
+<script src="jogo.js"></script>
 <script src="app.js"></script>
 <!--FIM-->
 </body>
